@@ -1,0 +1,3152 @@
+/* RESET CSS */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video, input {
+	margin:0px;
+	padding:0px;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {display:block;}
+
+body {
+	line-height:1;
+	overflow-x:hidden;
+}
+
+ol, ul {list-style:none;}
+
+blockquote, q {quotes:none;}
+
+blockquote:before, blockquote:after, q:before, q:after {
+	content:'';
+	content:none;
+}
+
+.clearfix {clear:both;}
+
+a, a img {text-decoration:none;}
+
+a img {border:0;}
+
+html { -webkit-font-smoothing: antialiased; }
+
+@font-face {
+    font-family:ProximaNova-Light;
+    src: url("../fonts/ProximaNova-Light.woff");
+	font-weight:300;
+	font-stretch:normal;
+}
+
+@font-face {
+    font-family:ProximaNova-Thin;
+    src: url("../fonts/Proxima Nova Thin.woff");
+	font-weight:300;
+	font-stretch:normal;
+}
+
+@font-face {
+    font-family:ProximaNova-Regular;
+    src: url("../fonts/Proxima Nova Regular.woff");
+	font-weight:500;
+	font-stretch:normal;
+}
+
+@font-face {
+    font-family:ProximaNova-Bold;
+    src: url("../fonts/Proxima Nova Bold.woff");
+	font-weight:700;
+	font-stretch:normal;
+}
+
+@font-face {
+    font-family:ProximaNova-Black;
+    src: url("../fonts/Proxima Nova Black.woff");
+	font-weight:500;
+	font-stretch:normal;
+}
+
+body {
+	background:#f0edeb;
+    font-family:ProximaNova-Regular;
+	color:#adadad;
+	font-size:17px;
+}
+
+.wrapper {
+	width:1000px;
+	margin:0px auto;
+}
+
+h1 {
+	font-family:ProximaNova-Light;
+	font-size:57px;
+	font-weight:300;
+	line-height:88px;
+}
+
+h3 {
+	font-family:ProximaNova-Light;
+	font-size:36px;
+	font-weight:300;
+	line-height:60px;
+}
+
+.btn {
+	float:left;
+	width:100%;
+	text-align:center;
+	background:#5d9cd3;
+	line-height:65px;
+	margin-top:15px;
+	color:#fff;
+	font-family:ProximaNova-Regular;
+	font-size:20px;
+	font-weight:500;
+}
+
+/*HEADER */
+#header {
+	float:left;
+	width:100%;
+	background:#626567;
+	padding:0px 0px;
+	color:#fff;
+	font-family:ProximaNova-Regular;
+	font-size:17px;
+	font-weight:500;
+}
+
+#header #message {
+	float:left;
+	width:45%;
+	padding:17px 0px;
+}
+
+#header #message a {
+	color:#fff;
+	font-family:ProximaNova-Regular;
+	font-size:17px;
+	font-weight:500;
+}
+
+#header #message span {
+	text-transform:uppercase;
+}
+
+#header #info {
+	float:right;
+	width:47%;
+	font-size:15px;
+	font-family:ProximaNova-Regular;
+	color:#fff;
+	font-weight:500;
+}
+
+#header #info .phone, #header #info .support, #header #info .account, #header #info .cart {
+	float:left;
+	padding:17px 0px 18px 0px;
+}
+
+#header #info .ss-icon {
+	font-size:15px;
+}
+
+#header #info .separator {
+	background:#6e7173;
+	float:left;
+	width:3px;
+	margin:17px 0px;
+	margin-right:1.8%;
+	margin-left:1.8%;
+}
+
+#header #info .account {
+	margin-left:4.9%;
+	position:relative;
+}
+
+#header #info .account ul {
+	position:absolute;
+	z-index:9;
+	background:#fff;
+	margin-top:18px;
+	width:180px;
+	padding:10px 20px;
+	color:#c7c7c7;
+	font-size:ProximaNova-Light;
+	font-weight:300;
+	font-size:15px;
+	display:none;
+}
+
+#header #info .account ul:after, #header #info .account ul:before {
+	bottom: 100%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+#header #info .account ul:after {
+	border-color: rgba(255, 255, 255, 0);
+	border-bottom-color: #ffffff;
+	border-width:9px;
+	left: 50%;
+	margin-left: -9px;
+}
+
+#header #info .account ul:before {
+	border-color: rgba(113, 158, 206, 0);
+	border-bottom-color: #719ECE;
+	border-width:10px;
+	left: 50%;
+	margin-left:-10px;
+}
+
+#header #info .account ul li {
+	float:left;
+	width:100%;
+}
+
+#header #info .account ul li a {
+	float:left;
+	width:100%;
+	line-height:32px;	
+	color:#c7c7c7;
+	font-size:ProximaNova-Light;
+	font-weight:300;
+	font-size:15px;
+	cursor:pointer;
+}
+
+#header #info .account ul li:hover a {
+	color:#b59bca;
+}
+
+#header #info .account:hover ul {
+	display:block;
+}
+
+#header #info .phone .ss-icon {
+	color:#b59bca;
+	margin-right:10px;
+}
+
+#header #info .phone .ss-icon {
+	color:#b59bca;
+	margin-right:10px;
+}
+
+#header #info .support .ss-icon {
+	color:#b59bca;
+	margin-right:10px;
+}
+
+#header #info .account .ss-icon {
+	color:#a1c9eb;
+	margin-right:10px;
+}
+
+#header #info .cart .ss-icon {
+	color:#a1c9eb;
+	margin-right:10px;
+}
+
+#loginform {
+	float:left;
+	width:100%;
+	background:#a1c9eb;
+	padding:18px 0px 19px 0px;
+	position:absolute;
+	z-index:2;
+	color:#fff;
+	font-family:ProximaNova-Regular;
+	font-size:15px;
+	line-height:55px;
+	display:none;
+}
+
+#loginform .link {
+	float:left;
+	width:15%;
+}
+
+#loginform a {
+	color:#fff;
+	border-bottom:1px solid #bbd8f0;
+}
+
+#loginform form {
+	float:left;
+	width:85%;
+}
+
+#loginform input[type="text"] {
+	float:left;
+	width:32%;
+	background-color:#fff;
+	appearance:none;
+	-webkit-appearance:none;
+	-moz-appearance:none;
+	border:none;
+	height:55px;
+	line-height:55px;
+	color:#c7c7c7;
+	font-size:17px;
+	font-family:ProximaNova-Light;
+	font-weight:300;
+	padding:0px 4%;	
+	margin-right:1.5%;
+}
+
+#loginform input.user {
+	background-image:url(../images/icon_user.png);
+	background-position:4% 45%;
+	background-repeat:no-repeat;
+}
+
+#loginform input.password {
+	background-image:url(../images/icon_password.png);
+	background-position:4% 45%;
+	background-repeat:no-repeat;
+}
+
+#loginform input[type="submit"] {
+	float:left;
+	width:17%;
+	background-color:#5c9cd3;
+	appearance:none;
+	-webkit-appearance:none;
+	-moz-appearance:none;
+	border:none;
+	height:55px;
+	line-height:55px;
+	color:#fff;
+	font-size:17px;
+	font-family:ProximaNova-Light;
+	font-weight:300;
+	cursor:pointer;
+}
+
+#navigation {
+	float:left;
+	width:100%;
+	background:#b6b6b7;
+	position:relative;
+}
+
+#navigation #logo {
+	float:left;
+	margin:15px 0px;
+}
+
+#search {
+	float:right;
+	background:#969696;
+	width:91px;
+	height:91px;
+	font-size:25px;
+	line-height:91px;
+	text-align:center;
+	color:#fff;
+	cursor:pointer;
+}
+
+#searchform {
+	float:left;
+	width:100%;
+	background:#fff;
+	height:170px;
+	position:absolute;
+	margin-top:91px;
+	display:none;
+	z-index:9;
+}
+
+#searchform input[type="text"] {
+	background:none;
+	appearance:none;
+	-webkit-appearance:none;
+	border:none;
+	font-family:ProximaNova-Thin;
+	font-size:83px;
+	font-weight:300;
+	color:#aaa;
+	float:left;
+	width:100%;
+	line-height:170px;
+}
+
+#searchform input:focus {
+	border:none;
+	appearance:none;
+	-webkit-appearance:none;
+	outline:0;
+}
+
+nav {
+	float:right;
+	margin:0px;
+}
+
+nav ul {
+	float:right;
+}
+
+nav ul li {
+	float:left;
+	padding:0px 21px;
+	line-height:91px;
+}
+
+nav ul li a {
+	font-family:ProximaNova-Regular;
+	font-size:15px;
+	font-weight:500;
+	color:#fff;
+	text-transform:uppercase;
+}
+
+nav ul li:hover {
+	background:#ffffff;
+}
+
+nav ul li:hover a {
+	color:#c2c2c1;
+}
+
+nav ul li ul.firstmenu {
+	position:absolute;
+	top:91px;
+	background:#fff;
+	z-index:99999;
+	left:0px;
+	width:100%;
+	display:none;
+}
+
+nav ul li:hover ul.firstmenu {
+	display:block;
+}
+
+nav ul li ul.firstmenu li {
+	margin:0px 10px 0px 0px;
+	padding:0px;
+	line-height:54px;
+}
+
+nav ul li ul.firstmenu li a {
+	color:#c2c2c1;
+	font-size:14px;
+	line-height:54px;
+	display:inline-block
+}
+
+nav ul li ul.firstmenu li span {
+	margin:-5px 12px 0px 4px;
+	color:#e2e2e2;
+	float:left;
+	display:inline-block;
+}
+
+nav ul li ul.firstmenu li ul.secondmenu {
+	position:absolute;
+	top:54px;
+	background:#b59bca;
+	z-index:99999;
+	left:0px;
+	width:100%;
+	display:none;
+}
+
+nav ul.firstmenu li:hover ul.secondmenu {
+	display:block;
+}
+
+nav ul li ul.firstmenu li ul.secondmenu li {
+	margin:0px 20px 0px 20px;
+	padding:0px;
+	line-height:91px;
+	height:91px;
+	position:relative;
+}
+
+nav li ul li a:hover:after {
+    border-left: solid transparent 10px;
+    border-right: solid transparent 10px;
+    border-bottom: solid #b59bca 10px;
+    bottom:0px;
+    content: " ";
+    height: 0;
+    margin-left:-14px;
+    position: absolute;
+    width: 0;
+}
+
+nav ul li ul.firstmenu li ul.secondmenu li a {
+	color:#fff;
+	font-size:14px;
+	line-height:91px;
+	display:inline-block;
+	text-transform:capitalize;
+}
+
+nav ul li ul.firstmenu li ul.secondmenu li:hover a, nav ul li:hover ul.firstmenu li ul.secondmenu li a, nav ul li:hover ul.firstmenu li ul.secondmenu li a {
+	color:#fff;
+}
+
+nav ul li ul.firstmenu li ul.secondmenu li:hover {
+	background:none;
+}
+
+nav ul.overlay {
+	display:none !important;
+}
+
+nav ul.secondmenu li:hover ul.overlay {
+	background:#fff;
+	padding:15px;
+	width:170px;
+	position:absolute;
+	top:92px;
+	left:50%;
+	margin-left:-100px;
+	display:block;
+	float:left;
+}
+
+nav ul.secondmenu li:hover ul.overlay li {
+	width:100%;
+	float:left;
+	margin:0px;
+	padding:0px;
+	height:auto;
+	line-height:normal;
+}
+
+nav ul.secondmenu li:hover ul.overlay:after {
+    border-left: solid transparent 10px;
+    border-right: solid transparent 10px;
+    border-bottom: solid #fff 10px;
+    top:-10px;
+    content: " ";
+    height: 0;
+    margin-left:-95px;
+    position: absolute;
+    width: 0;
+}
+
+nav ul.secondmenu li:hover ul.overlay {
+	display:block !important;
+}
+
+nav ul.overlay li img {
+	max-width:100%;
+}
+
+/* CTA SECTION */
+#slider {
+	float:left;
+	width:100%;
+	background:#efe9e9;
+	height:735px;
+	position:relative;
+}
+
+#slider li {
+	height:735px;
+}
+
+#banner {
+	float:left;
+	width:100%;
+	background:#efe9e9;
+	height:510px;
+	position:relative;
+}
+
+#banner.breed-list {
+	background:url(../images/banner_breedlist.jpg) 50% 50% fixed no-repeat;
+	background-size:cover;
+}
+
+#banner.breed-category {
+	background:url(../images/banner_alaskan.jpg) 50% 50% fixed no-repeat;
+	background-size:cover;
+}
+
+#banner.generic {
+	background:#a1c9eb url(../images/pattern-step.png) 50% 50% fixed no-repeat;
+	background-size:cover;
+}
+
+#banner.breed-specific {
+	background:#9a75b4 url(../images/pattern-step.png) 50% 50% fixed no-repeat;
+	background-size:cover;
+}
+
+#banner.reviews {
+	background:#9a75b4 url(../images/pattern-step.png) 50% 50% fixed no-repeat;
+	background-size:cover;
+}
+
+#banner .breadcrumbs {
+	float:left;
+	width:100%;
+	margin:20px 0px 0px 0px;
+	color:#fff;
+	font-family:ProximaNova-Regular;
+	font-size:17px;
+}
+
+#banner .breadcrumbs a {
+	color:#fff;
+	font-family:ProximaNova-Regular;
+	font-size:17px;
+}
+
+#banner h1 {
+	color:#fff;
+}
+
+#banner h1 span {
+	font-size:20px;
+}
+
+#banner .moreinfo {
+	float:right;
+	margin-top:-40px;
+}
+
+#banner .moreinfo a {
+	color:#fff;
+	font-family:ProximaNova-Light;
+	margin-left:30px;
+	line-height:30px;
+}
+
+#banner .moreinfo a b {
+	font-weight:bold;
+	margin-right:10px;
+}
+
+#banner #characteristics {
+	float:left;
+	width:100%;
+}
+
+#banner #characteristics .link {
+	float:left;
+	background:#a1c9eb;
+	color:#fff;
+	width:240px;
+	height:48px;
+	line-height:48px;
+	text-align:center;
+	cursor:pointer;
+}
+
+#banner #characteristics .link .ss-icon {
+	font-size:18px;
+	font-weight:bold;
+	margin-top:10px;
+	margin-left:10px;
+}
+
+#banner #characteristics .overlay {
+	float:left;
+	background:#5d9cd3;
+	height:78px;
+	line-height:78px;
+	display:none;
+}
+
+#banner #characteristics .overlay li {
+	color:#fff;
+	font-size:24px;
+	float:left;
+	margin-left:40px;
+	cursor:pointer;
+}
+
+#banner #characteristics .overlay li:last-child {
+	margin-right:40px;
+}
+
+#banner #characteristics .overlay img {
+	height:24px;
+}
+
+#banner .characteristics {
+	float:left;
+	width:92%;
+	padding:3.5% 4%;
+	background:#fff;
+	font-size:16px;
+	line-height:41px;
+	position:relative;
+	z-index:99;
+	display:none;
+}
+
+#banner .characteristics .before {
+	width: 0;
+    height: 0;
+    border: solid 20px;
+    border-color: transparent transparent #fff transparent;
+	float:left;
+	margin-top:-8%;
+	margin-left:-9px;
+}
+
+#banner .characteristics#size-details .before {
+	margin-left:7%;
+}
+
+#banner .characteristics#coat-details .before {
+	margin-left:14%;
+}
+
+#banner .characteristics#character-temperament-details .before {
+	margin-left:21%;
+}
+
+#banner .characteristics#care-details .before {
+	margin-left:28%;
+}
+
+#banner .characteristics#training-details .before {
+	margin-left:35%;
+}
+
+#banner .characteristics#activity-details .before {
+	margin-left:42%;
+}
+
+#banner .characteristics h3 {
+	margin-top:0px;
+	font-size:32px;
+	line-height:32px;
+	font-family:ProximaNova-Regular;
+	font-weight:500;
+	margin-bottom:20px;
+}
+/*SEARCH BREED */
+#searchbreed {
+	float:left;
+	width:100%;
+	position:absolute;
+	margin-top:70px;
+}
+
+#searchbreed form {
+	width:76%;
+	margin-left:17%;
+	float:left;
+}
+
+#searchbreed form input[type="text"]{
+	float:left;
+	width:66%;
+	background:#fff;
+	border:none;
+	margin-right:2%;
+	height:65px;
+	line-height:65px;
+	padding:0% 2%;
+	color:#c7c7c7;
+	font-size:18px;
+	font-family:ProximaNova-Regular;
+	font-weight:500;
+	-webkit-appearance:none;
+	appearance:none;
+}
+
+#searchbreed input[type="submit"] {
+	float:left;
+	width:28%;
+	cursor:pointer;
+	-webkit-appearance:none;
+	appearance:none;
+	height:65px;
+	line-height:65px;
+	background:#a1c9eb;
+	color:#fff;
+	font-size:20px;
+	font-family:ProximaNova-Regular;
+	font-weight:500;
+	border:none;
+	text-transform:uppercase;
+}
+
+#findbreeds {
+	width:50%;
+	margin-left:17%;
+	float:left;
+	margin-top:20px;
+	font-family:ProximaNova-Regular;
+	font-size:17px;
+	font-weight:300;
+	color:#b59bca;
+	cursor:pointer;
+}
+
+#quicksearch {
+	width:26%;
+	float:left;
+	margin-top:20px;
+	font-family:ProximaNova-Regular;
+	font-size:17px;
+	font-weight:300;
+	color:#b59bca;
+	text-align:right;
+}
+
+#searchfindbreeds {
+	background:#fff;
+	padding:3.5% 3.5%;
+	width:69%;
+	margin-left:17%;
+	margin-top:30px;
+	float:left;
+	display:none;
+}
+
+#searchfindbreeds:after {
+    border-left: solid transparent 10px;
+    border-right: solid transparent 10px;
+    border-bottom: solid #fff 10px;
+    content: " ";
+    height: 0;
+    margin-left:-460px;
+    position: absolute;
+    width: 0;
+	top:122px;
+}
+
+#searchfindbreeds h3 {
+	color:#929296;
+	font-family:ProximaNova-Light;
+	font-weight:300;
+	float:left;
+	font-size:25px;
+	margin:0px;
+	line-height:40px;
+	width:auto;
+}
+
+#searchfindbreeds .info {
+	float:right;
+	color:#a1c9eb;
+	font-size:24px;
+	line-height:39px;
+}
+
+#searchfindbreeds .tabs {
+	float:left;
+	width:100%;
+	margin:30px 0px;
+	padding-bottom:25px;
+	border-bottom:1px solid #f0edeb;
+}
+
+#searchfindbreeds .tabs li {
+	width:19.5%;
+	float:left;
+	font-size:15px;
+	color:#bcbcbc;
+	font-family:ProximaNova-Light;
+	line-height:18px;
+	margin-right:2%;
+}
+
+#searchfindbreeds .tabs li:first-child, #searchfindbreeds .tabs li:last-child {
+	width:17%;
+}
+
+#searchfindbreeds .tabs li:nth-child(2) {
+	width:15.5%;
+}
+
+#searchfindbreeds .tabs li:nth-child(3), #searchfindbreeds .tabs li:nth-child(4) {
+	width:19.5%;
+	margin-right:3.5%;
+}
+
+#searchfindbreeds .tabs li:last-child {
+	margin-right:0px;
+}
+
+#searchfindbreeds .tabs li.active {
+	font-weight:700;
+	color:#929296;
+	font-family:ProximaNova-Bold;
+}
+
+#searchfindbreeds .tabs li.finished {
+	font-weight:700;
+	color:#a1c9eb;
+	font-family:ProximaNova-Regular;
+}
+
+#searchfindbreeds .tabs li.finished span {
+	background:#a1c9eb;
+}
+
+#searchfindbreeds .tabs li span {
+	float:left;
+	width:18px;
+	height:18px;
+	border-radius:100%;
+	text-align:center;
+	color:#fff;
+	background:#bcbcbc;
+	line-height:18px;
+	margin-right:5px;
+	font-size:10px;
+}
+
+#seachfindbreeds #puppy-size-search, #searchfindbreeds #shedding-search, #searchfindbreeds #good-with-dogs-search, #searchfindbreeds #good-with-kids-search, #searchfindbreeds #protective-search {
+	float:left;
+	width:100%;
+}
+
+#searchfindbreeds #shedding-search, #searchfindbreeds #good-with-dogs-search, #searchfindbreeds #good-with-kids-search, #searchfindbreeds #protective-search {
+	display:none;
+}
+
+#searchfindbreeds .next-button {
+	background:#b59bca;
+	width:50%;
+	margin-left:25%;
+	float:left;
+	text-align:center;
+	color:#fff;
+	line-height:54px;
+	font-size:18px;
+	font-family:ProximaNova-Light;
+	font-weight:300;
+	margin-bottom:30px;
+	cursor:pointer;
+}
+
+#searchfindbreeds hr {
+	float:left;
+	width:100%;
+	margin-top:40px;
+	background:#f0edeb;
+	border:none;
+	height:1px;
+	margin-bottom:50px;
+}
+
+#searchfindbreeds .points li {
+	width:20%;
+	float:left;
+}
+
+#searchfindbreeds .points li:first-child, #searchfindbreeds .points li:nth-child(3) {
+	width:22%;
+}
+
+#searchfindbreeds .points li:nth-child(2) {
+	width:18%;
+}
+
+#searchfindbreeds .points li:nth-child(3), #searchfindbreeds .points li:nth-child(4) {
+	text-align:center;
+}
+
+#searchfindbreeds .points li:nth-child(4) {
+	width:26%;
+}
+
+#searchfindbreeds .points li:last-child {
+	width:12%;
+	text-align:right;
+}
+
+#searchfindbreeds #shedding-search .points li:first-child, #searchfindbreeds #good-with-dogs-search .points li:first-child, #searchfindbreeds #good-with-kids-search .points li:first-child, #searchfindbreeds #protective-search .points li:first-child {
+	width:16%;
+	text-align:left;
+}
+
+#searchfindbreeds #shedding-search .points li, #searchfindbreeds #good-with-dogs-search .points li, #searchfindbreeds #good-with-kids-search .points li, #searchfindbreeds #protective-search .points li {
+	width:16.5%;
+	text-align:left;
+}
+
+#searchfindbreeds #shedding-search .points li:nth-child(6), #searchfindbreeds #good-with-dogs-search .points li:nth-child(6), #searchfindbreeds #good-with-kids-search .points li:nth-child(6), #searchfindbreeds #protective-search .points li:nth-child(6) {
+	width:14%;
+	text-align:left;
+}
+
+#searchfindbreeds #shedding-search .points li:last-child, #searchfindbreeds #good-with-dogs-search .points li:last-child, #searchfindbreeds #good-with-kids-search .points li:last-child, #searchfindbreeds #protective-search .points li:last-child {
+	width:3.5%;
+	text-align:right;
+}
+
+#searchfindbreeds .ui-widget-content {
+	background:#f5f6f8;
+	border:1px solid #f0edeb;
+	border-radius:10px;
+	margin-bottom:20px;
+}
+
+#searchfindbreeds .ui-state-hover, #searchfindbreeds .ui-widget-content .ui-state-hover, #searchfindbreeds .ui-widget-header .ui-state-hover, #searchfindbreeds .ui-state-focus, #searchfindbreeds .ui-widget-content .ui-state-focus, #searchfindbreeds .ui-widget-header .ui-state-focus, #searchfindbreeds .ui-state-default, #searchfindbreeds .ui-widget-content .ui-state-default, #searchfindbreeds .ui-widget-header .ui-state-default {
+	border-radius:100%;
+	background:#fff;
+	outline:none;
+}
+
+#searchfindbreeds .ui-slider-pips .ui-slider-line {
+	display:none !important;
+}
+
+#searchfindbreeds #puppy-size-search .ui-slider-pips .ui-slider-pip-1 .ui-slider-label {
+	background:url(../images/puppy-size-1.svg) top left no-repeat;
+	text-indent:-999px;
+	width:19px;
+	height:19px;
+	margin-top:10px;
+	margin-left:0px;
+	background-size:contain;
+	overflow:hidden;
+}
+
+#searchfindbreeds #puppy-size-search .ui-slider-pips .ui-slider-pip-2 .ui-slider-label {
+	background:url(../images/puppy-size-2.svg) top left no-repeat;
+	text-indent:-999px;
+	width:30px;
+	height:30px;
+	margin-top:10px;
+	margin-left:-15px;
+	background-size:contain;
+	overflow:hidden;
+}
+
+#searchfindbreeds #puppy-size-search .ui-slider-pips .ui-slider-pip-3 .ui-slider-label {
+	background:url(../images/puppy-size-3.svg) top left no-repeat;
+	text-indent:-999px;
+	width:31px;
+	height:31px;
+	margin-top:10px;
+	margin-left:-15px;
+	background-size:contain;
+	overflow:hidden;
+}
+
+#searchfindbreeds #puppy-size-search .ui-slider-pips .ui-slider-pip-4 .ui-slider-label {
+	background:url(../images/puppy-size-4.svg) top left no-repeat;
+	text-indent:-999px;
+	width:41px;
+	height:41px;
+	margin-top:10px;
+	margin-left:-20px;
+	background-size:contain;
+	overflow:hidden;
+}
+
+#searchfindbreeds #puppy-size-search .ui-slider-pips .ui-slider-pip-5 .ui-slider-label {
+	background:url(../images/puppy-size-5.svg) top left no-repeat;
+	text-indent:-999px;
+	width:43px;
+	height:43px;
+	margin-top:10px;
+	margin-left:-43px;
+	background-size:contain;
+	overflow:hidden;
+}
+
+#searchfindbreeds .ui-slider-pips .ui-slider-label {
+	margin-top:10px;
+}
+
+#searchfindbreeds .ui-slider-pips .ui-slider-label, #searhfindbreeds .ui-slider-pip:hover .ui-slider-label, #searchfindbreeds .ui-slider-pips .ui-slider-pip-selected, #searchfindbreeds .ui-slider-pips .ui-slider-pip-selected-first, #searchfindbreeds .ui-slider-pips .ui-slider-pip-selected-second {
+	font-size:17px;
+	font-family:ProximaNova-Regular;
+	color:#adadad;
+	font-weight:500;
+}
+/*FEATURED PUPPIES */
+#featuredpuppies {
+	float:left;
+	width:100%;
+	padding:60px 0px 80px 0px;
+	background:#fff;
+}
+
+#featuredpuppies h3 {
+	font-size:33px;
+	margin-bottom:30px;
+	color:#939393;
+	font-weight:300;
+	width:auto;
+	float:left;
+}
+
+#featuredpuppies .filter {
+	width:auto;
+	float:right;
+}
+
+#featuredpuppies .filter a {
+	float:left;
+	color:#fff;
+	line-height:40px;
+	padding:0px 30px;
+	margin-right:15px;
+	font-size:14px;
+	background:#9a75b4;
+	cursor:pointer;
+}
+
+#featuredpuppies .filter a.male {
+	background:#a1c9eb;
+}
+
+#featuredpuppies .filter a.all {
+	background:#b6b6b7;
+	margin-right:0px;
+}
+
+#featuredpuppies li.puppy {
+	float:left;
+	width:48%;
+	margin-right:1%;
+	margin-left:1%;
+	position:relative;
+	color:#fff;
+	margin-bottom:4%;
+}
+
+#featuredpuppies li.puppy:nth-child(2n) {
+	/*margin-right:0px;*/
+}
+
+#featuredpuppies li.puppy .dummy {
+	padding-top:78%;
+}
+
+#featuredpuppies li.puppy .details {
+	position:absolute;
+	top:0px;
+	width:100%;
+	height:100%;
+}
+
+#featuredpuppies li.puppy .image {
+	width:100%;
+	height:82%;
+	float:left;
+}
+
+#featuredpuppies li.puppy.female {
+	background:#b59cca;
+}
+
+#featuredpuppies li.puppy.male {
+	background:#a1c9eb;
+}
+
+#featuredpuppies li.puppy .puppylink {
+	float:left;
+	height:18%;
+	width:100%;
+}
+
+#featuredpuppies li.puppy .puppylink a {
+	float:left;
+	cursor:pointer;
+	margin:5% 3%;
+}
+
+#featuredpuppies li.puppy .puppylink a#puppy-details {
+	background:#9974b3;
+	width:30%;
+	float:right;
+	font-size:13px;
+	line-height:40px;
+	text-align:center;
+	margin-top:3%;
+}
+
+#featuredpuppies li.puppy.male .puppylink a#puppy-details {
+	background:#5d9cd3;
+}
+
+#featuredpuppies li.puppy #infodetails {
+	background:rgba(181,155,202,0.75);
+	float:left;
+	width:100%;
+	height:18%;
+	position:absolute;
+	bottom:18%;
+	display:none;
+}
+
+#featuredpuppies li.puppy.male #infodetails {
+	background:rgba(161,201,235,0.4);
+}
+
+#featuredpuppies li.puppy #infodetails div {
+	float:left;
+	margin:5% 2%;
+	line-height:24px;
+	font-size:14px;
+}
+
+#featuredpuppies li.puppy #infodetails .puppyname {
+	font-size:24px;
+}
+
+#featuredpuppies li.puppy #puppy-detailsmore {
+	float:left;
+	width:85.4%;
+	height:62%;
+	padding:7.8% 7.4%;
+	position:absolute;
+	top:0px;
+	background:#9974b3;
+	font-family:ProximaNova-Light;
+	font-size:16px;
+	font-weight:300;
+	line-height:24px;
+	display:none;
+}
+
+#featuredpuppies li.male #puppy-detailsmore {
+	background:#5d9cd3;
+}
+
+#featuredpuppies li.puppy #puppy-detailsmore .left {
+	float:left;
+	width:60%;
+}
+
+#featuredpuppies li.puppy #puppy-detailsmore .right {
+	float:left;
+	width:40%;
+}
+
+#featuredpuppies li.puppy #puppy-detailsmore .right img {
+	max-width:100%;
+	width:100%;
+}
+
+#featuredpuppies li.puppy #puppy-detailsmore .puppyname {
+	font-size:30px;
+	margin-bottom:20px;
+}
+
+#featuredpuppies li.puppy #puppy-detailsmore .puppyintro {
+	border-top:2px solid #bca4ce;
+	float:left;
+	width:100%;
+	margin-top:5%;
+	padding-top:5%;
+	line-height:30px;
+}
+
+#featuredpuppies li.male #puppy-detailsmore .puppyintro {
+	border-top:2px solid #a1c8eb;
+}
+
+#featuredpuppies li.puppy #puppyphotos {
+	float:left;
+	width:100%;
+	height:82%;
+	position:absolute;
+	top:0%;
+	visibility:hidden;
+}
+
+#featuredpuppies li.puppy #puppyphotos .dummy {
+	padding-top:65.625%;
+}
+
+#featuredpuppies li.puppy #puppyphotos ul, #featuredpuppies li.puppy #puppyphotos .bx-wrapper {
+	position:absolute;
+	bottom:0px;
+	width:100%;
+	height:100%;
+}
+
+#featuredpuppies li.puppy #puppyphotos .bx-wrapper, #featuredpuppies li.puppy #puppyphotos .bx-viewport {
+	top:0px;
+	width:100%;
+	height:100%;
+}
+
+#featuredpuppies li.puppy #puppyphotos li {
+	float:left;
+	width:100%;
+	height:100%;
+}
+
+#featuredpuppies li.puppy #puppyphotos .bx-wrapper .bx-controls {
+	background:rgba(181,155,202,0.75);
+	float:left;
+	width:100%;
+	height:18%;
+	position:absolute;
+	bottom:0%;
+}
+
+#featuredpuppies li.male #puppyphotos .bx-wrapper .bx-controls {
+	background:rgba(161,201,235,0.75);
+}
+
+#featuredpuppies li.puppy #puppyphotos .bx-wrapper .bx-controls .bx-pager {
+	position:relative;
+	bottom:0px;
+}
+
+#featuredpuppies li.puppy #puppyphotos .bx-wrapper .bx-pager.bx-default-pager a {
+	background:#ccbfd6
+}
+
+#featuredpuppies li.male #puppyphotos .bx-wrapper .bx-pager.bx-default-pager a {
+	background:#b3cbe0;
+}
+
+#featuredpuppies li.puppy #puppyphotos .bx-wrapper .bx-pager.bx-default-pager a.active {
+	background:#fff;
+}
+
+.bx-wrapper .bx-prev {
+}
+/* GET NOTIFIED */
+#notified {
+	background:#a1c9eb url(../images/pattern-step.png) 50% 50% fixed no-repeat;
+	background-size:cover;
+	float:left;
+	width:100%;
+	padding:50px 0px 80px 0px;
+	color:#fff;
+	font-family:ProximaNova-Light;
+	font-size:22px;
+	font-weight:300;
+}
+
+#notified .left {
+	float:left;
+	width:75%;
+}
+
+#notified .right {
+	float:left;
+	width:25%;
+}
+
+#notified a.btn {
+	float:left;
+	width:100%;
+	text-align:center;
+	background:#5d9cd3;
+	line-height:65px;
+	margin-top:15px;
+	color:#fff;
+	font-family:ProximaNova-Regular;
+	font-size:20px;
+	font-weight:500;
+}
+
+/* CONTENT SECTION */
+#content {
+	float:left;
+	width:100%;
+	padding:100px 0px;
+}
+
+#content .left {
+	float:left;
+	width:62%;
+	margin-right:5%;
+}
+
+#content #contenttabber, #content #contenttabber ul {
+	float:left;
+	width:100%;
+}
+
+#content #contenttabber ul li {
+	width:32%;
+	margin-right:2%;
+	float:left;
+	background:#f9f7f7;
+	line-height:60px;
+	text-align:center;
+	font-size:20px;
+	font-family:ProximaNova-Regular;
+	font-weight:500;
+	cursor:pointer;
+}
+
+#content #contenttabber ul li a {
+	float:left;
+	width:100%;
+}
+
+#content #contenttabber ul li a.active, #content #contenttabber ul li:hover a {
+	background:#fff;
+	color:#939393;
+}
+
+#content #contenttabber ul li:last-child {
+	margin-right:0px;
+}
+
+#content #contenttabber .tabpanel {
+	float:left;
+	width:88%;
+	padding:5% 6% 9.6% 6%;
+	background:#fff;
+}
+
+#content #contenttabber .tabpanel p {
+	float:left;
+	width:100%;
+	margin:10px 0px;
+	font-family:ProximaNova-Regular;
+	font-size:17px;
+	line-height:34px;
+	color:#adadad;
+}
+
+#content #contenttabber .tabpanel h3 {
+	color:#939393;
+	font-size:33px;
+	font-family:ProximaNova-Thin;
+	font-weight:300;
+}
+
+#content #contenttabber #article2tab, #content #contenttabber #article3tab {
+	display:none;
+}
+
+
+#content .sidebar {
+	float:left;
+	width:33%;
+}
+
+#content .sidebar .ads {
+	width:100%;
+	float:left;
+	position:relative;
+	margin-bottom:50px;
+}
+
+#content .sidebar .ads .dummy {
+	padding-top:167%;
+}
+
+#content .sidebar .ads .details {
+	position:absolute;
+	top:0px;
+	width:80%;
+	padding:10%;
+	height:80%;
+	color:#bcbcbc;
+	font-size:19px;
+	font-family:ProximaNova-Regular;
+	font-weight:500;
+}
+
+#content .sidebar .ads .details h3 {
+	position:relative;
+	top:0%;
+	margin:0px;
+	padding:0px;
+	float:left;
+	width:100%;
+	line-height:40px;
+	color:#626567;
+	font-size:32px;
+	font-family:ProximaNova-Thin;
+	font-weight:700;
+}
+
+#content .sidebar .ads .details a.btn {
+	position:absolute;
+	bottom:0px;
+	width:80%;
+}
+
+#content .sidebar .ads .details a.blue {
+	background:#a1c9eb;
+}
+
+#content .sidebar .ads.white .details h3, #content .sidebar .ads.white .details {
+	color:#fff;
+}
+
+#content .sidebar .ads.last {
+	margin-bottom:0px;
+}
+
+
+/* CONTENT SECTION OF INNER PAGES */
+#container {
+	float:left;
+	width:100%;
+	margin-top:-365px;
+	position:relative;
+	z-index:9;
+	margin-bottom:75px;
+}
+
+#container .container {
+	float:left;
+	width:91%;
+	padding:4% 4.5% 0% 4.5%;
+	background:#fff;
+}
+
+#container #content {
+	padding:0px !important;
+}
+
+#container #content .left {
+	background:#fff;
+	width:54%;
+	padding:0px 4%;
+}
+
+#container #content .left.topmargin {
+	padding:4%;
+}
+
+#container #content .left p {
+	font-size:16px;
+	line-height:29px;
+	font-family:ProximaNova-Light;
+	font-weight:300;
+	margin:15px 0px;
+	float:left;
+	width:100%;
+}
+
+#container #content .featuredimage {
+	width:114.8%;
+	float:left;
+	margin-left:-7.3%;
+	margin-bottom:15px;
+}
+
+#container #content .featuredimage img {
+	max-width:100%;
+	float:left;
+}
+
+#container h3 {
+	font-size:25px;
+	font-family:ProximaNova-Light;
+	color:#bcbcbc;
+	float:left;
+	line-height:38px;
+}
+
+#container .changestyle {
+	float:right;
+	font-size:25px;
+}
+
+#container .changestyle #gridtype {
+	font-size:18px;
+	float:right;
+	line-height:25px;
+}
+
+#container .changestyle span {
+	margin-right:10px;
+	cursor:pointer;
+}
+
+#container .filtering {
+	float:left;
+	width:100%;
+	margin:13px 0px 25px 0px;
+}
+
+#container .filtering.col-5 {
+	float:left;
+	width:70%;
+}
+
+#container .filtering .col-3 {
+	float:left;
+	width:30.33%;
+	margin-right:1.5%;
+}
+
+#container h3.col-5 {
+	float:left;
+	width:30%;
+}
+
+#container .filtering .col-5 {
+	float:left;
+	width:27%;
+	margin-right:2%;
+	margin-top:-15px;
+}
+
+#container .changestyle.col-5 {
+	float:left;
+	width:9%;
+	margin-right:0%;
+	background:#ececec;
+	padding:13px 2%;
+	height:19px;
+}
+
+#container .changestyle.col-5 #gridtype {
+	font-size:18px;
+}
+
+#container .filtering .separator {
+	float:left;
+	width:1.5%;
+	margin-right:1.5%;
+	font-size:30px;
+	line-height:45px;
+}
+
+#container .filtering .refinesearch {
+	margin-right:0px;
+	position:relative;
+	line-height:45px;
+    border: none;
+    box-shadow: none;
+	appearance:none;
+	-moz-appearance:none;
+    -webkit-appearance: none;
+	font-size:16px;
+	font-family:ProximaNova-Regular;
+	color:#bcbcbc;
+	cursor:pointer;
+}
+
+#container .filtering .refinesearch span {
+	float:right;
+	font-size:24px;
+	line-height:45px;
+}
+
+#container .filtering .refinesearch span.minus {
+	display:none;
+}
+
+#accordion {
+	float:left;
+	width:91%;
+	padding:2% 4%;
+	border:1px solid #e6e6e6;
+	display:none;
+	position:absolute;
+	width:91%;
+	background:#fff;
+	z-index:999;
+}
+
+#accordion h3 {
+	float:left;
+	width:92%;
+	font-size:16px;
+	font-family:ProximaNova-Bold;
+	font-weight:700;
+	height:50px;
+	padding:0px 4%;
+	line-height:50px;
+	border-bottom:1px solid #e6e6e6;
+	cursor:pointer;
+	background:url(../images/accordion_arrow_down.png) right center no-repeat;
+}
+
+#accordion h3:focus {
+	outline:none;
+}
+
+#accordion h3.noborder {
+	border-bottom:none;
+}
+
+#accordion h3.ui-accordion-header-active {
+	border-bottom:none;
+	background:url(../images/accordion_arrow_up.png) right center no-repeat;
+}
+
+#accordion p {
+	float:left;
+	font-size:13px;
+	color:#c7c7c7;
+	line-height:24px;
+}
+
+#accordion label {
+	float:left;
+	font-size:13px;
+	color:#c7c7c7;
+	line-height:16px;
+	margin-left:10px;
+}
+
+#accordion li {
+	float:left;
+	width:100%;
+	margin:4px 0px;
+}
+
+#accordion input[type="checkbox"] {
+	float:left;
+	appearance:none;
+	-webkit-appearance:none;
+	border:1px solid #c7c7c7;
+	width:16px;
+	height:16px;
+}
+
+#accordion input[type="checkbox"]:focus {
+	outline:none;
+}
+
+#accordion input[type="checkbox"]:checked {
+	border:1px solid #b59bca;
+}
+
+#accordion input[type="checkbox"]:not(:checked):after,
+#accordion input[type="checkbox"]:checked:after {
+  content: '✔';
+  position: relative;
+  top: 0; 
+  left: 2px;
+  font-size: 11px;
+  color: #b59bca;
+  transition: all .2s;
+}
+
+#accordion input[type="checkbox"]:not(:checked):after {
+  opacity: 0;
+  transform: scale(0);
+}
+
+#accordion input[type="checkbox"]:checked:after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+#accordion .ui-accordion-content {
+	margin-left:4%;
+	width:92%;
+}
+
+#container .filtering .select-style {
+    border:none;
+    width:90%;
+	padding:0px 5%;
+    overflow: hidden;
+	height:45px;
+	background:#ececec;
+}
+
+#container .filtering .select-style select {
+    background:#ececec url("../images/icon-select.png") no-repeat 100% 50%;
+    width: 100%;
+	line-height:45px;
+    border: none;
+    box-shadow: none;
+	appearance:none;
+	-moz-appearance:none;
+    -webkit-appearance: none;
+	font-size:16px;
+	font-family:ProximaNova-Regular;
+	color:#bcbcbc;
+}
+
+#container .filtering .select-style select:focus {
+    outline: none;
+}
+
+#container .filtering .select-style select option {
+	width:100%;
+}
+
+#container .breed-listing {
+	float:left;
+	width:100%;
+}
+
+#container .breed-listing .breeds {
+	float:left;
+	width:100%;
+	margin-bottom:4.5%;
+}
+
+#container .breed-listing .details {
+	float:left;
+	width:100%;
+	position:relative;
+	overflow:hidden;
+}
+
+#container .breed-listing .details .dummy {
+	padding-top:26%;
+}
+
+#container .breed-listing .details .left {
+	position:absolute;
+	top:0px;
+	width:39%;
+	height:100%;
+}
+
+#container .breed-listing .details .left .overlay .trophy {
+	float:left;
+	width:50px;
+	height:50px;
+	background:#e6d78c;
+	color:#fff;
+	font-size:23px;
+	line-height:50px;
+	text-align:center;
+	cursor:pointer;
+}
+
+#container .breed-listing .details .left .overlay {
+	float:left;
+	margin:20px 0px 20px 20px;
+	vertical-align:middle;
+}
+
+#container .breed-listing .details .left .overlay .trophy-details {
+	background:#cec186;
+	color:#fff;
+	float:left;
+	font-size:13px;
+	line-height:50px;
+	text-align:left;
+	height:50px;
+	line-height:50px;
+	width:190px;
+	padding:0px 20px;
+	display:none;
+}
+
+#container .breed-listing .details .right {
+	position:absolute;
+	float:left;
+	top:0px;
+	left:39%;
+	width:56%;
+	height:100%;
+	padding:0% 2.5%;
+	background:#afafb0;
+	color:#fff;
+}
+
+#container .breed-listing .breeds.dark .details .right {
+	background:#868788;
+}
+
+#container .breed-listing .breeds.male .details .right {
+	background:#5d9cd3;
+}
+
+#container .breed-listing .breeds.female .details .right {
+	background:#9a75b4;
+}
+
+#container .breed-listing .details ul, #container .breed-listing .details ul li, #container .breed-listing .details .bx-wrapper, #container .breed-listing .details .bx-viewport {
+	float:left;
+	width:100%;
+	height:100% !important;
+}
+
+#container .breed-listing .details ul, #container .breed-listing .details ul li {
+	width:100%;
+}
+
+#container .breed-listing .details .bx-controls {
+	position:absolute;
+	bottom:20%;
+	width:100%;
+}
+
+#container .breed-listing .details .bx-wrapper .bx-pager.bx-default-pager a:hover, #container .breed-listing .details .bx-wrapper .bx-pager.bx-default-pager a.active {
+	background:#ffffff;
+}
+
+#container .breed-listing .details .bx-wrapper .bx-pager.bx-default-pager a {
+	background:rgba(255,255,255,0.4);
+}
+
+#container .breed-listing .details .right h3 {
+	font-size:31px;
+	color:#fff;
+	font-family:ProximaNova-Light;
+	font-weight:300;
+	line-height:32px;
+	margin:20px 15px 20px 0px;
+}
+
+#container .breed-listing .details .right .puppy-category-details {
+	font-size:13px;
+	color:#fff;
+	line-height:25px;
+}
+
+#container .breed-listing .details .right .puppy-category-details .col-3 {
+	float:left;
+	width:30%;
+	font-size:13px;
+	color:#fff;
+	line-height:25px;
+	padding:20px 0px;
+}
+
+#container .breed-listing .details .right .puppy-category-details .col-4 {
+	float:left;
+	width:25%;
+	font-size:13px;
+	color:#fff;
+	line-height:25px;
+	padding:20px 0px;
+}
+
+#container .breed-listing .details .right .puppy-category-details .col-5 {
+	float:left;
+	width:20%;
+	font-size:13px;
+	color:#fff;
+	line-height:25px;
+	padding:20px 0px;
+}
+
+#container .breed-listing .details .right .puppy-category-details h3 {
+	font-size:23px;
+	margin:0px;
+	width:100%;
+	line-height:25px;
+}
+
+#container .breed-listing .female .details .right .puppy-category-details #breed-info.puppylink {
+	background:#b59bca;
+}
+
+#container .breed-listing .male .details .right .puppy-category-details #breed-info.puppylink {
+	background:#a1c9eb;
+}
+
+#container .breed-listing .details .right .puppy-category-details #breed-info.puppylink a {
+	float:left;
+	cursor:pointer;
+	margin:0% 5%;
+}
+
+#container .breed-listing .details .right .puppy-category-details #breed-info.puppylink .leftcol, #container .breed-listing .details .right .puppy-category-details #breed-info.puppylink .rightcol {
+	float:left;
+	width:40%;
+}
+
+#container .breed-listing .details .right .puppy-category-details #breed-info.puppylink .rightcol {
+	float:right;
+	width:50%;
+}
+
+#container .breed-listing .details .right .puppy-category-details #breed-info.puppylink a#puppy-details {
+	background:#9a75b4;
+	float:right;
+	width:53%;
+	font-size:13px;
+	line-height:40px;
+	text-align:center;
+	margin-top:4%;
+	margin-right:0%;
+	color:#fff;
+}
+
+#container .breed-listing .male .details .right .puppy-category-details #breed-info.puppylink a#puppy-details {
+	background:#5d9cd3;
+}
+
+#container .breed-listing .details .right .price {
+	float:left;
+	margin:20px 0px 0px 0px;
+	font-size:16px;
+	line-height:32px;
+	font-family:ProximaNova-Light;
+	font-weight:300;
+}
+
+#container .breed-listing .details .right .price b {
+	font-family:ProximaNova-Regular;
+	font-weight:700;
+}
+
+#container .breed-listing .details .right ul {
+	float:left;
+	width:31.33%;
+	margin-right:3%;
+}
+
+#container .breed-listing .details .right ul li {
+	font-size:12px;
+	font-family:ProximaNova-Light;
+	font-weight:300;
+	line-height:31px;
+	height:auto !important;
+}
+
+#container .breed-listing .details .right ul li b {
+	font-weight:500;
+	font-family:ProximaNova-Regular;
+}
+
+#container .breed-listing .details .right #breed-info {
+	position:absolute;
+	bottom:0px;
+	height:25%;
+	width:94.4%;
+	background:#bfbebf;
+	margin-left:-4.1%;
+	padding:0% 3%;
+	line-height:60px;
+	color:#fff;
+	font-size:17px;
+	font-family:ProximaNova-Light;
+	font-weight:300;
+}
+
+#container .breed-listing .details .right #breed-info .text, #container .breed-listing .details .right #breed-info .rating, #container .breed-listing .details .right #breed-info .btn-breed-info, #container .breed-listing .details .right #breed-info .btn-find-puppy {
+	float:left;
+}
+
+#container .breed-listing .details .right #breed-info .text {
+	width:23%;
+}
+
+#container .breed-listing .details .right .starRating, #container .starRating {
+  display        : inline-block;
+  position       : relative;
+  height         : 24px;
+  background     : url('../images/stars.png') repeat-x 0 0;
+  vertical-align : bottom;
+  float:left;
+  margin:15px 5.5% 15px 0px;
+  width:23%;
+}
+
+#container .starRating {
+	background     : url('../images/stars_grey.png') repeat-x 0 0;
+	width:125px;
+	margin-right:0px;
+	float:right;
+}
+
+#container .breed-listing .details .right .starRating div, #container .starRating div {
+  float    : left;
+  position : relative;
+  height   : 24px;
+}
+
+#container .breed-listing .details .right .starRating input, #container .starRating input {
+  position : relative;
+  z-index  : 1;
+  width    : 24px;
+  height   : 24px;
+  margin   : 0;
+  padding  : 0;
+  opacity  : 0;
+}
+
+#container .breed-listing .details .right .starRating label, #container .starRating label {
+  position : absolute;
+  top      : 0;
+  left     : 0;
+  width    : 100%;
+  height   : 24px;
+}
+
+#container .breed-listing .details .right .starRating span, #container .starRating span {
+  display : none;
+}
+
+#container .breed-listing .details .right .starRating       input:checked       + label,
+#container .breed-listing .details .right .starRating:hover input:checked:hover + label {
+  background : url('../images/stars.png') repeat-x 0 -24px;
+}
+
+#container .starRating input:checked + label, #container .starRating:hover input:checked + label {
+  background : url('../images/stars_grey.png') repeat-x 0 -24px;
+}
+
+#container .breed-listing .details .right .starRating:hover input:checked + label, #container .starRating:hover input:checked + label {
+  background : transparent;
+}
+
+#container .breed-listing .details .right .starRating:hover input:hover + label {
+  background : url('../images/stars.png') repeat-x 0 -48px;
+}
+
+#container .starRating:hover input:hover + label {
+  background : url('../images/stars_grey.png') repeat-x 0 -48px;
+}
+
+#container .breed-listing .details .right .btn-breed-info {
+	background:#5d9cd3;
+	color:#fff;
+	width:23%;
+	text-align:center;
+	margin:12px 2.5% 12px 0px;
+	float:left;
+	line-height:36px;
+	font-size:12px;
+	font-family:ProximaNova-Regular;
+}
+
+#container .breed-listing .details .right .btn-find-puppy {
+	background:#9a75b4;
+	color:#fff;
+	width:23%;
+	text-align:center;
+	margin:12px 0% 12px 0px;
+	float:left;
+	line-height:36px;
+	font-size:12px;
+	font-family:ProximaNova-Regular;
+}
+
+#container .breed-listing li.breeds #puppyphotos {
+	float:left;
+	width:100%;
+	height:100%;
+	position:absolute;
+	top:0%;
+	visibility:hidden;
+}
+
+#container .breed-listing li.breeds #puppyphotos .dummy {
+	padding-top:65.625%;
+}
+
+#container .breed-listing li.breeds #puppyphotos ul, #container .breed-listing li.breeds #puppyphotos .bx-wrapper {
+	position:absolute;
+	bottom:0px;
+	width:100%;
+	height:100%;
+}
+
+#container .breed-listing li.breeds #puppyphotos .bx-wrapper, #container .breed-listing li.breeds #puppyphotos .bx-viewport {
+	top:0px;
+	width:100%;
+	height:100%;
+}
+
+#container .breed-listing li.breeds #puppyphotos li {
+	float:left;
+	width:100%;
+	height:100%;
+}
+
+#container .breed-listing li.breeds #puppyphotos .bx-wrapper .bx-controls {
+	background:rgba(181,155,202,0.75);
+	float:left;
+	width:100%;
+	height:25%;
+	position:absolute;
+	bottom:0%;
+}
+
+#container .breed-listing li.male #puppyphotos .bx-wrapper .bx-controls {
+	background:rgba(161,201,235,0.75);
+}
+
+#container .breed-listing li.breeds #puppyphotos .bx-wrapper .bx-controls .bx-pager {
+	position:relative;
+	bottom:0px;
+	padding-top:7%;
+}
+
+#container .breed-listing li.breeds #puppyphotos .bx-wrapper .bx-pager.bx-default-pager a {
+	background:#ccbfd6
+}
+
+#container .breed-listings li.male #puppyphotos .bx-wrapper .bx-pager.bx-default-pager a {
+	background:#b3cbe0;
+}
+
+#container .breed-listing li.breeds #puppyphotos .bx-wrapper .bx-pager.bx-default-pager a.active {
+	background:#fff;
+}
+/* GRID VIEW OF BREEDS */
+#container .breed-listing .breeds.grid {
+	float:left;
+	width:30.33%;
+	margin-right:4.5%;
+	margin-bottom:4.5%;
+}
+
+#container .breed-listing li.grid:nth-child(3n) {
+	margin-right:0px;
+}
+
+#container .breed-listing .details {
+	float:left;
+	width:100%;
+	position:relative;
+	overflow:hidden;
+}
+
+#container .breed-listing .grid .details .dummy {
+	padding-top:150%;
+}
+
+#container .breed-listing .grid .details .left {
+	position:absolute;
+	top:0px;
+	width:100%;
+	height:50%;
+}
+
+#container .breed-listing .grid .details .right {
+	position:absolute;
+	float:left;
+	top:50%;
+	left:0%;
+	width:95%;
+	height:100%;
+	padding:0% 2.5%;
+}
+
+#container .breed-listing .grid .details .right h3 {
+	width:100%;
+	text-align:center;
+}
+
+#container .breed-listing .grid .details .right .price {
+	float:left;
+	margin:0px;
+	width:100%;
+	text-align:center;
+}
+
+#container .breed-listing .grid .details .right ul {
+	display:none;
+}
+
+#container .breed-listing .grid .details .right #breed-info {
+	position:absolute;
+	bottom:50%;
+	width:100%;
+	padding:0%;
+	margin-left:0px;
+	left:0%;
+	height:14.5%;
+}
+
+#container .breed-listing .grid .details .right #breed-info .text, #container .breed-listing .grid .details .right .starRating {
+	display:none;
+}
+
+#container .breed-listing .grid .details .right .btn-breed-info {
+	width:42.5%;
+	margin:12px 0% 12px 5%;
+}
+
+#container .breed-listing .grid .details .right .btn-find-puppy {
+	width:42.5%;
+	margin:12px 5% 12px 5%;
+}
+
+/* BREED DETAILS */
+#container .breed-details {
+	float:left;
+	width:100%;
+}
+
+#container .breed-details .breeds {
+	float:left;
+	width:100%;
+	margin-bottom:4.5%;
+}
+
+#container .breed-details .details {
+	float:left;
+	width:100%;
+	position:relative;
+	overflow:hidden;
+}
+
+#container .breed-details .details .dummy {
+	padding-top:39.44%;
+}
+
+#container .breed-details .details .left {
+	position:absolute;
+	top:0px;
+	width:50%;
+	height:100%;
+}
+
+#container .breed-details .details .right {
+	position:absolute;
+	float:left;
+	top:0px;
+	left:50%;
+	width:50%;
+	height:100%;
+	padding:0%;
+	background:#626567;
+	color:#fff;
+}
+
+#container .breed-details .breeds.dark .details .right {
+	background:#868788;
+}
+
+#container .breed-details .details ul, #container .breed-details .details ul li, #container .breed-details .details .bx-wrapper, #container .breed-details .details .bx-viewport {
+	float:left;
+	width:100%;
+	height:100% !important;
+}
+
+#container .breed-details .details .bx-pager {
+	background:#b59bca;
+	float:left;
+	width:100%;
+	height:40px;
+	bottom:0px;
+	padding-top:30px;
+}
+
+#container .breed-details .details ul, #container .breed-details .details ul li {
+	width:100%;
+}
+
+#container .breed-details .details .bx-wrapper .bx-controls-direction a {
+	margin-top:-45px;
+}
+
+#container .breed-details .details .bx-controls {
+	position:absolute;
+	bottom:0%;
+	width:100%;
+}
+
+#container .breed-details .details .bx-wrapper .bx-pager.bx-default-pager a:hover, #container .breed-details .details .bx-wrapper .bx-pager.bx-default-pager a.active {
+	background:#ffffff;
+}
+
+#container .breed-details .details .bx-wrapper .bx-pager.bx-default-pager a {
+	background:rgba(255,255,255,0.4);
+}
+
+#container .breed-details .right .col-2 {
+	width:40%;
+	padding:5% 5%;
+	float:left;
+	font-family:ProximaNova-Light;
+	font-size:15px;
+	color:#fff;
+	line-height:27px;
+}
+
+#container .breed-details .right .col-2 a {
+	background:#818486;
+	width:90%;
+	padding:0px 5%;
+	color:#fff;
+	float:left;
+	font-size:16px;
+	line-height:38px;
+	margin-bottom:18px;
+}
+
+#container .breed-details .right .col-2 a .ss-icon {
+	margin-right:10px;
+}
+
+#container .breed-details .right .col-2 .puppy-price {
+	float:left;
+	margin-top:40px;
+}
+
+#container .breed-details .right .col-2 .price {
+	font-size:46px;
+	font-family:ProximaNova-Regular;
+	float:left;
+	margin-top:20px;
+}
+
+#container .breed-details .right .col-2 .review-links {
+	margin-top:40px;
+	float:left;
+}
+
+#container .breed-details .right .col-2 .review-links .purple {
+	background:#b59bca;
+	text-align:center;
+}
+
+#container .breed-details .right .col-2 .review-links .blue {
+	text-align:center;
+	background:#a1c9eb;
+}
+
+#container .breed-details .puppy-details-info {
+	background:#ececec;
+	float:left;
+	width:90%;
+	padding:5%;
+	color:#9ea1a3;
+	font-family:ProximaNova-Regular;
+	font-size:16px;
+	line-height:29px;
+}
+
+#container .breed-details .puppy-details-info h3 {
+	font-family:ProximaNova-Regular;
+	font-size:21px;
+	color:#818486;
+	line-height:41px;
+	margin-bottom:10px;
+}
+
+#container .breed-details .puppy-details-info .pedigree {
+	float:right;
+	font-size:16px;
+	color:#818486;
+	background:url(../images/icon_pedigree.png) left top no-repeat;
+	padding-left:20px;
+}
+
+#container .breed-details .puppy-details-info .pedigree a {
+	border-bottom:1px solid #818486;
+	line-height:20px;
+	color:#818486;
+	
+}
+
+#container .breed-details .puppy-details-info .puppy-controls {
+	float:left;
+	width:100%;
+	margin-top:65px;
+}
+
+#container .breed-details .puppy-details-info .puppy-controls .puppy-previous a, #container .breed-details .puppy-details-info .puppy-controls .puppy-previous, #container .breed-details .puppy-details-info .puppy-controls .puppy-next a, #container .breed-details .puppy-details-info .puppy-controls .puppy-next {
+	float:left;
+	background:#b4b3b4;
+	width:180px;
+	height:40px;
+	line-height:40px;
+	color:#fff;
+	text-align:center;
+}
+
+#container .breed-details .puppy-details-info .puppy-controls .puppy-next a, #container .breed-details .puppy-details-info .puppy-controls .puppy-next  {
+	float:right;
+}
+
+#container .breed-details .puppy-details-info .puppy-controls .puppy-previous a, #container .breed-details .puppy-details-info .puppy-controls .puppy-next a {
+	width:140px;
+	padding:0px 20px;
+}
+
+#container .breed-details .puppy-ads {
+	float:left;
+	width:48%;
+	margin-right:4%;
+	margin-top:4%;
+	position:relative;
+}
+
+#container .breed-details .puppy-ads.last {
+	margin-right:0px;
+}
+
+#container .breed-details .puppy-ads .dummy {
+	padding-top:43%;
+}
+
+#container .breed-details .puppy-ads .overlay {
+	position:absolute;
+	top:0px;
+	width:90%;
+	height:90%;
+	padding:5%;
+	color:#bcbcbc;
+	font-size:19px;
+	line-height:30px;
+}
+
+#container .breed-details .puppy-ads h3 {
+	font-family:ProximaNova-Bold;
+	font-size:32px;
+	color:#fff;
+}
+
+#container .breed-details .puppy-ads .overlay a {
+	color:#a1c9eb;
+	font-size:18px;
+	font-family:ProximaNova-Bold;
+	line-height:29px;
+	position:absolute;
+	bottom:22%;
+}
+
+#container .breed-details .puppy-ads .overlay a .ss-icon {
+	font-weight:bold;
+}
+
+/* REVIEWS */
+#container.reviews #content .left {
+	width:63.5%;
+	margin-right:3.5%;
+}
+
+#container.reviews #content .sidebar {
+	width:25%;
+}
+
+#container.reviews #content .sidebar .ads .details {
+	font-size:15px;
+}
+
+#container.reviews #content .sidebar .ads .details h3 {
+	font-size:24px;
+	font-weight:bold;
+	font-family:ProximaNova-Bold;
+}
+
+#container.reviews #content .sidebar .ads .details a.btn {
+	font-size:15px;
+}
+
+#container.reviews .left h6.result {
+	float:left;
+	font-size:13px;
+	margin-left:15px;
+	margin-top:15px;
+	font-weight:normal;
+}
+
+#container.reviews .filtering {
+	float:right;
+	margin:0px;
+	width:33.33%;
+}
+
+#container.reviews .filtering .col-1 {
+	width:100%;
+}
+
+#container.reviews .hr {
+	float:left;
+	width:100%;
+	height:2px;
+	background:#ececec;
+	margin:30px 0px;
+}
+
+#container.reviews .reviewsmeta {
+	float:left;
+	width:100%;
+}
+
+#container.reviews .reviews {
+	float:left;
+	width:100%;
+	padding-bottom:45px;
+	border-bottom:1px solid #ececec;
+	margin-bottom:45px;
+}
+
+#container.reviews .reviews.last {
+	margin-bottom:0px;
+	padding-bottom:0px;
+	border-bottom:none;
+}
+
+#container.reviews .image {
+	float:left;
+	width:7.5%;
+	height:50px;
+	background:#a1c9eb;
+	color:#d6e8f8;
+	font-size:23px;
+	line-height:50px;
+	text-align:center;
+	margin-right:2.5%;
+}
+
+#container.reviews .metainfo {
+	float:left;
+	width:90%;
+}
+
+#container.reviews .username {
+	float:left;
+	font-size:16px;
+	color:#bcbcbc;
+}
+
+#container.reviews .timeago {
+	float:left;
+	font-size:14px;
+	font-family:ProximaNova-Light;
+	margin-left:18px;
+}
+
+#container.reviews .subject {
+	float:left;
+	font-size:20px;
+	color:#7e7e7e;
+	font-family:ProximaNova-Bold;
+	clear:both;
+	margin-top:15px;
+}
+
+#container.reviews .leave-comment {
+	float:left;
+	background:#a1c9eb;
+	height:45px;
+	color:#fff;
+	font-family:ProximaNova-Regular;
+	line-height:45px;
+	min-width:140px;
+	padding:0px 25px;
+	font-size:15px;
+	margin-top:10px;
+}
+
+#container.reviews .leave-comment .ss-icon {
+	margin-right:5px;
+}
+
+#container.reviews .comments {
+	float:left;
+	width:90%;
+	margin-left:10%;
+	margin-top:10px;
+}
+
+#container.reviews .comments .image {
+	float:left;
+	width:7.5%;
+	height:40px;
+	background:#a1c9eb;
+	color:#d6e8f8;
+	font-size:23px;
+	line-height:40px;
+	text-align:center;
+	margin-right:2.5%;
+}
+
+#container.reviews .comments .metainfo {
+	float:left;
+	width:90%;
+}
+
+#container.reviews .comments .username {
+	float:left;
+	font-size:16px;
+	color:#bcbcbc;
+}
+
+#container.reviews .comments .timeago {
+	float:left;
+	font-size:14px;
+	font-family:ProximaNova-Light;
+	margin-left:18px;
+}
+
+#container.reviews .reply-conversation {
+	float:left;
+	background:#a686be;
+	height:45px;
+	color:#fff;
+	font-family:ProximaNova-Regular;
+	line-height:45px;
+	min-width:140px;
+	padding:0px 25px;
+	font-size:15px;
+	margin-top:10px;
+}
+
+#container.reviews .reply-conversation .ss-icon {
+	margin-right:5px;
+}
+
+/* TESTIMONIALS */
+#container.testimonials #content .left {
+	width:63.5%;
+	margin-right:3.5%;
+}
+
+#container.testimonials #content .sidebar {
+	width:25%;
+}
+
+#container.testimonials #content .sidebar .ads .details {
+	font-size:15px;
+}
+
+#container.testimonials #content .sidebar .ads .details h3 {
+	font-size:24px;
+	font-weight:bold;
+	font-family:ProximaNova-Bold;
+}
+
+#container.testimonials #content .sidebar .ads .details a.btn {
+	font-size:15px;
+}
+
+#container.testimonials .left h6.result {
+	float:left;
+	font-size:13px;
+	margin-top:15px;
+	font-weight:normal;
+}
+
+#container.testimonials .filtering {
+	float:right;
+	margin:0px;
+	width:36.33%;
+}
+
+#container.testimonials .filtering .col-1 {
+	width:100%;
+}
+
+#container.testimonials .testimonials-button {
+	width:30.33%;
+	background:#a1c9eb;
+	color:#fff;
+	float:right;
+	margin-left:3%;
+	line-height:45px;
+	text-align:center;
+}
+
+#container.testimonials .hr {
+	float:left;
+	width:100%;
+	height:2px;
+	background:#ececec;
+	margin:30px 0px;
+}
+
+#container.testimonials .reviewsmeta {
+	float:left;
+	width:100%;
+}
+
+#container.testimonials .reviews {
+	float:left;
+	width:100%;
+	padding-bottom:45px;
+	border-bottom:1px solid #ececec;
+	margin-bottom:45px;
+}
+
+#container.testimonials .reviews p i {
+	color:#7e7e7e;
+	font-size:18px;
+	font-style:italic;
+	float:left;
+	width:90%;
+	margin-left:10%;
+	font-weight:700;
+}
+
+#container.testimonials .reviews.last {
+	margin-bottom:0px;
+	padding-bottom:0px;
+	border-bottom:none;
+}
+
+#container.testimonials .image {
+	float:left;
+	width:7.5%;
+	height:50px;
+	background:#a1c9eb;
+	color:#d6e8f8;
+	font-size:23px;
+	line-height:50px;
+	text-align:center;
+	margin-right:2.5%;
+}
+
+#container.testimonials .metainfo {
+	float:left;
+	width:90%;
+}
+
+#container.testimonials .username {
+	float:left;
+	font-size:16px;
+	color:#bcbcbc;
+}
+
+#container.testimonials .timeago {
+	float:left;
+	font-size:14px;
+	font-family:ProximaNova-Light;
+	clear:left;
+	margin-top:12px;	
+}
+
+/* CONTACT */
+#container.contact #content .left {
+	width:63.5%;
+	margin-right:3.5%;
+}
+
+#container.contact #content .sidebar {
+	width:25%;
+}
+
+#container.contact #content .sidebar .ads .details {
+	font-size:15px;
+}
+
+#container.contact #content .sidebar .ads .details h3 {
+	font-size:24px;
+	font-weight:bold;
+	font-family:ProximaNova-Bold;
+}
+
+#container.contact #content .sidebar .ads .details a.btn {
+	font-size:15px;
+}
+
+#container.contact .left h6.result {
+	float:left;
+	font-size:13px;
+	margin-top:15px;
+	font-weight:normal;
+}
+
+#container.contact .help-center {
+	width:31.33%;
+	background:#b59bca;
+	color:#fff;
+	float:left;
+	margin-right:3%;
+	line-height:45px;
+	text-align:center;
+	margin-bottom:20px;
+}
+
+#container.contact .call {
+	width:31.33%;
+	background:#5d9cd3;
+	color:#fff;
+	float:left;
+	margin-right:3%;
+	line-height:45px;
+	text-align:center;
+	margin-bottom:20px;
+}
+
+#container.contact .testimonials-button {
+	width:31.33%;
+	background:#a1c9eb;
+	color:#fff;
+	float:left;
+	line-height:45px;
+	text-align:center;
+	margin-bottom:20px;
+}
+
+#container.contact h3 {
+	color:#7e7e7e;
+	font-size:20px;
+	margin-top:24px;
+	font-weight:700;
+}
+
+#container.contact input[type="text"] {
+	width:44%;
+	margin-top:4%;
+	margin-right:4%;
+	float:left;
+	border:none;
+	background:#ececec;
+	line-height:48px;
+	color:#bcbcbc;
+	font-size:16px;
+	font-family:ProximaNova-Regular;
+	appearance:none;
+	-webkit-appearance:none;
+	padding:0% 2%;
+}
+
+#container.contact input[type="text"].last {
+	margin-right:0px;
+}
+
+#container.contact  .select-style {
+    border:none;
+    width:96%;
+	padding:0px 2%;
+    overflow: hidden;
+	height:48px;
+	margin-top:4%;
+	float:left;
+	background:#ececec;
+}
+
+#container.contact  .select-style select {
+    background:#ececec url("../images/icon-select.png") no-repeat 100% 50%;
+    width: 100%;
+	line-height:48px;
+    border: none;
+    box-shadow: none;
+	appearance:none;
+	-moz-appearance:none;
+    -webkit-appearance: none;
+	font-size:16px;
+	font-family:ProximaNova-Regular;
+	color:#bcbcbc;
+}
+
+#container.contact textarea {
+    background:#ececec;
+    width:96%;
+	margin-top:4%;
+	padding:2%;
+    border: none;
+    box-shadow: none;
+	appearance:none;
+	-moz-appearance:none;
+    -webkit-appearance: none;
+	font-size:16px;
+	height:175px;
+	resize:none;
+	font-family:ProximaNova-Regular;
+	color:#bcbcbc;
+}
+
+#container.contact input[type="submit"] {
+	float:left;
+	width:26%;
+	line-height:48px;
+	border:none;
+	appearance:none;
+	-webkit-appearance:none;
+	background:#9a75b4;
+	font-family:ProximaNova-Regular;
+	font-size:19px;
+	font-weight:500;
+	color:#fff;
+	text-align:center;
+	cursor:pointer;
+	margin-top:4%;
+	margin-bottom:20px;
+}
+
+#container.contact .accordion {
+	list-style-type: none;
+	padding:0px;
+	margin:0px;
+	color:#bcbcbc;
+}
+
+#container.contact .accordion ul {
+	padding: 0;
+	margin: 0;
+	float: left;
+	display: block;
+	width: 100%;
+}
+
+#container.contact .accordion li {
+	background: #969696;
+	cursor: pointer;
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	float: left;
+	display: block;
+	width: 100%;
+	margin-bottom:15px;
+}
+
+#container.contact .accordion li.active>a {
+	background: url('close.gif') no-repeat center right;
+}
+
+#container.contact .accordion li div {
+	padding:3%;
+	display: block;
+	clear: both;
+	float: left;
+	width:94.1%;
+	color:#7e7e7e;
+	background:#ececec;
+	line-height:30px;
+	font-family:ProximaNova-Light;
+}
+
+#container.contact .accordion a {
+	text-decoration: none;
+	color: #fff;
+	padding:10px;
+	line-height:28px;
+	display: block;
+	cursor: pointer;
+}
+
+#container.contact .accordion li a span {
+	background:#b6b6b7;
+	border-radius:100%;
+	width:28px;
+	height:28px;
+	margin-right:15px;
+	float:left;
+	text-align:center;
+	line-height:28px;
+	font-size:20px;
+}
+/*ENEWSLETTER */
+#enewsletter {
+	float:left;
+	width:100%;
+	background:#b6b6b7;
+	padding:50px 0px;
+	color:#fff;
+	font-family:ProximaNova-Thin
+}
+
+#enewsletter h3 {
+	color:#fff;
+}
+
+#enewsletter form {
+	float:left;
+	width:100%;
+	margin:20px 0px;
+}
+
+#enewsletter form input[type="text"] {
+	float:left;
+	width:61.5%;
+	margin-right:1.5%;
+	line-height:65px;
+	padding:0px 5.5%;
+	border:none;
+	appearance:none;
+	-webkit-appearance:none;
+	background:#fff url(../images/icon_mail.jpg) 20px center no-repeat;
+	font-family:ProximaNova-Regular;
+	font-size:19px;
+	font-weight:500;
+	color:#b6b6b7;
+}
+
+#enewsletter form input[type="submit"] {
+	float:left;
+	width:26%;
+	line-height:65px;
+	border:none;
+	appearance:none;
+	-webkit-appearance:none;
+	background:#9a75b4;
+	font-family:ProximaNova-Regular;
+	font-size:19px;
+	font-weight:500;
+	color:#fff;
+	text-align:center;
+	cursor:pointer;
+}
+
+/* FOOTER SECTION */
+#footer {
+	float:left;
+	width:100%;
+	background:#626567;
+	padding:52px 0px;
+}
+
+#footer .left {
+	float:left;
+	width:56%;
+}
+
+#footer .mid {
+	float:left;
+	width:29%;
+}
+
+#footer h3 {
+	color:#fff;
+	font-size:19px;
+	font-family:ProximaNova-Bold;
+	font-weight:700;
+	line-height:34px;
+}
+
+#footer ul {
+	width:33.33%;
+	float:left;
+}
+
+#footer ul li a {
+	font-size:17px;
+	line-height:39px;
+	font-family:ProximaNova-Regular;
+	font-weight:500;
+	color:#adadad;
+}
+
+#footer .mid ul, #footer .right ul {
+	width:100%;
+	float:left;
+}
+
+#footer .right {
+	float:left;
+	width:15%;
+}
+
+#footer li .ss-icon {
+	color:#fff;
+	line-height:39px;
+	margin-right:10px;
+	float:left;
+}
+
+#copyrights {
+	float:left;
+	padding:45px 0px;
+	background:#525254;
+	width:100%;
+	color:#adadad;
+	font-size:14px;
+	font-family:ProximaNova-Regular;
+	font-weight:500;
+}
+
+#copyrights a {
+	color:#adadad;
+	font-size:14px;
+	font-family:ProximaNova-Regular;
+	font-weight:500;
+}
+
+#copyrights .left, #copyrights .right {
+	float:left;
+	width:50%;
+}
+
+#copyrights .right {
+	text-align:right;
+}
+
+#copyrights .right a {
+	margin:0px 10px;
+}

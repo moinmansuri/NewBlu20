@@ -1,0 +1,217 @@
+@font-face {
+    font-family:ProximaNova-Regular;
+    src: url("../fonts/Proxima Nova Regular.woff");
+	font-weight:500;
+	font-stretch:normal;
+}
+
+figure {
+	max-width:1024px;
+	max-width:64rem;
+	width:100%;
+	height:auto;
+	margin:0px;
+	float:left;
+	margin-bottom:60px;
+}
+figcaption {
+	display:block;
+	font-size:16px;
+	font-size:1rem;
+}
+
+video {
+	width:100%;
+	height:365px;
+}
+
+video img {
+	width:100%;
+}
+
+/* controls */
+.controls {
+	display:none;
+	float:left;
+	width:100%;
+	list-style-type:none;
+	overflow:hidden;
+	appearance:none;
+	-webkit-appearance:none;
+	-moz-appearance:none;
+	margin-top:-12px;
+	position:relative;
+	z-index:999;
+}
+
+.controls progress {
+	display:block;
+	width:100%;
+	overflow:hidden;
+	-webkit-appearance:none;
+	appearance:none;
+	-moz-appearance:none;
+	height:12px;
+	background:#fff;
+	color: #0063a6;
+}
+
+progress::-moz-progress-bar {
+	background:rgba(153,116,179,0.8);
+}
+	
+progress::-webkit-progress-bar {
+	background:rgba(153,116,179,0.8);
+}
+
+progress::-webkit-progress-value {
+	background:rgba(153,116,179,0.8);
+}
+
+.controls progress span {
+	width:0%;
+	height:100%;
+	display:inline-block;
+	background:red !important;
+	height:12px;
+}
+
+.controls .fullcontrol {
+	float:left;
+	width:100%;	
+	background:#b69cca;
+}
+
+.controls #mute {
+	float:left;
+	width:12%;
+	text-align:center;
+	padding:4% 0%;
+	border-left:1px solid #a891bc;
+	border-right:1px solid #a891bc;
+}
+
+.controls .detailsofvideo {
+	float:left;
+	width:64%;
+	color:#fff;
+	text-align:center;
+}
+
+.controls .detailsofvideo h6 {
+	font-family:ProximaNova-Regular;
+	font-weight:500;
+	font-size:15px;
+	color:#fff;
+	margin-top:4.5%;
+}
+
+.controls .detailsofvideo #current {
+	display:inline-block;
+	font-size:14px;
+	font-family:ProximaNova-Light;
+	margin-right:5px;
+}
+
+.controls .detailsofvideo #duration {
+	display:inline-block;
+	font-size:14px;
+	margin-left:5px;
+	font-family:ProximaNova-Light;
+}
+
+.controls #grid {
+	float:left;
+	width:12%;
+	text-align:center;
+	padding:4% 0%;
+	border-right:1px solid #a891bc;
+}
+
+.controls #videobtn {
+	float:left;
+	width:11%;
+	text-align:center;
+	padding:4% 0%;
+}
+/*.controls, .controls li {
+	padding:0;
+	margin:0;
+}
+.controls {
+	display:none;
+	list-style-type:none;
+	overflow:hidden;
+	background:transparent;
+}
+.controls li {
+	float:left;
+	width:10%;
+	margin-left:0.3%;
+}
+.controls li:first-child {
+	margin-left:0;
+}
+.controls .progress {
+	width:100%;
+	cursor:pointer;
+	background:rgba(1,1,1,0.4);
+	border:none;
+}
+.controls button {
+	width:100%;
+	text-align:center;
+	overflow:hidden;
+	white-space:nowrap;
+  	text-overflow:ellipsis;
+}
+.controls progress {
+	display:block;
+	width:100%;
+	height:20px;
+	height:1.25rem;
+	margin-top:2px;
+	margin-top:0.125rem;
+	overflow:hidden;
+}
+.controls progress span {
+	width:0%;
+	height:100%;
+	display:inline-block;	
+}*/
+
+/* fullscreen */
+html:-ms-fullscreen {
+	width:100%;
+}
+:-webkit-full-screen {
+	background-color:transparent;
+}
+/* hide controls on fullscreen with WebKit */
+figure[data-fullscreen=true] video::-webkit-media-controls {
+	display:none !important;
+}
+figure[data-fullscreen=true] {
+	max-width:100%;
+	width:100%;
+	margin:0;
+	padding:0;
+}
+figure[data-fullscreen=true] video {
+	height:auto;
+}
+figure[data-fullscreen=true] figcaption {
+	display:none;
+}
+figure[data-fullscreen=true] .controls {
+	position:absolute;
+	bottom:2%;
+	width:100%;
+	z-index:2147483647;
+}
+figure[data-fullscreen=true] .controls li {
+	width:5%;
+}
+figure[data-fullscreen=true] .controls .progress {
+	width:68%;
+}
