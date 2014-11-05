@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-<title>Puppy Categories - My Little Puppy</title>
+<title>Breed - My Little Puppy</title>
 <link href="css/style.css" type="text/css" rel="stylesheet" />
 <link href="css/jquery.bxslider.css" rel="stylesheet" />
 <link href="css/video.css" type="text/css" rel="stylesheet" />
@@ -24,11 +24,11 @@ $(document).ready(function(){
 });
 
 $(function() {
-    $( "#accordion" ).accordion();
+    $("#accordion").accordion();
 });
 </script>
-<!--<script src="//use.typekit.net/uqy4pis.js"></script>
-<script>try{Typekit.load();}catch(e){}</script>-->
+<script src="//use.typekit.net/bec7wbx.js"></script>
+<script>try{Typekit.load();}catch(e){}</script>
 </head>
 <body>
 <div id="header">
@@ -71,7 +71,7 @@ $(function() {
         <div id="search" class="ss-geomicons-squared ss-icon">&#x1F50E;</div>
         <nav>
         	<ul>
-            	<li><a href="breed-list.html">BREED LIST</a>
+            	<li><a href="breeds_list.html">BREED LIST</a>
                 	<ul class="firstmenu">
                     	<div class="wrapper">
                             <li><a href="#">A</a>
@@ -139,8 +139,8 @@ $(function() {
                     </ul>
                 </li>
                 <li><a href="testimonials.html">TESTIMONIALS</a></li>
-                <li><a href="how-it-works.html">How It Works</a></li>
-                <li><a href="why-us.html">Why US?</a></li>
+                <li><a href="overview.html">Overview</a></li>
+                <li><a href="why_us.html">Why US?</a></li>
                 <li><a href="puppy-ed.html">PUPPY ED</a></li>
                 <li><a href="gallery.html">GALLERY</a></li>
             </ul>
@@ -155,13 +155,13 @@ $(function() {
     </div>
 </div>
 <div class="clearfix"></div>
-<div id="banner" class="breed-category">
+<div id="banner" class="breed-list">
 	<div class="wrapper">
     	<div class="breadcrumbs">
-        	<a href="index.html">home</a>  >  puppy breeds  > Alaskan-Klee-KaiAlaskan-Klee-Kai 
+        	<a href="index.html">home</a>  >  puppy breeds  > Breed
         </div>
         <div class="clearfix"></div>
-        <h1>Alaskan-Klee-Kai</h1>
+        <h1>Breed Name</h1>
         <div class="clearfix"></div>
         <div id="characteristics">
         	<div class="link">Breed Characteristics <span class="ss-glyphis-squared ss-icon">&#x2B07;</span></div>
@@ -226,7 +226,7 @@ $(function() {
 <div id="container" style="margin-top:-265px">
 	<div class="wrapper">
     	<div class="container">
-        	<h3 class="col-5">Available Breeds</h3>
+        	<h3 class="col-5">Available Puppies</h3>
             <form action="#" method="post">
                 <div class="filtering col-5">
                     <div class="sortprices col-5">
@@ -256,49 +256,40 @@ $(function() {
                             </select>
                     	</div>
                     </div>
-                    <div class="changestyle col-5"><span class="ss-geomicons-squared ss-icon" id="listtype">&#xED50;</span> <span class="ss-geomicons-squared ss-icon" style="margin-right:0px" id="gridtype">&#xE9A3;</span></div>
+                    <div class="changestyle col-5"><span class="ss-geomicons-squared ss-icon" id="listtype">&#xED50;</span> <span class="ss-geomicons-squared ss-icon" style="margin-right:0px" id="gridtype">&#xE9A0;</span></div>
                 </div>
         	</form>
             <div class="clearfix"></div>
-            <ul class="breed-listing">
-            	<li class="breeds female" id="puppy1">
+            <ul class="breed-listing" data-bind="foreach: puppies">
+            	<li data-bind="attr: { class: 'breeds' + Sex }">
                     <div class="details">
                         <div class="dummy"></div>
-                        <div class="left" style="background:url(images/puppy_olive.jpg) 50% 50% no-repeat; background-size:cover;">
+                        <div class="left" data-bind="style: { background: 'url(' + FullSizeURI + ') 50% 50% no-repeat', backgroundSize: 'cover'}">
                         	<div class="overlay">
                             	<div class="trophy">
                                 	<span class="ss-geomicons-squared ss-icon">&#x1F3C6;</span>
                                 </div>
                                 <div class="trophy-details">Champion Bloodlines</div>
-                            </div>                            
-                            <div id="puppyphotos">
-                                <div class="dummy"></div>
-                                <ul class="bxslider1">
-                                    <li style="background:url(images/puppy_olive.jpg) center bottom no-repeat; background-size:cover;">&nbsp;</li>
-                                    <li style="background:url(images/puppy_olive.jpg) center bottom no-repeat; background-size:cover;">&nbsp;</li>
-                                </ul>
                             </div>
                         </div>
                         <div class="right">
                         	<div class="puppy-category-details">
                             	<div class="col-4">
-	                                <h3>"Olive"</h3>
-                                    <p>ID: O142654</p>
+	                                <h3 data-bind="text: '&quot;' + Name + '&quot;'"></h3>
                                 </div>
                                 <div class="col-3">
-                                	<p>Breed: English Bulldog</p>
-                                    <p>Sex: Girl</p>
+                                	<p data-bind="text: 'Breed: ' + BreedCode"></p>
+                                    <p data-bind="text: 'Sex: ' + Sex"></p>
                                 </div>
                                 <div class="col-5">
-                                	<p>Color: White</p>
-                                    <p>Weight: 9 lbs.</p>
+                                	<p data-bind="text: 'Color: ' + Color"></p>
+                                    <p data-bind="text: 'Weight: ' + Weight + ' lbs'"></p>
                                 </div>
                                 <div class="col-4">
-                                	<p>Age: 8 Weeks</p>
-                                    <p>Birth Date: 7/12/2014</p>
+                                    <p data-bind="text: 'Birth Date: ' + WhelpDate"></p>
                                 </div>
                                 <div class="clearfix"></div>
-                                <p>Happy go lucky; those are three words to describe me. I am ready for any thing that comes my way. Whether I go home to one best friend, or a family of best friends, I am chomping at the bit to get there.</p>
+                                <p data-bind="text: Description"></p>
                                 <div cass="clearfix"></div>
                                 <div id="breed-info" class="puppylink">
                                 	<div class="leftcol">
@@ -307,63 +298,13 @@ $(function() {
 									</div>
                                     <div class="rightcol">
                                         <a data-type="reserve" id="reserve"><span class="ss-geomicons-squared ss-icon">&#x1F4CD;</span> Reserve</a>
-                                        <a data-type="puppy-details" href="puppy-specific.html" id="puppy-details">More Info</a>
+                                        <a data-bind="attr: { href: 'puppy_detail.html?PuppyID=' + ID }" data-type="puppy-details" id="puppy-details">More Info</a>
 									</div>
                                 </div>
                             </div>
 						</div>
                     </div>
 				</li> 
-                <li class="breeds male" id="puppy2">
-                    <div class="details">
-                        <div class="dummy"></div>
-                        <div class="left">
-                            <ul>
-                                <li style="background:url(images/puppy_bulldog.jpg) center bottom no-repeat;">&nbsp;</li>
-                            </ul>                            
-                            <div id="puppyphotos">
-                                <div class="dummy"></div>
-                                <ul class="bxslider1">
-                                    <li style="background:url(images/puppy_bulldog.jpg) center bottom no-repeat; background-size:cover;">&nbsp;</li>
-                                    <li style="background:url(images/puppy_bulldog.jpg) center bottom no-repeat; background-size:cover;">&nbsp;</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="right">
-                        	<div class="puppy-category-details">
-                            	<div class="col-4">
-	                                <h3>"Olive"</h3>
-                                    <p>ID: O142654</p>
-                                </div>
-                                <div class="col-3">
-                                	<p>Breed: English Bulldog</p>
-                                    <p>Sex: Girl</p>
-                                </div>
-                                <div class="col-5">
-                                	<p>Color: White</p>
-                                    <p>Weight: 9 lbs.</p>
-                                </div>
-                                <div class="col-4">
-                                	<p>Age: 8 Weeks</p>
-                                    <p>Birth Date: 7/12/2014</p>
-                                </div>
-                                <div class="clearfix"></div>
-                                <p>Happy go lucky; those are three words to describe me. I am ready for any thing that comes my way. Whether I go home to one best friend, or a family of best friends, I am chomping at the bit to get there.</p>
-                                <div cass="clearfix"></div>
-                                <div id="breed-info" class="puppylink">
-                                	<div class="leftcol">
-                                        <a data-type="photos" id="photos"><span class="ss-geomicons-squared ss-icon">&#x1F4F7;</span> Photos</a>
-                                        <a data-type="photos" id="share"><span class="ss-geomicons-squared ss-icon">&#xF601;</span> Share</a>
-									</div>
-                                    <div class="rightcol">
-                                        <a data-type="reserve" id="reserve"><span class="ss-geomicons-squared ss-icon">&#x1F4CD;</span> Reserve</a>
-                                        <a data-type="puppy-details" href="puppy-specific.html" id="puppy-details">More Info</a>
-									</div>
-                                </div>
-                            </div>
-						</div>
-                    </div>
-				</li>                   
             </ul>
         </div>
     </div>
@@ -431,7 +372,7 @@ $(function() {
                 <li><a href="#">Buyer Tips</a></li>
                 <li><a href="#">Behavior &amp; Training</a></li>
                 <li><a href="#">Food &amp; Nutrition</a></li>
-                <li><a href="#">Gog Grooming</a></li>
+                <li><a href="#">Grooming</a></li>
                 <li><a href="#">Medical &amp; Health</a></li>
             </ul>
         </div>
@@ -458,5 +399,10 @@ $(function() {
         </div>
     </div>
 </div>
+
+<script src="js/knockout-3.2.0.js"></script>
+<script src="js/amplify.js"></script>
+<script src="js/vm.breed_puppies.js"></script>
+
 </body>
 </html>

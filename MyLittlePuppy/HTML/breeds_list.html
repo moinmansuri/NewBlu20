@@ -3,25 +3,29 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-<title>Contact - My Little Puppy</title>
+<title>Breeds List - My Little Puppy</title>
 <link href="css/style.css" type="text/css" rel="stylesheet" />
 <link href="css/jquery.bxslider.css" rel="stylesheet" />
 <link href="css/video.css" type="text/css" rel="stylesheet" />
 <link href="css/media.css" type="text/css" rel="stylesheet" />
 <link type="text/css" rel="stylesheet" href="css/ss-geomicons-squared.css" />
 <link type="text/css" rel="stylesheet" href="css/ss-social-regular.css" />
+<link type="text/css" rel="stylesheet" href="css/ss-glyphish-outlined.css" />
 <script type='text/javascript' src='http://code.jquery.com/jquery-1.8.3.js'></script>
+<script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 <script src="js/main.js"></script>
-<script src="js/jquery.accordion.source.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/jquery.bxslider.js"></script>
 <script type="text/javascript">
-	// <![CDATA[		
-	$(document).ready(function () {
-		$('#help-center ul').accordion();
+$(document).ready(function(){
+	$('.bxslider1').bxSlider({
+		pager:true
 	});
-			
-	// ]]>
+});
+$(function() {
+    $( "#accordion" ).accordion();
+  });
 </script>
-<script src="//use.typekit.net/uqy4pis.js"></script>
+<script src="//use.typekit.net/bec7wbx.js"></script>
 <script>try{Typekit.load();}catch(e){}</script>
 </head>
 <body>
@@ -65,7 +69,7 @@
         <div id="search" class="ss-geomicons-squared ss-icon">&#x1F50E;</div>
         <nav>
         	<ul>
-            	<li><a href="breeds_list.html">Breeds List</a>
+            	<li><a href="breeds_list.html">BREED LIST</a>
                 	<ul class="firstmenu">
                     	<div class="wrapper">
                             <li><a href="#">A</a>
@@ -134,7 +138,7 @@
                 </li>
                 <li><a href="testimonials.html">TESTIMONIALS</a></li>
                 <li><a href="overview.html">Overview</a></li>
-                <li><a href="why-us.html">Why US?</a></li>
+                <li><a href="why_us.html">Why US?</a></li>
                 <li><a href="puppy-ed.html">PUPPY ED</a></li>
                 <li><a href="gallery.html">GALLERY</a></li>
             </ul>
@@ -149,87 +153,153 @@
     </div>
 </div>
 <div class="clearfix"></div>
-<div id="banner" class="reviews">
+<div id="banner" class="breed-list">
 	<div class="wrapper">
     	<div class="breadcrumbs">
-        	<a href="index.html">home</a>  >  <a href="#">puppy breeds</a> > reviews
+        	<a href="index.html">home</a>  >  puppy breeds  
         </div>
         <div class="clearfix"></div>
-        <h1>Contact</h1>
+        <h1>Puppy Breeds</h1>
+        <div class="clearfix"></div>
     </div>
 </div>
 <div class="clearfix"></div>
-<div id="container" class="contact">
-	<div id="content">
-		<div class="wrapper">    	
-        	<div class="left topmargin">
-                <div class="help-center"><span class="ss-geomicons-squared ss-icon">&#x1F3A7;</span> Help Center</div>
-                <div class="call"><span class="ss-geomicons-squared ss-icon">&#x1F4DE;</span> Call:1.800.000.000</div>
-                <div class="testimonials-button"><span class="ss-geomicons-squared ss-icon">&#x2709;</span> Email Us</div>
-                <div class="clearfix"></div>
-                <p>Lutlabore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamlaboris nisi ut aliquip ex ea commodo consequat. te irure dolor in reprehenderit in voluptate velit esse cillum dolore.</p>
-				<div class="clearfix"></div>
-                <h3>Send us a Message</h3>
-                <div class="clearfix"></div>
-                <form action="#" method="post">
-                	<input type="text" value="First & Last Name" />
-                    <input type="text" value="Email Address" class="last" />
-                    <div class="select-style">
-                    	<select>
-                        	<option>This Message is Regarding</option>
-                        </select>
-                    </div>
-                    <textarea>Please type message here.</textarea>
-                    <input type="submit" value="Submit" />
-                </form>
-                <div class="clearfix"></div>
-                <h3><span class="ss-geomicons-squared ss-icon">&#x1F3A7;</span> Help Center</h3>
-                <div class="clearfix"></div>
-                <div id="help-center">
-                	<ul class="accordion">
-                        <li>
-                            <a href="#create-account"><span>+</span> How do I create an account?</a>
-                            <div><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span></div>
-                        </li>
-                        <li>
-                            <a href="#fees"><span>+</span> Are there any fees?</a>
-                            <div><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span></div>
-                        </li>
-                        <li>
-                            <a href="#fees-2"><span>+</span> Are there any fees?</a>
-                            <div><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span></div>
-                        </li>
-                        <li>
-                            <a href="#fees-3"><span>+</span> Are there any fees?</a>
-                            <div><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span></div>
-                        </li>
-                    </ul>
-                </div>
+<div id="container">
+	<div class="wrapper">
+    	<div class="container">
+        	<h3>Available Breeds</h3>
+            <div class="changestyle">
+            	<span class="ss-geomicons-squared ss-icon" id="listtype">&#xED50;</span> <span class="ss-geomicons-squared ss-icon" style="margin-right:0px" id="gridtype">&#xE9A0;</span>
             </div>
-        	<div class="sidebar">
-                <div class="ads" style="background:#fff url(images/sidebar_puppy_financing.jpg) 50% 50% no-repeat; background-size:contain;">
-                    <div class="dummy"></div>
-                    <div class="details">
-                        <h3>Puppy Financing</h3>
+            <div class="clearfix"></div>
+            <form action="#" method="post">
+                <div class="filtering">
+                    <div class="sort col-3">
+                    	<div class="select-style">
+                            <select name="sort">
+                                <option>Sort By</option>
+                                <option value="low_high">Price Low to High</option>
+                                <option value="high_low">Price High to Low</option>
+                                <option value="rating">User Rating</option>
+                                <option value="a_z">Alphabetical A to Z</option>
+                                <option value="z_a">Alphabetical Z to A</option>
+                            </select>
+						</div>
+                    </div>
+                    <div class="separator">+</div>
+                    <div class="refinesearch col-3">                    
+                    	<div class="select-style">Refine Your Search<span class="plus">+</span><span class="minus">-</span></div>
                         <div class="clearfix"></div>
-                        <p>for as low as $57 Monthly w.a.c.</p>
-                        <a href="#" class="btn blue">More Details</a>
+                        <div id="accordion">
+                            <h3>Temperament</h3>
+                            <div>
+                                <ul>
+                                	<li><input type="checkbox" value="" id="all" /><label>All</label></li>
+                                	<li><input type="checkbox" value="" /><label>Aggressive</label></li>
+                                	<li><input type="checkbox" value="" /><label>Courageous</label></li>
+                                	<li><input type="checkbox" value="" /><label>Friendly</label></li>
+                                	<li><input type="checkbox" value="" /><label>Gentle</label></li>
+                                	<li><input type="checkbox" value="" /><label>Independent</label></li>
+                                	<li><input type="checkbox" value="" /><label>Intelligent</label></li>
+                                	<li><input type="checkbox" value="" /><label>Loving</label></li>
+                                	<li><input type="checkbox" value="" /><label>Loyal</label></li>
+                                	<li><input type="checkbox" value="" /><label>Playful</label></li>
+                                	<li><input type="checkbox" value="" /><label>Protective</label></li>
+                                	<li><input type="checkbox" value="" /><label>Quiet</label></li>                                    
+                                </ul>
+                            </div>
+                            <h3>Maximum Weight</h3>
+                            <div>
+                                <p>Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor velit, faucibus interdum tellus libero ac justo. Vivamus non quam. In uscipit faucibus urna.</p>
+                            </div>
+                            <h3>Good With Children</h3>
+                            <div>
+                                <p>Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor velit, faucibus interdum tellus libero ac justo. Vivamus non quam. In uscipit faucibus urna.</p>
+                            </div>
+                            <h3>Grooming</h3>
+                            <div>
+                                <p>Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor velit, faucibus interdum tellus libero ac justo. Vivamus non quam. In uscipit faucibus urna.</p>
+                            </div>
+                            <h3>Shedding</h3>
+                            <div>
+                                <p>Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor velit, faucibus interdum tellus libero ac justo. Vivamus non quam. In uscipit faucibus urna.</p>
+                            </div>
+                            <h3>Maximum Height</h3>
+                            <div>
+                                <p>Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor velit, faucibus interdum tellus libero ac justo. Vivamus non quam. In uscipit faucibus urna.</p>
+                            </div>
+                            <h3 class="noborder">Hypoallergenic Breed</h3>
+                            <div>
+                                <p>Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor velit, faucibus interdum tellus libero ac justo. Vivamus non quam. In uscipit faucibus urna.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="clearfix"></div>
-                <div class="ads white last" style="background:url(images/sidebar_lay_a_way.jpg) 50% 50% no-repeat; background-size:cover;">
-                    <div class="dummy"></div>
+        	</form>
+            <div class="clearfix"></div>
+            <ul class="breed-listing" data-bind="foreach: breeds">
+            	<li class="breeds">
                     <div class="details">
-                        <h3>Lay-A-Way</h3>
-                        <div class="clearfix"></div>
-                        <p>Make a Small Down Payment</p>
-                        <a href="#" class="btn blue">More Details</a>
+                        <div class="dummy"></div>
+                        <div class="left">
+                            <ul class="bxslider1">
+                                <li style="background:url(images/puppy_bulldog.jpg) center bottom no-repeat;">&nbsp;</li>
+                                <li style="background:url(images/puppy_bulldog.jpg) center bottom no-repeat;">&nbsp;</li>
+                            </ul>
+                        </div>
+                        <div class="right">
+                            <h3 data-bind="text: Name"></h3>
+                            <div class="price">
+                            	<b>Price Range:</b> $<span data-bind="text: MinPrice"></span> - $<span data-bind="text: MaxPrice"></span>
+                            </div>
+                            <div class="clearfix"></div>
+                            <ul>
+                                <li><b>Mixed Breed:</b> <span data-bind="text: IsMixedBreed"></span></li>
+                                <li><b>Average Weight:</b> <span data-bind="text: FemaleMinWeight"></span> - <span data-bind="text: MaleMaxWeight"></span> lbs</li>
+                            </ul>
+                            <ul>
+                                <li><b>Energy Level:</b> <span data-bind="text: EnergyLevel"></span>/10</li>
+                                <li><b>Ease of Training:</b> <span data-bind="text: EaseOfTraining"></span>/10</li>
+                            </ul>
+                            <ul style="margin-right:0px;">
+                                <li><b>Shedding:</b> <span data-bind="text: SheddingOccurrence"></span></li>
+                                <li><b>Hypoallergenic:</b> <span data-bind="text: HypoAllergenic"></span></li>
+                            </ul>
+                            <div class="clearfix"></div>
+                            <p><b>Temperament:</b> <span data-bind="text: Temperaments"></span></p>
+                            <div class="clearfix"></div>
+                            <div id="breed-info">
+                                <div class="text">User Rating ></div>
+                                <div class="starRating">
+                                    <div>
+                                        <div>
+                                            <div>
+                                                <div>
+                                                    <input id="rating1" type="radio" name="rating" value="1">
+                                                    <label for="rating1"><span>1</span></label>
+                                                </div>
+                                                <input id="rating2" type="radio" name="rating" value="2">
+                                                <label for="rating2"><span>2</span></label>
+                                            </div>
+                                            <input id="rating3" type="radio" name="rating" value="3">
+                                            <label for="rating3"><span>3</span></label>
+                                        </div>
+                                        <input id="rating4" type="radio" name="rating" value="4">
+                                        <label for="rating4"><span>4</span></label>
+                                    </div>
+                                    <input id="rating5" type="radio" name="rating" value="5">
+                                    <label for="rating5"><span>5</span></label>
+                                </div>
+                                <a data-bind="attr: { href: 'breed.html?BreedCode=' + Code }" class="btn-breed-info">Breed Info</a>
+                                <a data-bind="attr: { href: 'breed.html?BreedCode=' + Code }" class="btn-find-puppy">Find a Puppy</a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
+				</li> 
+            </ul>
         </div>
-	</div>
-</div>            
+    </div>
+</div>
 <div class="clearfix"></div>
 <div id="notified">
 	<div class="wrapper">
@@ -320,6 +390,10 @@
         </div>
     </div>
 </div>
-<script src="js/video-player.js"></script>
+
+<script src="js/knockout-3.2.0.js"></script>
+<script src="js/amplify.js"></script>
+<script src="js/vm.breeds_list.js"></script>
+
 </body>
 </html>

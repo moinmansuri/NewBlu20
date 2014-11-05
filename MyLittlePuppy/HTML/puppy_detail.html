@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-<title>Breed Specific - My Little Puppy</title>
+<title>Puppy Detail - My Little Puppy</title>
 <link href="css/style.css" type="text/css" rel="stylesheet" />
 <link href="css/jquery.bxslider.css" rel="stylesheet" />
 <link href="css/video.css" type="text/css" rel="stylesheet" />
@@ -22,10 +22,10 @@ $(document).ready(function(){
 	});
 });
 </script>
-<script src="//use.typekit.net/uqy4pis.js"></script>
+<script src="//use.typekit.net/bec7wbx.js"></script>
 <script>try{Typekit.load();}catch(e){}</script>
 </head>
-<body>
+<body data-bind="puppy">
 <div id="header">
 	<div class="wrapper">
     	<div id="message"><a href="index.html"><span>Welcome</span> to <b>my</b>little<b>puppy.com</b></a></div>
@@ -66,7 +66,7 @@ $(document).ready(function(){
         <div id="search" class="ss-geomicons-squared ss-icon">&#x1F50E;</div>
         <nav>
         	<ul>
-            	<li><a href="breed-list.html">BREED LIST</a>
+            	<li><a href="breeds_list.html">BREED LIST</a>
                 	<ul class="firstmenu">
                     	<div class="wrapper">
                             <li><a href="#">A</a>
@@ -134,8 +134,8 @@ $(document).ready(function(){
                     </ul>
                 </li>
                 <li><a href="testimonials.html">TESTIMONIALS</a></li>
-                <li><a href="how-it-works.html">How It Works</a></li>
-                <li><a href="why-us.html">Why US?</a></li>
+                <li><a href="overview.html">Overview</a></li>
+                <li><a href="why_us.html">Why US?</a></li>
                 <li><a href="puppy-ed.html">PUPPY ED</a></li>
                 <li><a href="gallery.html">GALLERY</a></li>
             </ul>
@@ -153,11 +153,15 @@ $(document).ready(function(){
 <div id="banner" class="breed-specific">
 	<div class="wrapper">
     	<div class="breadcrumbs">
-        	<a href="index.html">home</a>  >  <a href="#">puppy breeds</a> > <a href="#">colie</a> > olive
+        	<a href="index.html">home</a>  >  <a href="breeds_list.html">puppy breeds</a> > <a data-bind="attr: { href: 'breed_puppies.html?BreedCode=' + BreedCode }"><span data-bind="text: BreedCode"></span></a> > <span data-bind="text: Name"></span>
         </div>
         <div class="clearfix"></div>
-        <h1>Olive <span>Puppy ID : 0039556</span></h1>
-        <div class="moreinfo"><a href="#">Financing</a><a href="#"><b>Lay-a-way</b></a> <a href="#"><b class="ss-glyphish-outined ss-icon">&#x2B05;</b> Back to Puppies</a></div>
+        <h1 data-bind="text: Name"></h1>
+        <div class="moreinfo">
+	        <a href="#">Financing</a>
+	        <a href="#"><b>Lay-a-way</b></a> 
+	        <a data-bind="attr: { href: 'breed_puppies.html?BreedCode=' + BreedCode }"><b class="ss-glyphish-outined ss-icon">&#x2B05;</b> Back to <span data-bind="text: BreedCode"></span> Puppies</a>
+        </div>
     </div>
 </div>
 <div class="clearfix"></div>
@@ -176,18 +180,16 @@ $(document).ready(function(){
                         </div>
                         <div class="right">
                         	<div class="col-2">
-                            	<p>Breed: Collie</p>
-                                <p>Puppy ID: O039556</p>
-                                <p>Sex: Boy</p>
-                                <p>Color: Orange Sable</p>
-                                <p>Weight: 5.1 lbs.</p>
-                                <p>Birth Date: 7/18/2014</p>
-                                <p>Age: 8 Weeks</p>
+                            	<p>Breed: <span data-bind="text: BreedCode"></span></p>
+                                <p>Sex: <span data-bind="text: Sex"></span></p>
+                                <p>Color: <span data-bind="text: Color"></span></p>
+                                <p>Weight: <span data-bind="text: Weight"></span></p>
+                                <p>Birth Date: <span data-bind="text: WhelpDate"></span></p>
                                 <div class="clearfix"></div>
                                 <div class="puppy-price">
                                 	<p>Puppy Price:</p>
                                     <div class="clearfix"></div>
-                                    <p class="price">$1,799</p>
+                                    <p class="price">$<span data-bind="text: Price"></span></p>
                                 </div>
                             </div>
                             <div class="col-2">
@@ -204,10 +206,10 @@ $(document).ready(function(){
                     </div>
                     <div class="clearfix"></div>
                     <div class="puppy-details-info">
-                        <h3>About Olive</h3>
+                        <h3>About <span data-bind="text: Name"></span></h3>
                         <div class="pedigree"><a href="#">View Pedigree</a></div>
                         <div class="clearfix"></div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor indidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamlaboris nisi ut aliquip ex ea commodo consequat. te irure dolor in reprehenderit in voluptate velit esse cillum dolore.</p>
+                        <p data-bind="text: Description"></p>
                         <div class="clearfix"></div>
                         <div class="puppy-controls">
                         	<div class="puppy-previous"><a href="#"><span class="ss-glyphish-outined ss-icon">&#x2B05;</span> Previous Puppy</a></div>
@@ -330,6 +332,11 @@ $(document).ready(function(){
         </div>
     </div>
 </div>
+
 <script src="js/video-player.js"></script>
+<script src="js/knockout-3.2.0.js"></script>
+<script src="js/amplify.js"></script>
+<script src="js/vm.puppy_detail.js"></script>
+
 </body>
 </html>
