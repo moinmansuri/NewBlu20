@@ -14,6 +14,11 @@ figure {
 	float:left;
 	margin-bottom:60px;
 }
+
+#container.gallery #content .left figure {
+	margin-bottom:0px;
+}
+
 figcaption {
 	display:block;
 	font-size:16px;
@@ -42,6 +47,10 @@ video img {
 	margin-top:-12px;
 	position:relative;
 	z-index:999;
+}
+
+#container.gallery #content .left .controls {
+	margin-top:-31px;
 }
 
 .controls progress {

@@ -1512,7 +1512,7 @@ nav ul.overlay li img {
 #container #content .left {
 	background:#fff;
 	width:54%;
-	padding:0px 4%;
+	padding:0px 4% 2% 4%;
 }
 
 #container #content .left.topmargin {
@@ -1569,6 +1569,11 @@ nav ul.overlay li img {
 	float:left;
 	width:100%;
 	margin:13px 0px 25px 0px;
+}
+
+#container.gallery .filtering {
+	margin-top:0px;
+	margin-bottom:0px;
 }
 
 #container .filtering.col-5 {
