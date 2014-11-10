@@ -31,35 +31,35 @@ html { -webkit-font-smoothing: antialiased; }
 
 @font-face {
     font-family:ProximaNova-Light;
-    src: url("../fonts/ProximaNova-Light.woff");
+    src: url("../fonts/ProximaNova/ProximaNova-Light.woff");
 	font-weight:300;
 	font-stretch:normal;
 }
 
 @font-face {
     font-family:ProximaNova-Thin;
-    src: url("../fonts/Proxima Nova Thin.woff");
+    src: url("../fonts/ProximaNova/ProximaNova-Thin.woff");
 	font-weight:300;
 	font-stretch:normal;
 }
 
 @font-face {
     font-family:ProximaNova-Regular;
-    src: url("../fonts/Proxima Nova Regular.woff");
+    src: url("../fonts/ProximaNova/ProximaNova-Regular.woff");
 	font-weight:500;
 	font-stretch:normal;
 }
 
 @font-face {
     font-family:ProximaNova-Bold;
-    src: url("../fonts/Proxima Nova Bold.woff");
+    src: url("../fonts/ProximaNova/ProximaNova-Bold.woff");
 	font-weight:700;
 	font-stretch:normal;
 }
 
 @font-face {
     font-family:ProximaNova-Black;
-    src: url("../fonts/Proxima Nova Black.woff");
+    src: url("../fonts/ProximaNova/ProximaNova-Black.woff");
 	font-weight:500;
 	font-stretch:normal;
 }
