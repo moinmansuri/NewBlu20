@@ -1,0 +1,52 @@
+/* 
+* Tabber v3.0.12 - 2014-09-14 
+* A jQuery plugin for adding simple tabbed interfaces. Part of the Formstone Library. 
+* http://formstone.it/tabber/ 
+* 
+* Copyright 2014 Ben Plum; MIT Licensed 
+*/ 
+
+.tabber { overflow: hidden; }
+
+.tabber .tabber-menu { display: block; margin: 0; padding: 0; }
+.tabber .tabber-handle { color: #999; cursor: pointer; display: block; float: left;
+	-webkit-transition: none;
+	   -moz-transition: none;
+		-ms-transition: none;
+		 -o-transition: none;
+			transition: none;
+}
+.tabber .tabber-handle.active { color: #fff; background:#e2e2e0; }
+.tabber .tabber-handle.mobile { display: none; float: none; }
+
+.tabber .tabber-tab { clear: both; display: none; }
+.tabber .tabber-tab.active { display: block; }
+
+/* Vertical */
+.tabber.vertical .tabber-menu { float: left; width: 23%; padding-right:2%; }
+.tabber.vertical .tabber-handle { display: block; width: 93%; padding:10px; margin:5px 0px; }
+.tabber.vertical .tabber-handle.mobile { display: none; }
+
+.tabber.vertical .tabber-tab { clear: none; float: right; min-height: 100%; width: 72%; padding-left:2%; border-left:2px solid #efefef; }
+
+/* Mobile */
+.tabber.mobile .tabber-handle { display: none; }
+.tabber.mobile .tabber-handle.mobile { display: block; }
+
+.tabber.vertical.mobile .tabber-menu,
+.tabber.vertical.mobile .tabber-tab { float: none; width: 100%; }
+
+.tabber .tabber-tab h3 {
+	margin:25px 0px 10px 0px;
+	line-height:25px !important;
+}
+
+.tabber .tabber-tab p {
+	font-size:16px;
+	line-height:29px;
+	font-family:ProximaNova-Light;
+	font-weight:300;
+	margin:15px 0px;
+	float:left;
+	width:100%;
+}
