@@ -1632,7 +1632,11 @@ nav ul.overlay li img {
 	font-size:16px;
 	font-family:ProximaNova-Regular;
 	color:#bcbcbc;
-	cursor:pointer;
+}
+
+#container .filtering .refinesearch,
+#container .filtering .refinesearch * {
+	cursor: pointer;
 }
 
 #container .filtering .refinesearch span {
@@ -1705,40 +1709,62 @@ nav ul.overlay li img {
 	margin:4px 0px;
 }
 
-#accordion input[type="checkbox"] {
+#accordion input[type="checkbox"],
+#accordion input[type="radio"] {
 	float:left;
 	appearance:none;
 	-webkit-appearance:none;
 	border:1px solid #c7c7c7;
-	width:16px;
+	width:17px;
 	height:16px;
 }
 
-#accordion input[type="checkbox"]:focus {
+#accordion input[type="radio"] {
+	border-radius: 8px;
+}
+
+#accordion input:focus {
 	outline:none;
 }
 
-#accordion input[type="checkbox"]:checked {
+#accordion input[type="checkbox"]:checked,
+#accordion input[type="radio"]:checked {
 	border:1px solid #b59bca;
+}
+
+#accordion input[type="checkbox"]:not(:checked):after,
+#accordion input[type="checkbox"]:checked:after,
+#accordion input[type="radio"]:not(:checked):after,
+#accordion input[type="radio"]:checked:after {
+  position: relative;
+  color: #b59bca;
+  transition: all .2s;
 }
 
 #accordion input[type="checkbox"]:not(:checked):after,
 #accordion input[type="checkbox"]:checked:after {
   content: '✔';
-  position: relative;
+  font-size: 11px;
   top: 0; 
   left: 2px;
-  font-size: 11px;
-  color: #b59bca;
-  transition: all .2s;
 }
 
-#accordion input[type="checkbox"]:not(:checked):after {
+#accordion input[type="radio"]:not(:checked):after,
+#accordion input[type="radio"]:checked:after {
+  content: '\2022';
+  font-size: 16px;
+  top: -3px;
+  left: 3px;
+}
+
+#accordion input[type="checkbox"]:not(:checked):after,
+#accordion input[type="radio"]:not(:checked):after {
   opacity: 0;
   transform: scale(0);
 }
 
-#accordion input[type="checkbox"]:checked:after {
+#accordion input[type="checkbox"]:checked:after,
+#accordion input[type="radio"]:checked:after {
   opacity: 1;
   transform: scale(1);
 }
