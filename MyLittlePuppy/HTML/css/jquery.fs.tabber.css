@@ -8,23 +8,55 @@
 
 .tabber { overflow: hidden; }
 
-.tabber .tabber-menu { display: block; margin: 0; padding: 0; }
-.tabber .tabber-handle { color: #999; cursor: pointer; display: block; float: left;
+.tabber .tabber-menu { 
+	display: block;
+	margin: 0px 0px 0px 0px;
+	padding: 0;
+	float:left;
+	width:100%;
+}
+
+.tabber .tabber-handle { 
+	color: #fff;
+	cursor: pointer;
+	display: block;
+	float: left;
 	-webkit-transition: none;
 	   -moz-transition: none;
 		-ms-transition: none;
 		 -o-transition: none;
 			transition: none;
+			 background:#a1c9eb;
+			 width:18%;
+			 height:42px;
+			 font-size:13px;
+			 margin-right:10px;
+			 line-height:42px;
+			 text-align:center;
 }
-.tabber .tabber-handle.active { color: #fff; background:#e2e2e0; }
+.tabber .tabber-handle.active { color: #fff; background:#5c9dd5; }
 .tabber .tabber-handle.mobile { display: none; float: none; }
 
 .tabber .tabber-tab { clear: both; display: none; }
 .tabber .tabber-tab.active { display: block; }
 
 /* Vertical */
-.tabber.vertical .tabber-menu { float: left; width: 23%; padding-right:2%; }
-.tabber.vertical .tabber-handle { display: block; width: 93%; padding:10px; margin:5px 0px; }
+.tabber.vertical .tabber-menu { float: left; width: 23%; padding-right:2%; border-bottom:none; margin-bottom:0px; }
+.tabber.vertical .tabber-handle { 
+	display: block;
+	width: 93%;
+	text-align:left;
+	padding:10px;
+	margin:5px 0px;
+	background:none;
+	color:#999;
+	height:auto;
+	line-height:normal;
+	font-size:17px;
+}
+
+.tabber.vertical .tabber-handle.active { color: #fff; background:#e2e2e0; }
+
 .tabber.vertical .tabber-handle.mobile { display: none; }
 
 .tabber.vertical .tabber-tab { clear: none; float: right; min-height: 100%; width: 72%; padding-left:2%; border-left:2px solid #efefef; }
@@ -49,4 +81,19 @@
 	margin:15px 0px;
 	float:left;
 	width:100%;
+}
+
+.tabbed .tabcontent {
+	float:left;
+	width:100%;
+	margin:30px 0px;
+}
+
+.tabbed .separator {
+	background:#efefef;
+	float:left;
+	width:100%;
+	height:2px;
+	margin-left:-4.5%;
+	position:absolute;
 }

@@ -3043,6 +3043,178 @@ nav ul.overlay li img {
 	line-height:28px;
 	font-size:20px;
 }
+
+
+/* MY ACCOUNT */
+.tabbed .highlights {
+	float:left;
+	width:98%;
+	border-bottom:2px solid #efefef;
+	padding-bottom:30px;
+	margin-top:35px;
+	padding-left:2%;
+	display:table;
+	vertical-align:middle;
+	position:relative;
+}
+
+.tabbed .highlights.last {
+	border-bottom:none;
+}
+
+.tabbed .options {
+	display:table-cell;
+	vertical-align:middle;
+	width:40%;
+	text-align:right;
+}
+
+.tabbed .options .option, .tabbed .options .big-option {
+	float:right;
+	width:46%;
+	text-align:center;
+	height:42px;
+	line-height:42px;
+	margin-left:10px;
+	color:#fff;
+	background:#b69cca;
+	font-size:13px;
+}
+
+.tabbed #change-password {
+	display:none;
+}
+
+.tabbed .options .option.active, .tabbed .options .big-option.active {
+	background:#9975b3;
+}
+
+.tabbed .options .big-option {
+	width:52%;
+}
+
+.tabbed .tabber-tab .highlights h3 {
+	margin:0px !important;
+	line-height:42px !important;
+}
+
+.tabbed .tabber-tab .row {
+	width:100%;
+	display:table-row;
+	vertical-align:middle;
+	float:left;
+	margin:0px 0px 20px 0px;
+}
+
+.tabbed .tabber-tab .highlights p {
+	margin:0px !important;
+	line-height:18px !important;
+	width:60%;
+	display:table;
+	vertical-align:middle;
+}
+
+.tabbed .tabber-tab .highlights .payments {
+	margin:0px !important;
+	width:50%;
+}
+
+.tabbed .tabcontent input[type="text"] {
+	width:32%;
+	float:left;
+	background-color:#e7e7e6;
+	appearance:none;
+	-webkit-appearance:none;
+	-moz-appearance:none;
+	border:none;
+	color:#a8a8a8;
+	font-size:17px;
+	font-family:ProximaNova-Light;
+	font-weight:300;
+	padding:19px 2.5%;
+	margin:30px 1.25% 0px 0px;
+}
+
+.tabbed .tabcontent input[type="submit"] {
+	width:23%;
+	float:left;
+	background-color:#5c9dd5;
+	appearance:none;
+	-webkit-appearance:none;
+	-moz-appearance:none;
+	border:none;
+	padding:19px 0px;
+	color:#fff;
+	font-size:17px;
+	font-family:ProximaNova-Light;
+	font-weight:300;
+	text-align:center;
+	cursor:pointer;
+	margin:30px 0px 0px 0px;
+}
+
+.tabbed .logo {
+	width:auto;
+	margin-right:4%;
+	text-align:left;
+	display:table-cell;
+	vertical-align:middle;
+}
+
+.tabbed .name {
+	width:auto !important;
+	margin-right:7%;
+	display:table-cell;
+	vertical-align:middle;
+}
+
+.tabbed .account {
+	width:auto !important;
+	display:table-cell;
+	vertical-align:middle;
+}
+
+.tabbed .col-3, .tabbed .col-1 {
+	width:auto;
+	margin-right:5%;
+	text-align:left;
+	display:table-cell;
+	float:left;
+	vertical-align:middle;
+}
+
+.tabbed .col-3 p {
+	width:auto !important;
+}
+
+.tabbed .name p, .tabbed .account p {
+	width:auto !important;
+	margin-right:7% !important;
+}
+
+.tabbed .button {
+	width:29%;
+	float:right;
+	background-color:#b69cca;
+	appearance:none;
+	-webkit-appearance:none;
+	-moz-appearance:none;
+	border:none;
+	padding:22px 0px;
+	color:#fff;
+	font-size:20px;
+	font-family:ProximaNova-Light;
+	font-weight:300;
+	text-align:center;
+	cursor:pointer;
+	margin:30px 0px 0px 0px;
+}
+
+.tabbed .link {
+	float:right;
+	font-weight:bold;
+	color:#b1b1b2;
+}
 /*ENEWSLETTER */
 #enewsletter {
 	float:left;
