@@ -1,0 +1,35 @@
+@media only screen and (min-width:320px) and (max-width: 359px) {
+.wrapper {
+	width:100%;
+}
+}
+
+@media only screen and (min-width:360px) and (max-width: 479px) {
+.wrapper {
+	width:100%;
+}
+}
+
+@media only screen and (min-width:480px) and (max-width: 567px) {
+.wrapper {
+	width:100%;
+}
+}
+
+@media only screen and (min-width:568px) and (max-width:679px) {
+.wrapper {
+	width:100%;
+}
+}
+
+@media only screen and (min-width:680px) and (max-width: 767px) {
+.wrapper {
+	width:100%;
+}
+}
+
+@media only screen and (min-width:768px) and (max-width:979px) {
+.wrapper {
+	width:100%;
+}
+}
