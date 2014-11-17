@@ -1,0 +1,891 @@
+<style type="text/css">
+	#mainContent .pageContents {
+		overflow: visible;
+	}
+</style>
+
+<?php if ($moderate):?>
+	<div class="freeform_notice">
+		<?=$lang_viewing_moderation?>
+	</div>
+<?php else:?>
+
+	<?php if ($moderation_count > 0):?>
+
+		<div class="freeform_notice">
+			<div class="notice_heading warning">
+			<!-- yes this is a crime but
+				vertical-align:middle + display:table-cell
+				was simply failing-->
+			<table class="plain_table">
+				<tr>
+					<td class="inner_warning">
+						<?=lang('awaiting_moderation')?>
+					</td>
+				</tr>
+			</table>
+			</div>
+			<div class="notice_content">
+				<?=$lang_num_items_awaiting_moderation?>
+				<a href="<?=$moderation_link?>"><?=lang('view')?></a>
+			</div>
+			<button class="notice_close freeform_close_button">x</button>
+		</div>
+
+	<?php endif;?>
+
+<?php endif;?>
+
+<?php if ((count($entries) == 0 AND $has_search) OR count($entries) > 0):?>
+
+<!-- search table -->
+
+<form method="get" action="<?=BASE?>">
+	<!-- these have to be hidden and submitted, else this wont work :| -->
+	<input type="hidden" name="S"		value="<?=$fingerprint?>" />
+	<input type="hidden" name="D"		value="cp" />
+	<input type="hidden" name="C"		value="addons_modules" />
+	<input type="hidden" name="M"		value="show_module_cp" />
+	<input type="hidden" name="module"	value="freeform" />
+	<input type="hidden" name="method"	value="<?=$method?>" />
+	<input type="hidden" name="form_id"	value="<?=$form_id?>" />
+
+	<fieldset class="search_fieldset sub_box">
+		<legend>
+			<?=lang('filter_entries')?>
+		</legend>
+
+		<div class="filter_row  ss_clearfix_left">
+		<select id='search_status' name="search_status" class="chzn_select_no_search" >
+			<option value="--">
+				<?=lang('status')?>
+			</option>
+	<?php foreach ($form_statuses as $status => $status_label):?>
+			<option <?php if ($search_status == $status):?>
+					selected="selected"
+					<?php endif;?>
+				 	value="<?=$status?>" >
+				<?=$status_label?>
+			</option>
+	<?php endforeach;?>
+		</select>
+
+
+		<select name='search_date_range' id='search_date_range' class='chzn_select_no_search'>
+			<option value='--'><?=lang('entry_date')?></option>
+			<option <?=(($search_date_range == 'today')	?
+						'selected="selected"' : '')?> value='today'>
+				<?=lang('today')?>
+			</option>
+			<option <?=(($search_date_range == 'this_week')  ?
+						'selected="selected"' : '')?> value='this_week'>
+				<?=lang('this_week')?>
+			</option>
+			<option <?=(($search_date_range == 'this_month') ?
+						'selected="selected"' : '')?> value='this_month'>
+				<?=lang('this_month')?>
+			</option>
+			<option <?=(($search_date_range == 'last_month') ?
+						'selected="selected"' : '')?> value='last_month'>
+				<?=lang('last_month')?>
+			</option>
+			<option <?=(($search_date_range == 'this_year')  ?
+						'selected="selected"' : '')?> value='this_year'>
+				<?=lang('this_year')?>
+			</option>
+			<option <?=(($search_date_range == 'date_range') ?
+						'selected="selected"' : '')?> value='date_range'>
+				<?=lang('choose_date_range')?>
+			</option>
+		</select>
+
+		<input 	type="text"
+				name="search_date_range_start"
+				id="search_date_range_start"
+				class="datepicker"
+				value="<?=$search_date_range_start?>"
+				placeholder="<?=lang('start_date')?>" />
+
+		<input 	type="text"
+				name="search_date_range_end"
+				id="search_date_range_end"
+				class="datepicker"
+				value="<?=$search_date_range_end?>"
+				placeholder="<?=lang('end_date')?>" />
+	</div>
+	<div class="filter_row ss_clearfix_left">
+
+		<input 	name="search_keywords" type="text"
+				value="<?=$search_keywords?>"
+				placeholder="<?=lang('keywords')?>" />
+
+		<select id="search_on_field" name="search_on_field" class='chzn_select'>
+			<option value="--">
+				<?=lang('all_fields')?>
+			</option>
+	<?php foreach ($visible_columns as $column_name): ?>
+			<option <?php if ($search_on_field == $column_name):?>
+					selected="selected"
+					<?php endif;?>
+					value="<?=$column_name?>"><?=$column_labels[$column_name]?></option>
+	<?php endforeach;?>
+		</select>
+
+		<button class="submit"><?=lang('search')?></button>
+	</div>
+	</fieldset>
+</form>
+
+<!-- end search table -->
+
+<?php endif;?>
+
+
+<?php if (count($entries) > 0):?>
+
+<div class="pagination_holder">
+<?php if ($paginate):?>
+	<p class="pagination"><?=$paginate?></p>
+<?php endif;?>
+</div>
+
+<!-- entries table -->
+	<form id="freeform_entries" action="<?=$form_url?>" method="post">
+		<input type="hidden" name="XID" 	value="<?=$XID_SECURE_HASH?>" />
+		<input type="hidden" name="form_id" value="<?=$form_id?>" />
+
+		<table class="freeform_table cb_toggle padTable mainTable">
+			<thead>
+				<tr>
+					<th style='width:5%; text-align:center;'>#</th>
+					<th style='width:47px; text-align:center;'>
+						<input 	type="checkbox"
+								class="header_checkbox"
+								name="toggle_all_checkboxes"
+								value="true" />
+					</th>
+					<th class="icon_holder"><?=lang('edit')?></th>
+				<?php if ($moderate):?>
+					<th style="width:85px;"><?=lang('approve')?></th>
+				<?php endif;?>
+				<?php foreach ($visible_columns as $column_name):?>
+					<th data-column-name="<?=$all_columns[$column_name]?>"
+						class="visible_column<?php
+						if ($all_columns[$column_name] == $order_by):
+							?> active <?=$sort?><?php endif; ?>"><span><?=$column_labels[$column_name]?></span></th>
+				<?php endforeach;?>
+				</tr>
+			</thead>
+			<tbody>
+		<?php foreach ($entries as $entry):?>
+				<tr class="<?=$this->cycle('odd', 'even')?>"
+					data-entry-id="<?=$entry['id']?>">
+					<td class="freeform_text_center"><?=$entry['count']?></td>
+					<td class="freeform_text_center">
+						<input	type="checkbox"
+								name="entry_ids[]"
+								value="<?=$entry['id']?>" />
+					</td>
+					<td  class="freeform_text_center">
+						<a href="<?=$entry['edit_entry_link']?>" class="freeform_edit_button">
+								<?=lang('edit')?>
+						</a>
+					</td>
+				<?php if ($moderate):?>
+					<td>
+						<span class="freeform_approve_button freeform_ui_element">
+							<a href="<?=$entry['approve_link']?>">
+								<?=lang('approve')?>
+							</a>
+						</span>
+					</td>
+				<?php endif;?>
+				<?php foreach($visible_columns as $column_name):?>
+					<td class="visible_column"><?=$entry['data'][$column_name]?></td>
+				<?php endforeach;?>
+				</tr>
+		<?php endforeach;?>
+			</tbody>
+		</table>
+
+		<p>
+			<select name="submit_action" class='chzn_select_no_search small'>
+			<?php if ($moderate):?>
+				<option value="approve">
+					<?=lang('approve_selected')?>
+				</option>
+			<?php endif;?>
+				<option value="delete">
+					<?=lang('delete_selected')?>
+				</option>
+			</select>
+		</p>
+		<p>
+			<input type="submit" name="submit" value="<?=lang('submit')?>" class="submit" />
+		</p>
+	</form>
+<!-- end entries table -->
+
+<!-- end edit field layout ajax -->
+
+<div class="pagination_holder">
+<?php if ($paginate):?>
+	<p class="pagination"><?=$paginate?></p>
+<?php endif;?>
+</div>
+
+<?php else:?>
+	<p><?=$lang_no_results_for_form?></p>
+<?php endif;?>
+
+<!-- edit field layout ajax -->
+
+	<div id="edit_field_layout_holder">
+		<form method="post" action="<?=$save_layout_url?>" id="field_layout_form">
+			<input type="hidden" name="XID" 	value="<?=$XID_SECURE_HASH?>" />
+			<input type="hidden" name="form_id" value="<?=$form_id?>" />
+
+			<div class="field_layout_head">
+				<h3><?=lang('edit_field_layout')?></h3>
+			</div>
+
+			<div style="margin-bottom:10px;" class="ss_clearfix">
+				<div id="unused_columns">
+					<div class="field_list_header">
+						<?=lang('hidden_fields')?>
+						<span class="action_description"><?=lang('click_to_add')?></span>
+					</div>
+					<div class="field_list uses_header">
+				<?php foreach($unused_columns as $uc_name):?>
+						<div class="field_tag" data-field-id="<?=$uc_name?>">
+							<?=$column_labels[$uc_name]?>
+						</div>
+				<?php endforeach;?>
+					</div>
+				</div>
+
+				<div id="visible_columns">
+					<div class="field_list_header">
+						<?=lang('shown_fields')?>
+						<span class="action_description"><?=lang('drag_to_reorder')?></span>
+					</div>
+					<div class="chosen_field_list uses_header">
+				<?php foreach($visible_columns as $vc_name):?>
+						<div class="field_tag" data-field-id="<?=$vc_name?>">
+							<span class="freeform_delete_button"></span>
+							<?=$column_labels[$vc_name]?>
+						</div>
+				<?php endforeach;?>
+					</div>
+				</div>
+			</div>
+
+	<?php if (TRUE): /* ! $is_admin AND $can_edit_layout*/?>
+			<input type="hidden" name="save_for[]" value="just_me" />
+	<?php else:?>
+
+			<div id="for_member_group" class="sub_box">
+				<div class="leading_lang"><?=lang('save_this_layout_for')?>:</div>
+
+				<div class="choice_holder">
+					<input id="just_me_checkbox" type="checkbox"
+						   name="save_for[]" value="just_me" />
+					<label for="just_me_checkbox"><?=lang('just_me')?></label>
+				</div>
+
+				<div class="choice_holder">
+					<input id="for_everyone" type="checkbox"
+						   name="save_for[]" value="everyone" />
+					<label for="for_everyone"><?=lang('everyone')?></label>
+				</div>
+		<?php foreach ($member_groups as $group_id => $group_title):?>
+				<div class="choice_holder">
+					<input	id="member_group_<?=$group_id?>" type="checkbox"
+							name="save_for[]" value="<?=$group_id?>" />
+					<label	for="member_group_<?=$group_id?>"><?=$group_title?></label>
+				</div>
+		<?php endforeach;?>
+
+				<div class="clear"></div>
+			</div>
+	<?php endif;?>
+
+			<div>
+				<input 	id="field_layout_submit"
+					type="submit"
+					name="submit"
+					value="<?=lang('save')?>"
+					class="submit" />
+			</div>
+		</form>
+	</div>
+
+<!-- END edit field layout ajax -->
+
+	<div id="export_dialog_holder">
+		<div id="export_dialog">
+			<form id="export_form" action="<?=$export_url?>" method="POST" autocomplete="off">
+				<input type="hidden" name="XID"		value="<?=$XID_SECURE_HASH?>" />
+				<input type="hidden" name="form_id" value="<?=$form_id?>" />
+				<table>
+					<tbody>
+						<tr>
+							<td>
+								<?=lang('export')?>
+							</td>
+							<td >
+								<input 	id="export_shown_fields"	type="radio"
+										name="export_fields"		value="shown"
+										checked="checked"/>
+								<label for="export_shown_fields">
+									<?=lang('shown_fields')?>
+								</label>
+								&nbsp;
+								&nbsp;
+								<input 	id="export_all_fields" 	type="radio"
+										name="export_fields" 	value="all" />
+								<label for="export_all_fields">
+									<?=lang('all_fields')?>
+								</label>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<?=lang('export_as')?>
+							</td>
+							<td>
+								<input 	id="export_as_csv" 		type="radio"
+										name="export_method" 	value="csv"
+										checked="checked"/>
+								<label for="export_as_csv">
+									<?=lang('csv')?>
+								</label>
+								&nbsp;
+								&nbsp;
+								<input 	id="export_as_txt"		type="radio"
+										name="export_method"	value="txt"/>
+								<label for="export_as_txt">
+									<?=lang('txt')?>
+								</label>
+								<?php
+								
+								?>
+								&nbsp;
+								&nbsp;
+								<input 	id="export_as_json" 	type="radio"
+										name="export_method" 	value="json"/>
+								<label for="export_as_json">
+									<?=lang('json')?>
+								</label>
+								&nbsp;
+								&nbsp;
+								<input 	id="export_as_xml" 		type="radio"
+										name="export_method" 	value="xml"/>
+								<label for="export_as_xml">
+									<?=lang('xml')?>
+								</label>
+								<?php
+								
+								?>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<?=lang('format_dates')?>
+							</td>
+							<td>
+								<input type="hidden" name="format_dates" />
+								<input 	id="format_dates"	type="checkbox"
+										name="format_dates"	value="y"
+										checked="checked"/>
+								<label for="format_dates">
+									<?=lang('enable')?>
+								</label>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<input
+					type="submit"
+					name="submit"
+					value="<?=lang('export')?>"
+					class="submit" />
+			</form>
+		</div>
+	</div>
+
+<!-- edit field layout ajax -->
+
+<!-- row template -->
+<script type="text/html" id="row_template">
+	<tr class="<{= Freeform.cycle('odd', 'even') }>"
+		data-entry-id="<{= entry.id }>">
+		<td class="freeform_text_center"><{= entry.count }></td>
+		<td class="freeform_text_center">
+			<input	type="checkbox"
+					name="entry_ids[]"
+					value="<{= entry.id }>" />
+		</td>
+		<td  class="freeform_text_center">
+			<a href="<{= entry.edit_entry_link }>" class="freeform_edit_button">
+					<?=lang('edit')?>
+			</a>
+		</td>
+	<?php if ($moderate):?>
+		<td>
+			<span class="freeform_approve_button freeform_ui_element">
+				<a href="<{= entry.approve_link }>">
+					<?=lang('approve')?>
+				</a>
+			</span>
+		</td>
+	<?php endif;?>
+	<{ $.each(visibleColumns, function(i, columnName){ }>
+		<td class="visible_column"><{= entry.data[columnName] }></td>
+	<{ }); }>
+	</tr>
+</script>
+<!-- end row template-->
+
+
+<style type="text/css">
+	#fancybox-overlay {
+		position:	fixed;
+	}
+</style>
+
+<script type="text/javascript">
+	(function($, global){
+		$(function(){
+
+			// -------------------------------------
+			//	we need underscore to run templates
+			//	<{= thing }> style because of stupid
+			//	asp tags in PHP
+			// -------------------------------------
+
+			_.templateSettings = {
+				evaluate	: /<\{([\s\S]+?)\}>/g,
+				interpolate	: /<\{=([\s\S]+?)\}>/g,
+				escape		: /<\{-([\s\S]+?)\}>/g
+			};
+
+			// -------------------------------------
+			//	there are fewer jQuery objects cached
+			//  because they are often blasted
+			// 	the speed impact will be minimal
+			// 	because this wont often be run
+			// -------------------------------------
+			var langItems		= {
+				'mustSelectGroup'	: "<?=htmlentities(lang('must_select_group'), ENT_QUOTES, 'UTF-8')?>",
+				'downloadStarted'	: "<?=htmlentities(lang('download_started'), ENT_QUOTES, 'UTF-8')?>",
+				'export'			: "<?=htmlentities(lang('export'), ENT_QUOTES, 'UTF-8')?>"
+			};
+			var $context		= $('#freeform_entries table:first');
+			var $entriesBody	= $('tbody:first', $context);
+			var $holder			= $('#edit_field_layout_holder');
+			var $rangeStart		= $('#search_date_range_start').hide();
+			var $rangeEnd		= $('#search_date_range_end').hide();
+			var height			= $holder.show().innerHeight();
+			var fHtml			= $holder.remove().outerHTML();
+			var oldOver			= 'hidden';
+			var sOption			= {
+				'containment'	: 'parent',
+				//these are adding a class for the item
+				//thats been dragged
+				'start'			: function(event, ui)
+				{
+					$(ui.item[0]).addClass('sort_active');
+				},
+				'stop'			: function(event, ui)
+				{
+					$(ui.item[0]).removeClass('sort_active');
+				}
+			};
+			var rowTemplate		= _.template($('#row_template').html());
+
+			// -------------------------------------
+			//	date range search filter
+			// -------------------------------------
+
+			$('#search_date_range').change(function(){
+				if ($(this).val() == 'date_range')
+				{
+					$rangeStart.show();
+					$rangeEnd.show();
+				}
+				else
+				{
+					$rangeStart.hide().val('');
+					$rangeEnd.hide().val('');
+				}
+			}).change();
+
+			// -------------------------------------
+			//	datepicker
+			// -------------------------------------
+
+			$('.datepicker').datepicker();
+
+			//set mindate for end if possible
+			$rangeStart.change(function(){
+				if (/^[0-9\/]+$/.test($rangeStart.val()))
+				{
+					$rangeEnd.datepicker(
+						'option',
+						'minDate',
+						$rangeStart.val()
+					);
+				}
+			});
+
+			// -------------------------------------
+			//	This looks like the work is getting
+			// 	redone everytime the button is clicked
+			// 	and it is because we are
+			// 	naming the content directly :/
+			// 	thus we have to use delegations
+			// 	and reset the html every time
+			// 	this wont get opened often
+			// 	so its an ok tradeoff.
+			// -------------------------------------
+
+			$('[href="#edit_field_layout"]').attr('title', '').fancybox({
+				'content' 			: fHtml,
+				/*'width'  			: '400',
+				'height'			: height,
+				'autoDimensions'	: false,*/
+				'overlayOpacity'	: '0.75',
+				'onStart' 			: function()
+				{
+					//reset html before showing
+					this.content = fHtml;
+					$('#fancybox-content').addClass('solspace_ui_wrapper');
+				},
+				'onComplete' 		: function()
+				{
+					$('#edit_field_layout_holder .chosen_field_list').sortable(sOption);
+
+					//overflow is being silly with sortable :(
+					oldOver = $('#fancybox-content').css('overflow');
+					$('#fancybox-content').css('overflow', 'hidden');
+				},
+				'onCleanup' 		: function()
+				{
+					//grab html before cleanup
+					fHtml = $('#fancybox-content').find('div:first').html();
+
+					//we have to go back, Kate!
+					$('#fancybox-content').css('overflow', oldOver || 'auto');
+				}
+			});
+
+			// -------------------------------------
+			//	export entries
+			// -------------------------------------
+
+			$('[href="#export_entries"]').attr('title', '').fancybox({
+				'content' 			: $('#export_dialog_holder').remove().html(),
+				'overlayOpacity'	: '0.75',
+				'onComplete' 			: function()
+				{
+					$('#export_form').submit(function(){
+						//refresh XID
+						$(this).find('[name="XID"]').val(EE.XID);
+
+						setTimeout(function(){
+							$.fancybox.close();
+							Freeform.jQUIDialog({
+								'message' 	: langItems.downloadStarted,
+								'title' 	: langItems['export'],
+								'immediate' : true,
+								'modal'		: true
+							});
+						}, 500);
+					});
+				}
+			});
+
+			// -------------------------------------
+			//	click functions for buttons in pop-up
+			// 	delegating here because the html
+			// 	gets blasted and reset on each open
+			// 	*sigh*
+			// -------------------------------------
+
+			var $body = $('body');
+
+			// -------------------------------------
+			//	field form save
+			// -------------------------------------
+
+			$body.delegate('#field_layout_form', 'submit', function(e){
+
+				$.fancybox.showActivity();
+
+				e.preventDefault();
+
+				var fields	= [];
+				var $form	= $(this);
+				var vars	= {};
+
+				// -------------------------------------
+				//	get visible fields
+				// -------------------------------------
+
+				$('#visible_columns .field_tag').each(function(){
+					fields.push($(this).attr('data-field-id'));
+				});
+
+				vars['shown_fields[]'] = fields;
+
+				// -------------------------------------
+				//	sort the rest of the options
+				// -------------------------------------
+
+				//this may be completely unncessary
+				$.each($form.serializeArray(), function(i, item){
+					//array?
+					if (item.name.substr(-2) == '[]')
+					{
+						if (typeof vars[item.name] == 'undefined')
+						{
+							vars[item.name] = [];
+						}
+
+						vars[item.name].push(item.value);
+					}
+					else
+					{
+						vars[item.name] = item.value;
+					}
+				});
+
+				if ( typeof vars['save_for[]'] == 'undefined')
+				{
+					$.fancybox.hideActivity();
+
+					Freeform.jQUIDialog({
+						'message' 	: langItems.mustSelectGroup,
+						'immediate' : true,
+						'modal'		: false
+					});
+
+					return;
+				}
+
+				vars['current_url'] = window.location.href;
+
+				//refresh XID
+				vars['XID'] = EE.XID;
+
+				// -------------------------------------
+				//	send
+				// -------------------------------------
+
+				$.post($form.attr('action'), vars, function(data){
+
+					if (data.success)
+					{
+						$.fancybox.close();
+						$.fancybox.hideActivity();
+						window.location.reload();
+					}
+					else
+					{
+						$.fancybox.hideActivity();
+
+						Freeform.jQUIDialog({
+							'message' 	: data.errors,
+							'immediate' : true,
+							'modal'		: false
+						});
+					}
+				}, "json");
+
+				return false;
+			});
+
+			// -------------------------------------
+			//	checboxes
+			// -------------------------------------
+
+			$body.delegate('#just_me_checkbox, #for_everyone', 'click', function(e){
+
+				//if we check either of these
+				//every other checkbox needs to be disabled, unchecked, and
+				//its label gets a class
+				if ($(this).is(':checked'))
+				{
+					$('#for_member_group input[type="checkbox"]').not(this).
+						attr({
+							'checked' : false,
+							'disabled': 'disabled'
+						}).
+						parent().find('label').addClass('disabled');
+				}
+				else
+				{
+					$('#for_member_group input[type="checkbox"]').not(this).
+						attr('disabled', false).
+						parent().find('label').removeClass('disabled');
+				}
+			});
+
+			// -------------------------------------
+			//	add remove columns
+			// -------------------------------------
+
+			$body.delegate(
+				'#visible_columns .freeform_delete_button',
+				'click',
+				function(e)
+				{
+					$('#unused_columns .field_list:first').append($(this).parent());
+					$(this).remove();
+				}
+			);
+
+			$body.delegate(
+				'#unused_columns .field_tag',
+				'click',
+				function(e)
+				{
+					$('#visible_columns .chosen_field_list:first').append($(this));
+					$(this).prepend('<span class="freeform_delete_button"><\/span>');
+				}
+			);
+
+			$body.delegate('.freeform_approve_button', 'click', function(e){
+				e.preventDefault();
+
+				var $that	= $(this);
+					url		= $that.find('a:first').attr('href');
+
+				$.post(url, function(data){
+					if(data.success)
+					{
+						$that.replaceWith(
+							'<span class="freeform_approved_button"><\/span>'
+						);
+					}
+				}, 'json');
+
+				return false;
+			});
+
+			var $entryForm		= $('#freeform_entries');
+			var $entryFormTable	= $entryForm.find('table:first');
+
+			var timeout = 0;
+
+			function adjustBodySize ()
+			{
+				var bodyWidth	= $body.outerWidth();
+				var formWidth	= $entryForm.outerWidth();
+				var entryWidth	= $entryFormTable.outerWidth();
+
+				//console.log('bodyWidth: ' + bodyWidth);
+				//console.log('formWidth: ' + formWidth);
+				//console.log('entryWidth: ' + entryWidth);
+
+				if (entryWidth > formWidth)
+				{
+					$body.width(entryWidth + (bodyWidth - formWidth));
+				}
+				//we don't want this to trigger if we've already resized
+				//but resized smaller. So auto should trigger only when the
+				//window is wider than the body padding + entries width
+				else if ((entryWidth + (bodyWidth - formWidth)) < $(window).outerWidth())
+				{
+					$body.css('width', 'auto');
+				}
+
+				clearTimeout(timeout);
+			}
+
+			//ie 7 and 8 are pieces of dog crap and the window
+			//resize events are so screwed up there i just dont
+			//even care to find a work around, so it gets overflow
+			//and every other browser gets the resize fix
+			if ( ! $('.solspace_ui_wrapper').hasClass('ie8') &&
+				 ! $('.solspace_ui_wrapper').hasClass('ie7'))
+			{
+				$(window).resize(function(){
+					clearTimeout(timeout);
+
+					timeout = setTimeout(function(){
+						adjustBodySize();
+					}, 300);
+				});
+
+				adjustBodySize();
+			}
+			else
+			{
+				$entryForm.css('overflow', 'auto');
+			}
+
+			// -------------------------------------
+			//	sorting!
+			// -------------------------------------
+
+			var urlArgs		= Freeform.getUrlArgs();
+			var removeArgs	= Freeform.getUrlArgs(EE.BASE);
+			var finalArgs	= {};
+
+			//remove EE.BASE args
+			$.each(urlArgs, function(i, item){
+				if (typeof removeArgs[i] == 'undefined')
+				{
+					finalArgs[i] = item;
+				}
+			});
+
+			$body.delegate('th.visible_column', 'click', function(e){
+				var $that		= $(this);
+				var desc		= ($that.hasClass('active') && $that.hasClass('asc'));
+				var column		= $that.attr('data-column-name');
+				var args		= _.clone(finalArgs);
+
+				//remove from everyone else
+				$('th.visible_column').removeClass('active desc asc');
+				//add back because *shrug*
+				$that.addClass('active');
+
+				$that.addClass(desc ? 'desc' : 'asc');
+
+				args.order_by	= column;
+				args.sort		= desc ? 'desc' : 'asc';
+
+				$.fancybox.showActivity();
+
+				$.get(EE.BASE, args, function(data){
+					if (data.success)
+					{
+						$entriesBody.find('tr').remove();
+
+						Freeform.clearCycle();
+
+						$.each(data.entries, function(i, item){
+							$entriesBody.append(rowTemplate({
+								"entry"				: item,
+								"visibleColumns"	: data.visibleColumns
+							}));
+						});
+
+						if (data.paginate)
+						{
+							$('.pagination_holder .pagination').html(data.paginate);
+						}
+
+						adjustBodySize();
+					}
+
+					$.fancybox.hideActivity();
+				});
+			});
+		});
+		//END document ready
+	}(jQuery, window));
+</script>

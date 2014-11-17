@@ -1,0 +1,13 @@
+<?php $this->view('header.html');?>
+
+<?php foreach($cp_stylesheet as $sheet_src):?>
+<link type="text/css" rel="stylesheet" href="<?=$addon_theme_url?>css/<?=$sheet_src?>.css" />
+<?php endforeach;?>
+
+<?php foreach($cp_javascript as $script_src):?>
+<script type="text/javascript" src="<?=$addon_theme_url?>js/<?=$script_src?>.js"></script>
+<?php endforeach;?>
+
+<?php echo isset($current_page) ? $current_page : ''; ?>
+
+<?php $this->view('footer.html');?>

@@ -1,0 +1,56 @@
+<style type="text/css">
+#migration_in_progress { 
+	float : left; 
+	padding-top: 7px;
+	padding-left: 10px;
+	text-shadow: 1px 1px 2px #fff;
+	color: #2A3940;
+	font-weight: bold;
+
+}
+</style>
+
+<h4><?=lang('migrate_collections')?></h4>
+
+<form method="POST" action="<?=$ajax_url?>" id="freeform_utilities">
+	<input type="hidden" name="XID" value="<?=$XID_SECURE_HASH?>" />
+	
+	<table id="migration" class="mainTable padTable freeform_table headless">
+		<tbody>
+			<tr class="<?=$this->cycle('odd', 'even')?>">
+				<td style="width:50%; vertical-align:top;">
+					<label for="collection"><?=lang('collections')?></label>
+				</td>
+				<td>
+					<div id="live_block">
+						<input type="hidden" name="ajax_url" value="<?=$ajax_url?>" />
+<?php if ( empty( $collections ) ) : ?>
+					<?=lang('nothing_to_migrate')?>
+<?php else : ?>
+						<div class="block_state" style="display:none;">
+	
+							<span  style="display:none;" id="migration_in_progress" class="block_in_progress">
+								<?=lang('migration_in_progress')?>
+								<span class="block_progress_count_current">0</span> / <span class="block_progress_count_total"><?=$total?></span>
+							</span>
+							
+							<div class="block_progressbar ui-progressbar"></div>
+	
+						</div>
+					
+						<span class="block_success" style="display:none;">
+							<img src="<?=$success_png_url?>"/>
+							<?=lang('migration_complete')?>
+						</span>
+					
+						<span class="block_error" style="display:none;">
+							<img src="<?=$error_png_url?>" style="vertical-align:-20%" />
+							<span id="block_error_message">Error</span>
+						</span>
+<?php endif; ?>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</form>

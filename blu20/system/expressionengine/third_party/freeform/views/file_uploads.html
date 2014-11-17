@@ -1,0 +1,88 @@
+<?php if ( ! empty($files)):?>
+<form method="post" action="<?=$form_url?>">
+	<input type="hidden" name="XID" value="<?=XID_SECURE_HASH?>" />
+	<table id="file-entries" class="freeform_table cb_toggle mainTable padTable" style="width:100%;"
+		   cellspacing='0'  cellpadding='0'  border='0'>
+		<thead>
+			<tr>
+				<th style="width:5%;  text-align:left;">#</th>
+				<th style="width:10px; text-align:right;">
+					<input type="checkbox" name="toggle_all_checkboxes" value=""/>
+				</th>
+				<th style="width:8%;  text-align:left;"><?=lang('entry_id')?></th>
+				<th style="text-align:left;"><?=lang('filename')?></th>
+				<th style="width:90px; text-align:left;"><?=lang('download')?></th>
+				<th style="text-align:left;"><?=lang('front_end_link')?></th>
+				<th style="width:8%; text-align:left;"><?=lang('filesize')?></th>
+				<th style="width:20%; text-align:left;"><?=lang('upload_preference_name')?></th>
+			</tr>
+		</thead>
+
+		<tbody>
+<?php foreach($files as $file):?>
+			<?php $class = $caller->cycle('odd', 'even'); ?>
+			<tr class="<?=$class?>">
+				<td><?=$file['count']?></td>
+				<td>
+					<input	type="checkbox" name="file_ids[]"
+							id="delete_box_<?=$file['file_id']?>"
+							value="<?=$file['file_id']?>"/>
+				</td>
+				<td><?=$file['entry_id']?></td>
+				<td>
+			<?php if ( isset($file['link']) AND $file['link']) :?>
+					<a class="<?=($file['fb'] ? 'fbox' : 'new_window')?>" href="<?=$file['link']?>"><?=$file['filename']?></a>
+			<?php else:?>
+					<?=$file['filename']?>
+			<?php endif;?>
+				</td>
+				<td>
+			<?php if ( isset($file['download_link']) AND $file['download_link']) :?>
+					<a class="freeform_ui_button" href="<?=$file['download_link']?>"><?=lang('download')?></a>
+			<?php else:?>
+					<?=lang('cannot_find_file')?>
+			<?php endif;?>
+				</td>
+				<td>
+			<?php if ( isset($file['front_end_link']) AND $file['front_end_link']) :?>
+					<a class="new_window" href="<?=$file['front_end_link']?>"><?=$file['front_end_link']?></a>
+			<?php else:?>
+					<?=lang('cannot_find_file')?>
+			<?php endif;?>
+				</td>
+				<td><?=$file['filesize']?></td>
+				<td>
+					<a	href="<?=$file['uprefs_link']?>"
+						class="new_window">
+						<?=$file['uprefs_name']?>
+					</a>
+				</td>
+			</tr>
+<?php endforeach; ?>
+		</tbody>
+	</table>
+
+	<p><input type="submit" name="submit" class="submit" value="Delete" /></p>
+
+	<?php if ($pagination):?>
+	<div class="pagination">
+		<?=$pagination?>
+	</div>
+	<?php endif;?>
+</form>
+<script type="text/javascript">
+	jQuery(function($){
+		$('.fbox').fancybox();
+		$('.new_window').click(function(e){
+			if ($(this).attr('href'))
+			{
+				window.open($(this).attr('href'));
+			}
+			e.preventDefault();
+			return false;
+		});
+	})
+</script>
+<?php else: ?>
+	<p><?=lang('no_files_uploaded')?></p>
+<?php endif;?>

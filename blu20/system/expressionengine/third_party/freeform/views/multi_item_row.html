@@ -1,0 +1,115 @@
+<!-- start list section, prefix: '<?=$pre?>' -->
+
+<!-- List type choices -->
+<div id="<?=$pre?>list_types" class="ss_clearfix push_bottom">
+	<input type="hidden" id="<?=$pre?>list_type" name="<?=$pre?>list_type" value="<?=$list_setting?>"/>
+	<label for="<?=$pre?>list_type" class="pill_label"><?=lang('list_type')?>:</label>
+
+	<button data-value="list"
+			class="freeform_ui_element pill pill_first"><?=lang('list')?></button>
+
+	<button data-value="value_label"
+			class="freeform_ui_element pill"><?=lang('value_label_list')?></button>
+
+	<button data-value="channel_field"
+			class="freeform_ui_element pill"><?=lang('load_from_channel_field')?></button>
+
+	<button data-value="nld_textarea"
+			class="freeform_ui_element pill pill_last"><?=lang('nld_textarea')?></button>
+</div>
+
+<!-- List type data selection -->
+<div id="<?=$pre?>option_holder" class="field_option_holder">
+
+	<!-- single word list -->
+	<div id="<?=$pre?>type_list_holder">
+		<p class="subtext"><?=lang('type_list_desc')?></p>
+<?php if ($list_setting == 'list' AND ! empty($field_list_items)):?>
+	<?php foreach ($field_list_items as $list_item):?>
+		<div class="list_holder_input">
+			<input type="text" name="<?=$pre?>list_holder_input[]" value="<?=$list_item?>"/>
+			<div class="freeform_delete_button">-</div>
+		</div>
+	<?php endforeach;?>
+<?php endif;?>
+		<div class="list_holder_input">
+			<input type="text" name="<?=$pre?>list_holder_input[]" />
+			<div class="freeform_delete_button">-</div>
+		</div>
+	</div>
+
+	<!-- key value list -->
+	<div id="<?=$pre?>type_value_label_holder">
+		<p class="subtext"><?=lang('type_value_label_desc')?></p>
+		<div class="value_label_header">
+			<span class="value_label_header_sub">
+				<?=lang('value')?>
+			</span>
+			<span class="value_label_header_sub">
+				<?=lang('label')?>
+			</span>
+		</div>
+<?php $counter = 0;
+	if ($list_setting == 'value_label' AND ! empty($field_list_items)):?>
+	<?php foreach ($field_list_items as $list_key => $list_value):?>
+		<div class="value_label_holder_input">
+			<input 	type="text"
+					name="<?=$pre?>list_value_holder_input[<?=$counter?>]"
+					value="<?=$list_key?>"/>
+			<input 	type="text"
+					name="<?=$pre?>list_label_holder_input[<?=$counter?>]"
+					value="<?=$list_value?>"/>
+			<div class="freeform_delete_button">-</div>
+		</div>
+	<?php $counter++;
+		endforeach;?>
+<?php endif;?>
+		<div class="value_label_holder_input">
+			<input 	type="text"
+					name="<?=$pre?>list_value_holder_input[<?=$counter?>]" />
+			<input 	type="text"
+					name="<?=$pre?>list_label_holder_input[<?=$counter?>]" />
+			<div class="freeform_delete_button">-</div>
+		</div>
+	</div>
+
+	<!-- channel id list -->
+	<div id="<?=$pre?>type_channel_field_holder">
+		<p class="subtext"><?=lang('channel_field_list_desc')?></p>
+		<select id="<?=$pre?>channel_field" name="<?=$pre?>channel_field">
+	<?php foreach ($channel_field_list as $channel_title => $fields ):?>
+		<?php if ( ! empty($fields) AND is_array($fields)):?>
+			<optgroup label="<?=$channel_title?>">
+		<?php  foreach ($fields as $field_value => $field_title):?>
+				<option value="<?=$field_value?>" <?php
+					if ($list_setting == 'channel_field' AND
+						$field_value  == $field_list_items)
+					{
+						echo 'selected="selected"';
+					}
+				?>><?=$field_title?></option>
+		<?php endforeach?>
+			</optgroup>
+		<?php endif;?>
+	<?php endforeach;?>
+		</select>
+	</div>
+
+	<!-- newline delimited textarea -->
+
+	<div id="<?=$pre?>type_nld_textarea_holder">
+		<p class="subtext"a><?=lang('type_nld_textarea_desc')?></p>
+		<textarea rows="6" name="<?=$pre?>list_nld_textarea_input"><?php
+			if ($list_setting == 'nld_textarea')
+			{
+				echo $field_list_items;
+			}
+		?></textarea>
+	</div>
+</div>
+
+<script type="text/javascript">
+	Freeform.setupMultiRowDelegate('<?=$list_setting?>', '<?=$pre?>');
+</script>
+
+<!-- end list section, prefix: '<?=$pre?>' -->

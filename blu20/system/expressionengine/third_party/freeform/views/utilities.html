@@ -1,0 +1,115 @@
+<form method="POST" action="<?=$form_uri?>" id="freeform_utilities">
+	<input type="hidden" name="XID" value="<?=$XID_SECURE_HASH?>" />
+
+<h4><?=lang('migrate_collections')?></h4>
+
+	<table id="migration" class="mainTable padTable freeform_table headless">
+		<tbody>
+			<tr class="<?=$this->cycle('odd', 'even')?>">
+				<td style="width:50%; vertical-align:top;">
+					<label for="collection"><?=lang('collections')?></label>
+<?php if ( ! empty( $counts ) ) : ?>
+					<div class="subtext"><?=lang('collections_desc')?></div>
+<?php endif; ?>
+				</td>
+				<td>
+<?php if ( empty( $counts ) ) : ?>
+					<?=lang('nothing_to_migrate')?>
+<?php else : ?>
+		<?php if (count($counts) > 1):?>
+					<label>
+						<input	name="select_all_checkboxes"
+								id="select_all_checkboxes"
+								type="checkbox"
+								value="">
+						&nbsp;
+						Select all
+					</label>
+					<hr/>
+		<?php endif;?>
+					<ul>
+		<?php foreach ( $counts as $form_name => $val ) :
+				$disabled = ( $val['unmigrated'] == 0 ) ?
+					'disabled="disabled"': '';
+					?>
+						<li>
+							<label>
+								<input	name="collections[]"
+										type="checkbox"
+										value="<?=$form_name?>"
+										<?=$disabled?>>
+								&nbsp;
+								<?=$form_name?>
+								(
+								<?=$val['migrated']?>
+								<?=lang('migrated')?>,
+								<?=$val['unmigrated']?>
+								<?=lang('unmigrated')?>
+								)
+							</label>
+						</li>
+		<?php endforeach; ?>
+					</ul>
+<?php endif; ?>
+				</td>
+			</tr>
+<?php if ( ! empty( $counts ) ) : ?>
+	<?php if ( $file_upload_installed === FALSE ) : ?>
+			<tr class="<?=$this->cycle('odd', 'even')?>">
+				<td style="vertical-align:top;">
+					<label for="attachments"><?=lang('attachments')?></label>
+					<div class="subtext"><?=lang('migrate_attachments_desc_not_installed')?></div>
+				</td>
+				<td>
+					<input type="checkbox" name="migrate_attachments" id="migrate_attachments" value="y" disabled="disabled" />&nbsp;
+					<label for="migrate_attachments" style="opacity:.5"><?=lang('migrate_attachments')?></label>
+				</td>
+			</tr>
+	<?php else : ?>
+			<tr class="<?=$this->cycle('odd', 'even')?>">
+				<td style="vertical-align:top;">
+					<label for="attachments"><?=lang('attachments')?></label>
+					<div class="subtext"><?=lang('migrate_attachments_desc')?></div>
+				</td>
+				<td>
+					<input type="checkbox" name="migrate_attachments" id="migrate_attachments" value="y" />&nbsp;
+					<label for="migrate_attachments"><?=lang('migrate_attachments')?></label>
+				</td>
+			</tr>
+	<?php endif ?>
+			<tr class="<?=$this->cycle('odd', 'even')?>">
+				<td style="vertical-align:top;">
+					<label for="fields"><?=lang('empty_fields')?></label>
+					<div class="subtext"><?=lang('migrate_empty_fields_desc')?></div>
+				</td>
+				<td>
+					<input type="checkbox" name="migrate_empty_fields" id="migrate_empty_fields" value="y" />&nbsp;
+					<label for="migrate_empty_fields"><?=lang('migrate_empty_fields')?></label>
+				</td>
+			</tr>
+<?php endif; ?>
+		</tbody>
+	</table>
+<?php if ( ! empty( $counts ) ) : ?>
+	<p style="margin-left:50%; padding-left:15px;">
+		<input type="submit" class="submit" name="submit" value="<?=lang('submit')?>" />
+	</p>
+<?php endif ?>
+</form>
+<script type="text/javascript">
+	(function($){
+		$('#select_all_checkboxes').click(function(){
+			var $that = $(this);
+			setTimeout(function(){
+				if ($that.is(':checked'))
+				{
+					$('[name^="collections"]').attr('checked', 'checked');
+				}
+				else
+				{
+					$('[name^="collections"]').attr('checked', false);
+				}
+			}, 0);
+		});
+	}(jQuery));
+</script>

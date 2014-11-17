@@ -1,0 +1,18 @@
+#cp_analytics_chart {
+	-moz-box-shadow:0 1px 3px rgba(0,0,0,0.5) !important;
+	-webkit-box-shadow:0 1px 3px rgba(0,0,0,0.5) !important;
+	-o-box-shadow:0 1px 3px rgba(0,0,0,0.5) !important;
+	box-shadow:0 1px 3px rgba(0,0,0,0.5) !important;
+	-moz-border-radius-bottomleft: 2px;
+	-webkit-border-bottom-left-radius: 2px;
+	border-bottom-left-radius: 2px;
+	-moz-border-radius-bottomright: 2px;
+	-webkit-border-bottom-right-radius: 2px;
+	border-bottom-right-radius: 2px;	
+	-moz-background-clip:padding;
+	-webkit-background-clip:padding;
+	-o-background-clip:padding-box;
+	-ms-background-clip:padding-box;
+	-khtml-background-clip:padding-box;
+	background-clip:padding-box;
+}

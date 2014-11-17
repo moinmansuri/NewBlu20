@@ -1,0 +1,80 @@
+<?php if (empty($notification_data)):?>
+
+<p>
+	<strong>
+		<?=lang('no_notifications')?>
+		<a href="<?=$new_notification_link?>"><?=lang('create_one_now')?></a>
+	</strong>
+</p>
+
+<?php else:?>
+
+<?php if ($paginate):?>
+	<p class="pagination"><?=$paginate?></p>
+<?php endif;?>
+
+<form action="<?=$form_uri?>" method="POST">
+	<input type="hidden" name="XID" value="<?=$XID_SECURE_HASH?>" />
+	<table class="mainTable padTable freeform_table cb_toggle" style="width:100%;">
+		<thead>
+			<tr>
+				<th><?=lang('label')?></th>
+				<th style="width:40%;"><?=lang('email_subject')?></th>
+				<th style='width:47px; text-align:center;'><?=lang('id')?></th>
+				<th class="icon_holder"><?=lang('edit')?></th>
+				<th class="icon_holder"><?=lang('duplicate')?></th>
+				<th class="icon_holder"><?=lang('delete')?></th>
+			</tr>
+		</thead>
+		<tbody>
+	<?php foreach ($notification_data as $notification) :?>
+			<tr class="<?=$this->cycle('odd', 'even')?>">
+				<td class="list_labels">
+				<?php if ($notification['notification_description']):?>
+					<div class="freeform_info_button">
+						<div class="tooltip">
+							<?=$notification['notification_description']?>
+						</div>
+					</div>
+				<?php endif;?>
+					<label>
+						<a href="<?=$notification['notification_edit_link']?>">
+							<?=$notification['notification_label']?>
+						</a>
+					</label>
+					<div class="form_subtext subtext">
+						<?=$notification['notification_name']?>
+					</div>
+				</td>
+				<td><?=$notification['email_subject']?></td>
+				<td class="freeform_text_center"><?=$notification['notification_id']?></td>
+				<td class="freeform_text_center">
+					<a class="freeform_edit_button"
+						href="<?=$notification['notification_edit_link']?>">
+						<?=lang('edit')?>
+					</a>
+				</td>
+				<td class="freeform_text_center">
+					<a class="freeform_duplicate_button"
+						href="<?=$notification['notification_duplicate_link']?>">
+						<?=lang('duplicate')?>
+					</a>
+				</td>
+				<td class="freeform_text_center">
+					<a 	class="freeform_delete_button"
+						href="<?=$notification['notification_delete_link']?>"
+						data-notification-id="<?=$notification['notification_id']?>">
+						<?=lang('delete')?>
+					</a>
+				</td>
+			</tr>
+	<?php endforeach;?>
+		</tbody>
+	</table>
+
+<?php if ($paginate):?>
+	<p class="pagination"><?=$paginate?></p>
+<?php endif;?>
+</form>
+
+<?php endif;?>

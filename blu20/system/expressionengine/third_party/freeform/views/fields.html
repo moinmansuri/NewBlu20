@@ -1,0 +1,249 @@
+<?php if ( ! empty($field_data)):?>
+<div class="right_side_filter ss_clearfix_left">
+	<form id="field_search_form" method="get" action="<?=BASE?>">
+		<input type="hidden" name="S" 		value="<?=$fingerprint?>" />
+		<input type="hidden" name="D" 		value="cp" />
+		<input type="hidden" name="C" 		value="addons_modules" />
+		<input type="hidden" name="M" 		value="show_module_cp" />
+		<input type="hidden" name="module" 	value="freeform" />
+		<input type="hidden" name="method" 	value="fields" />
+		<input	name="field_search" type="text"
+				placeholder="<?=lang('search_fields')?>" value="<?=$field_search?>" />
+		<span class="freeform_loading_image"></span>
+		<select id="search_on_field" name="field_search_on" class="chzn_select_no_search">
+			<option <?php if ($field_search_on == 'field_label'):
+					?> selected="selected"<?php endif;?>
+					value="field_label"><?=lang('field_label')?></option>
+			<option <?php if ($field_search_on == 'field_name'):
+					?> selected="selected"<?php endif;?>
+					value="field_name"><?=lang('field_name')?></option>
+			<option <?php if ($field_search_on == 'field_description'):
+					?> selected="selected"<?php endif;?>
+					value="field_description"><?=lang('field_description')?></option>
+			<option <?php if ($field_search_on == 'all'):
+					?> selected="selected"<?php endif;?>
+					value="all"><?=lang('all')?></option>
+		</select>
+		<input type="submit" name="submit" class="submit" value="<?=lang('search')?>" />
+	</form>
+</div>
+<?php endif;?>
+
+<?php if (empty($field_data) AND ! empty($field_search)):?>
+
+<p>
+	<strong>
+		<?=lang('no_results_for_search')?>
+	</strong>
+</p>
+
+<?php elseif (empty($field_data)):?>
+
+<p>
+	<strong>
+		<?=lang('no_fields')?>
+		<a href="<?=$new_field_link?>"><?=lang('create_one_now')?></a>
+	</strong>
+</p>
+
+<?php else:?>
+
+<div class="pagination_wrapper">
+<?php if ($paginate):?>
+	<p class="pagination"><?=$paginate?></p>
+<?php endif;?>
+</div>
+
+<p id="no_results_box" style="display:none;">
+	<strong>
+		<?=lang('no_results_for_search')?>
+	</strong>
+</p>
+
+<form action="<?=$form_uri?>" method="POST">
+	<input type="hidden" name="XID" value="<?=$XID_SECURE_HASH?>" />
+	<table id="fields_table" class="cb_toggle mainTable padTable freeform_table" style="width:100%;"
+			cellspacing='0' cellpadding='0' border='0'>
+		<thead>
+			<tr>
+				<th style='width:5%; text-align:center;'>#</th>
+				<th style='width:47px; text-align:center;'>
+					<input 	type="checkbox"
+							class="header_checkbox"
+							name="toggle_all_checkboxes"
+							value="true" />
+				</th>
+				<th style="width:40%;"><?=lang('field')?></th>
+				<th style="width:10%;"><?=lang('type')?></th>
+				<th><?=lang('description')?></th>
+				<th style='width:47px; text-align:center;'><?=lang('id')?></th>
+				<th class="icon_holder"><?=lang('edit')?></th>
+				<th class="icon_holder"><?=lang('duplicate')?></th>
+				<th class="icon_holder"><?=lang('delete')?></th>
+			</tr>
+		</thead>
+		<tbody>
+	<?php foreach ($field_data as $field) :?>
+			<tr class="<?=$this->cycle('odd', 'even')?>">
+				<td class="freeform_text_center"><?=$field['count']?></td>
+				<td class="freeform_text_center">
+					<input	type="checkbox"
+							name="field_id[]"
+							value="<?=$field['field_id']?>" />
+				</td>
+				<td class="list_labels">
+				<?php if (FALSE AND $field['field_description']):?>
+					<div class="freeform_info_button"></div>
+					<div class="tooltip">
+						<?=$field['field_description']?>
+					</div>
+				<?php endif;?>
+					<label class="form_label">
+						<a href="<?=$field['field_edit_link']?>"><?=$field['field_label']?></a>
+					</label>
+					<div class="form_subtext subtext"><?=$field['field_name']?></div>
+				</td>
+				<td><?=$field['field_type']?></td>
+				<td><?=$field['field_description']?></td>
+				<td class="freeform_text_center"><?=$field['field_id']?></td>
+				<td class="freeform_text_center">
+					<a class="freeform_edit_button" href="<?=$field['field_edit_link']?>">
+						<?=lang('edit')?>
+					</a>
+				</td>
+				<td class="freeform_text_center">
+					<a class="freeform_duplicate_button" href="<?=$field['field_duplicate_link']?>">
+						<?=lang('duplicate')?>
+					</a>
+				</td>
+				<td class="freeform_text_center">
+					<a class="freeform_delete_button" href="<?=$field['field_delete_link']?>">
+						<?=lang('delete')?>
+					</a>
+				</td>
+			</tr>
+	<?php endforeach;?>
+		</tbody>
+	</table>
+
+<div class="pagination_wrapper">
+<?php if ($paginate):?>
+	<p class="pagination"><?=$paginate?></p>
+<?php endif;?>
+</div>
+<p id="submit_holder">
+	<input type="submit" name="submit" value="<?=lang('delete')?>" class="submit" />
+</p>
+</form>
+
+<?php endif;?>
+
+<script id="row_template" type="text/html">
+	<tr class="<{= class_name }>">
+		<td class="freeform_text_center"><{= count }></td>
+		<td class="freeform_text_center">
+			<input	type="checkbox"
+					name="field_id[]"
+					value="<{= field_id }>" />
+		</td>
+		<td class="list_labels">
+			<label class="form_label">
+				<a href="<{= field_edit_link }>"><{= field_label }></a>
+			</label>
+			<div class="form_subtext subtext"><{= field_name }></div>
+		</td>
+		<td><{= field_type }></td>
+		<td><{= field_description }></td>
+		<td><{= field_id }></td>
+		<td class="freeform_text_center">
+			<a class="freeform_edit_button" href="<{= field_edit_link }>">
+				<?=lang('edit')?>
+			</a>
+		</td>
+		<td class="freeform_text_center">
+			<a class="freeform_duplicate_button" href="<{= field_duplicate_link }>">
+				<?=lang('duplicate')?>
+			</a>
+		</td>
+		<td class="freeform_text_center">
+			<a class="freeform_delete_button" href="<{= field_delete_link }>">
+				<?=lang('delete')?>
+			</a>
+		</td>
+	</tr>
+</script>
+
+<script type="text/javascript">
+	(function($, global){
+		$(function(){
+
+			// -------------------------------------
+			//	we need underscore to run templates
+			//	<{= thing }> style because of stupid
+			//	asp tags in PHP
+			// -------------------------------------
+
+			_.templateSettings = {
+				evaluate	: /<\{([\s\S]+?)\}>/g,
+				interpolate	: /<\{=([\s\S]+?)\}>/g,
+				escape		: /<\{-([\s\S]+?)\}>/g
+			};
+
+			var rowTemplate			= $('#row_template').html();
+			var rowMake				= _.template(rowTemplate);
+			var $fieldSearchForm	= $('#field_search_form');
+			var fieldAction			= $fieldSearchForm.attr('action');
+			var $fieldsTable		= $('#fields_table');
+			var $fieldsTableTbody	= $fieldsTable.find('tbody:first');
+			var $loader				= $fieldSearchForm.find('.freeform_loading_image').hide();
+			var $noResults			= $('#no_results_box');
+			var $paginations		= $('.pagination_wrapper');
+			var $submit				= $('#submit_holder');
+
+			$fieldSearchForm.submit(function(e){
+				$loader.show();
+				$.get(fieldAction, $fieldSearchForm.serialize(), function(data){
+					if (data.field_data.length !== 0)
+					{
+						$noResults.hide();
+						$fieldsTable.show();
+						$paginations.show();
+						$submit.show();
+
+						$paginations.each(function(){
+							if (data.paginate)
+							{
+								$(this).html('<p class="pagination">' + data.paginate + '<\/p>');
+							}
+							else
+							{
+								$(this).html('');
+							}
+						});
+
+						$fieldsTableTbody.children().remove();
+
+						$.each(data.field_data, function(i, item){
+							$fieldsTableTbody.append(
+								rowMake(_.extend(item, {
+									'class_name': Freeform.cycle('odd', 'even')
+								}))
+							);
+						});
+					}
+					else
+					{
+						$noResults.show();
+						$fieldsTable.hide();
+						$paginations.hide();
+						$submit.hide();
+					}
+
+					$loader.hide();
+				});
+				e.preventDefault();
+				return false;
+			});
+		});
+	}(jQuery, window));
+</script>

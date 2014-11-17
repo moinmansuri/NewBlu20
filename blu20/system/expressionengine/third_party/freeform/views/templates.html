@@ -1,0 +1,75 @@
+<?php if (empty($template_data)):?>
+
+<p>
+	<strong>
+		<?=lang('no_templates');?>
+		<a href="<?=$new_template_link?>"><?=lang('create_one_now');?></a>
+	</strong>
+</p>
+
+<?php else:?>
+
+<?php if ($paginate):?>
+	<p class="pagination"><?=$paginate?></p>
+<?php endif;?>
+
+<form action="<?=$form_uri?>" method="POST">
+	<input type="hidden" name="XID" value="<?=$XID_SECURE_HASH?>" />
+	<table class="mainTable padTable freeform_table cb_toggle" style="width:100%;">
+		<thead>
+			<tr>
+				<th><?=lang('label');?></th>
+				<th style="width:30%;"><?=lang('description');?></th>
+				<th style='width:47px; text-align:center;'><?=lang('id')?></th>
+				<th class="icon_holder"><?=lang('edit');?></th>
+				<th class="icon_holder"><?=lang('duplicate');?></th>
+				<th class="icon_holder"><?=lang('delete');?></th>
+			</tr>
+		</thead>
+		<tbody>
+	<?php foreach ($template_data as $template) :?>
+			<tr class="<?=$this->cycle('odd', 'even')?>">
+				<td class="list_labels">
+					<label>
+						<a href="<?=$template['template_edit_link']?>">
+							<?=$template['template_label']?>
+						</a>
+					</label>
+					<div class="form_subtext subtext">
+						<?=$template['template_name']?>
+					</div>
+				</td>
+				<td>
+					<?=$template['template_description']?>
+				</td>
+				<td class="freeform_text_center"><?=$template['template_id']?></td>
+				<td class="freeform_text_center">
+					<a class="freeform_edit_button"
+						href="<?=$template['template_edit_link']?>">
+						<?=lang('edit');?>
+					</a>
+				</td>
+				<td class="freeform_text_center">
+					<a class="freeform_duplicate_button"
+						href="<?=$template['template_duplicate_link']?>">
+						<?=lang('duplicate');?>
+					</a>
+				</td>
+				<td class="freeform_text_center">
+					<a 	class="freeform_delete_button"
+						href="<?=$template['template_delete_link']?>"
+						data-template-id="<?=$template['template_id']?>">
+						<?=lang('delete');?>
+					</a>
+				</td>
+			</tr>
+	<?php endforeach;?>
+		</tbody>
+	</table>
+
+<?php if ($paginate):?>
+	<p class="pagination"><?=$paginate?></p>
+<?php endif;?>
+</form>
+
+<?php endif;?>

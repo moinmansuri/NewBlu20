@@ -1,0 +1,298 @@
+<form action="<?=$form_uri?>" method="POST" id="template_edit_form">
+	<input type="hidden" name="XID" 			value="<?=$XID_SECURE_HASH?>" />
+	<input type="hidden" name="template_id"	value="<?=$template_id?>" />
+	<!-- defaults for checkboxes when unchecked -->
+	<input type="hidden" value="n" name="wordwrap" 		/>
+	<input type="hidden" value="n" name="allow_html" 	/>
+	<input type="hidden" value='n' name="include_attachments" />
+
+<?php if ($edit_warning):?>
+		<div class="freeform_notice">
+			<div class="notice_heading warning">
+			<!-- yes this is a crime but
+				vertical-align:middle + display:table-cell
+				was simply failing-->
+			<table class="plain_table">
+				<tr>
+					<td class="inner_warning">
+						<?=lang('notice')?>
+					</td>
+				</tr>
+			</table>
+			</div>
+			<div class="notice_content">
+				<?=$lang_template_edit_warning?>
+			</div>
+			<button class="notice_close freeform_close_button">x</button>
+		</div>
+<?php endif;?>
+
+	<div class="sub_box">
+		<p><?=lang('template_edit_instructions');?></p>
+
+		<?php if ($duplicated):?>
+			<p class="notice"><?=lang('duplicated_from_');?>&nbsp;<?=$duplicated_from?></p>
+		<?php endif;?>
+	</div>
+
+	<table class="mainTable padTable freeform_table headless" style="width:100%;">
+		<colgroup>
+			<col span="1" style="width: 30%;">
+			<col span="1" style="width: 40%;">
+			<col span="1" style="width: 30%;">
+		</colgroup>
+		<tbody>
+			<!-- template label -->
+			<tr class="<?=$this->cycle('odd', 'even')?>">
+				<td>
+					<label for="template_label"><?=lang('template_label');?></label>
+					<div class="subtext"><?=lang('template_label_desc');?></div>
+				</td>
+				<td>
+					<input id="template_label" type="text" name="template_label" value="<?=$template_label?>"  maxlength="150"/>
+				</td>
+				<td>
+					<div class="validation_error_holder">
+						<div class="validation_error"></div>
+					</div>
+				</td>
+			</tr>
+
+			<!-- template name (short_name) -->
+			<tr class="<?=$this->cycle('odd', 'even')?>">
+				<td>
+					<label for="template_name"><?=lang('template_name');?></label>
+					<div class="subtext"><?=lang('template_name_desc');?></div>
+				</td>
+				<td>
+					<input type="text" id="template_name" name="template_name" value="<?=$template_name?>"  maxlength="150"/>
+				</td>
+				<td>
+					<input type="checkbox" id="auto_generate_name" value="y" <?php
+						if ($template_id == 0):?>checked="checked"<?php endif;?>/>
+					<label class="small_label checkbox_label" for="auto_generate_name"><?=lang('auto_generate_name');?></label>
+					<div class="validation_error_holder">
+						<div class="validation_error"></div>
+					</div>
+				</td>
+			</tr>
+
+			<!-- template desc -->
+			<tr class="<?=$this->cycle('odd', 'even')?>">
+				<td>
+					<label for="template_description"><?=lang('template_description');?></label>
+					<div class="subtext"><?=lang('template_description_desc');?></div>
+				</td>
+				<td>
+					<textarea rows="6" id="template_description" name="template_description"><?=$template_description?></textarea>
+				</td>
+				<td>
+					<div id="desc_word_count" class="word_count">0</div>
+					<div class="validation_error_holder">
+						<div class="validation_error"></div>
+					</div>
+				</td>
+			</tr>
+
+			<!-- template enable template -->
+			<tr class="<?=$this->cycle('odd', 'even')?>">
+				<td>
+					<label><?=lang('enable_template');?></label>
+				</td>
+				<td style="padding-bottom:0px;">
+					<p>
+						<input type="hidden" name="enable_template" value="n"/>
+						<input type="checkbox" id="enable_template" name="enable_template" <?php
+								if ($enable_template != 'n'):?>checked="checked" <?php endif;?> value="y"/>
+						<label class="checkbox_label" for="enable_template"><?=lang('enable');?></label>
+					</p>
+				</td>
+				<td>
+					<div class="validation_error_holder">
+						<div class="validation_error"></div>
+					</div>
+				</td>
+			</tr>
+
+			<!-- template extra params -->
+			<tr class="<?=$this->cycle('odd', 'even')?>">
+				<td>
+					<label><?=lang('template_params')?></label>
+					<div class="subtext"><?=lang('template_params_desc')?></div>
+				</td>
+				<td class="field_option_holder" style="padding-bottom:0px;">
+					<div class="value_label_holder">
+						<div class="value_label_header">
+							<span class="value_label_header_sub">
+								<?=lang('param_name')?>
+							</span>
+							<span class="value_label_header_sub">
+								<?=lang('param_value')?>
+							</span>
+						</div>
+					<?php $counter = 0;
+						foreach($param_data as $param => $value):?>
+						<div class="value_label_holder_input">
+							<input 	type="text"
+									name="list_param_holder_input[<?=$counter?>]"
+									value="<?=form_prep($param)?>"/>
+							<input 	type="text"
+									name="list_value_holder_input[<?=$counter?>]"
+									value="<?=form_prep($value)?>"/>
+							<div class="freeform_delete_button">-</div>
+						</div>
+					<?php
+						$counter++;
+						endforeach;?>
+						<div class="value_label_holder_input">
+							<input 	type="text"
+									name="list_param_holder_input[<?=$counter?>]" />
+							<input 	type="text"
+									name="list_value_holder_input[<?=$counter?>]" />
+							<div class="freeform_delete_button">-</div>
+						</div>
+					</div>
+							</td>
+				<td>
+					<div class="validation_error_holder">
+						<div class="validation_error"></div>
+					</div>
+				</td>
+			</tr>
+
+			<!-- template template -->
+			<tr class="<?=$this->cycle('odd', 'even')?>">
+				<td>
+					<label for="n_template_data"><?=lang('composer_template');?></label>
+				</td>
+				<td colspan="2">
+					<textarea class="input" rows="25" style="height:100%;" id="n_template_data" name="template_data"><?=$template_data?></textarea>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<div class="submit_block">
+<?php if ($update):?>
+		<input id="quicksave" type="submit" name="quicksave" class="submit" value="<?=lang('quick_save')?>" />
+<?php endif;?>
+		<input id="submit" type="submit" name="submit" class="submit" value="<?=$lang_submit_word?>" />
+	</div>
+</form>
+
+<script type="text/javascript">
+	(function(global, $){
+
+		$(function(){
+			var $context			= $('#template_edit_form');
+			var $templateName		= $('#template_name',			$context);
+			var $templateLabel		= $('#template_label',			$context);
+			var $templateDesc		= $('#template_description',	$context);
+			var $autoGenerateName	= $('#auto_generate_name',		$context);
+			var $wordCount			= $('#desc_word_count',			$context);
+			var $templateData		= $('#n_template_data',			$context);
+			var $paramInputs		= $('.field_option_holder:first', $context);
+			var formUrl				= $context.attr('action');
+			var taTemplateData		= $('#n_template_data').get(0);
+			var validated			= false;
+
+			// -------------------------------------
+			//	validation
+			// -------------------------------------
+
+			$('[type="submit"]').click(function(e){
+				if (validated)
+				{
+					return true;
+				}
+
+				e.preventDefault();
+
+				var quicksave = $(this).is('#quicksave');
+				var postData = $context.serializeArray();
+
+				if ( ! quicksave)
+				{
+					//we only want to validate
+					postData.push({
+						name	: 'validate_only',
+						value	: 'true'
+					});
+				}
+
+				postData = $.param(postData);
+
+				//whirly window
+				$.fancybox.showActivity();
+
+				$.post(formUrl, postData, function(data) {
+
+					$('.validation_error_holder').hide();
+
+					//errors
+					if (data.success == false)
+					{
+						$.fancybox.hideActivity();
+
+						Freeform.showValidationErrors(
+							data.errors,
+							$context,
+							true
+						);
+					}
+					else if (quicksave)
+					{
+						$.fancybox.hideActivity();
+					}
+					else
+					{
+						validated = true;
+						//for some reason, .submit() was not working..
+						$('#submit', $context).click();
+					}
+				}, 'json');
+
+				return false;
+			});
+			//END $context.submit
+
+			// -------------------------------------
+			//	auto dupe params
+			// -------------------------------------
+
+
+
+			Freeform.autoDupeLastInput(
+				$paramInputs,
+				'value_label_holder_input'
+			);
+
+			$paramInputs.delegate('.freeform_delete_button', 'click', function(){
+				$(this).parent().remove();
+			});
+
+			// -------------------------------------
+			//	auto generate name
+			// -------------------------------------
+
+			Freeform.autoGenerateShortname(
+				$templateLabel,
+				$templateName,
+				$autoGenerateName
+			);
+
+			//lets add tabbing because, man, not being able to tab a textarea sucks
+			$templateData.bind('keydown', function(e){
+				Freeform.tabTextarea(e, this);
+			});
+
+			// -------------------------------------
+			//	word count
+			// -------------------------------------
+
+			$templateDesc.keyup(function(){
+				$wordCount.html($templateDesc.val().length);
+			}).keyup();
+		});
+	}(window, jQuery));
+</script>

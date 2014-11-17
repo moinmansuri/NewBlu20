@@ -1,0 +1,124 @@
+<?php if (empty($form_data)):?>
+
+<p>
+	<strong>
+<?php if ( $legacy ) : ?>
+		<?=lang('no_forms_legacy')?><br />
+		<a href="<?=$migrate_link?>"><?=lang('migrate_collections')?></a>
+		<?=lang('or')?>
+		<a href="<?=$new_form_link?>"><?=lang('create_new_form_now')?></a>
+<?php else : ?>
+		<?=lang('no_forms')?>
+		<a href="<?=$new_form_link?>"><?=lang('create_one_now')?></a>
+<?php endif ?>
+	</strong>
+</p>
+
+<?php else:?>
+
+<?php if ($paginate):?>
+	<p class="pagination"><?=$paginate?></p>
+<?php endif;?>
+
+<form method="post" action="<?=$form_url?>" id="freeform_form">
+
+	<table id="form_list_table" class="mainTable padTable freeform_table"
+			style="width:100%;">
+		<thead>
+			<tr>
+				<th><?=lang('form')?></th>
+				<th style="width:17%;"><?=lang('submissions')?></th>
+				<th style="width:15%;"><?=lang('moderate')?></th>
+				<th style='width:47px; text-align:center;'><?=lang('id')?></th>
+				<th class="icon_holder"><?=lang('composer')?></th>
+				<th class="icon_holder"><?=lang('edit')?></th>
+				<th class="icon_holder"><?=lang('duplicate')?></th>
+				<th class="icon_holder"><?=lang('delete')?></th>
+			</tr>
+		</thead>
+		<tbody>
+	<?php foreach ($form_data as $form) :?>
+			<tr class="<?=$this->cycle('odd', 'even')?>">
+				<td class="list_labels">
+				<?php if ($form['form_description']):?>
+					<div class="freeform_info_button">
+						<div class="tooltip">
+							<?=$form['form_description']?>
+						</div>
+					</div>
+				<?php endif;?>
+					<label class="form_label">
+						<a href="<?=$form['form_settings_link']?>"><?=$form['form_label']?></a>
+					</label>
+					<div class="form_subtext subtext"><?=$form['form_name']?></div>
+				</td>
+				<td>
+					<span class="form_submissions<?php if($form['submissions_count'] == 0):?> zero<?php endif;?>">
+						<a href="<?=$form['form_submissions_link']?>">
+							<?=lang('submissions')?>
+						</a>
+						<span class="item_total"><?=$form['submissions_count']?></span>
+					</span>
+				</td>
+				<td>
+					<span class="form_moderate<?php if($form['moderate_count'] == 0):?> zero<?php endif;?>">
+						<a href="<?=$form['form_moderate_link']?>">
+							<?=lang('moderate')?>
+						</a>
+						<span class="item_total"><?=$form['moderate_count']?></span>
+					</span>
+				</td>
+				<td class="freeform_text_center"><?=$form['form_id']?></td>
+				<td class="freeform_text_center">
+			<?php if ($form['has_composer']):?>
+					<a class="freeform_composer_button" href="<?=$form['form_edit_composer_link']?>">
+						<?=lang('edit')?>&nbsp;<span class="anchor_subtext"><?=lang('in_composer')?></span>
+					</a>
+
+			<?php else:?>
+					<span class="form_subtext"><?=lang('n_a')?></span>
+			<?php endif;?>
+				</td>
+				<td class="freeform_text_center">
+					<a class="freeform_edit_button" href="<?=$form['form_settings_link']?>">
+						<?=lang('settings')?>
+					</a>
+				</td>
+				<td class="freeform_text_center">
+					<a class="freeform_duplicate_button" href="<?=$form['form_duplicate_link']?>">
+						<?=lang('duplicate')?>
+					</a>
+				</td>
+				<td class="freeform_text_center">
+					<a class="freeform_delete_button" href="<?=$form['form_delete_link']?>">
+						<?=lang('delete')?>
+					</a>
+				</td>
+			</tr>
+	<?php endforeach;?>
+		</tbody>
+	</table>
+
+</form>
+
+<?php if ($paginate):?>
+	<p class="pagination"><?=$paginate?></p>
+<?php endif;?>
+
+<script type="text/javascript">
+	(function($, global){
+		$(function(){
+			var $context = $('#form_list_table');
+
+
+			//submissions, moderate
+			$context.delegate('.form_submissions, .form_moderate', 'click', function(e){
+				window.location.href = $(this).find('a').attr('href');
+				e.preventDefault();
+				return false;
+			});
+		});
+	}(jQuery, window));
+</script>
+
+<?php endif;?>

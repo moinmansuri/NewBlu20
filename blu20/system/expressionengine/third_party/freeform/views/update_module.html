@@ -1,0 +1,7 @@
+<form action='<?php echo $form_url;?>' method='post'>
+	<input type="hidden" name="run_update" value="y" />
+	<input type="hidden" name="XID" value="<?=$XID_SECURE_HASH?>" />
+
+	<p class="ss_notice"><strong><?=lang('freeform_update_message')?></strong></p>
+	<p><input  type='submit' class='submit' value='<?=lang('update')?>' /></p>
+</form>

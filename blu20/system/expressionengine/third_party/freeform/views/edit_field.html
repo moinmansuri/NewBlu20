@@ -1,0 +1,265 @@
+<form action="<?=$form_uri?>" method="POST" id="field_edit_form" autocomplete="off">
+	<input type="hidden" name="XID" 		value="<?=$XID_SECURE_HASH?>" />
+	<input type="hidden" name="field_id"	value="<?=$field_id?>" />
+	<input type="hidden" name="form_ids"	value="<?=$form_ids?>" id="form_ids"/>
+	<!-- defaults for checkboxes when unchecked -->
+<?php if ( ! isset($modal) OR $modal !== TRUE):?>
+	<input type="hidden" value="y" name="submissions_page" />
+	<input type="hidden" value="y" name="moderation_page" />
+	<input type="hidden" value="y" name="composer_use" />
+<?php else: ?>
+	<input type="hidden" value="y" name="submissions_page" />
+	<input type="hidden" value="y" name="moderation_page" />
+	<input type="hidden" value="y" name="composer_use" />
+<?php endif;?>
+
+<?php if ($edit_warning):?>
+	<div class="freeform_notice">
+		<div class="notice_heading strong_warning">
+			<!-- yes this is a crime but
+				vertical-align:middle + display:table-cell
+				was simply failing-->
+			<table class="plain_table">
+				<tr>
+					<td class="inner_warning">
+						<?=$lang_field_edit_warning?>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class="notice_content"><?=$lang_field_edit_warning_desc?></div>
+		<button class="notice_close freeform_close_button">x</button>
+	</div>
+<?php endif;?>
+
+	<div class="sub_box">
+		<p><?=lang('field_edit_instructions')?></p>
+<?php if ($duplicated):?>
+		<p class="ss_notice"><?=lang('duplicated_from_')?>&nbsp;<?=$duplicated_from?></p>
+<?php endif;?>
+	</div>
+	<table class="mainTable padTable freeform_table headless" style="width:100%;">
+		<tbody>
+			<!-- field type -->
+			<tr class="<?=$this->cycle('odd', 'even')?>">
+				<td style="width:30%;">
+					<label for="field_type"><?=lang('field_type')?></label>
+					<div class="subtext"></div>
+				</td>
+				<td style="width:40%;">
+					<select id="field_type" name="field_type" class="chzn_select">
+				<?php foreach( $fieldtypes as $short_name => $data): ?>
+						<option <?php if ($field_type == $short_name):?>selected="selected" <?php endif;
+								?>value="<?=$short_name?>"><?=$data['name']?></option>
+				<?php endforeach;?>
+					</select>
+				</td>
+				<td style="width:30%;">
+				<?php
+					$first = TRUE;
+					foreach( $fieldtypes as $short_name => $data): ?>
+						<span class="field_type_desc subtext<?php
+						if ($field_type != $short_name OR
+							(! $field_type AND $first) ):
+								$first = FALSE;
+							?> hidden<?php
+						endif;?>"
+								id="<?=$short_name?>_desc"><?=$data['description']?></span>
+				<?php endforeach;?>
+					<div class="validation_error_holder"><div class="validation_error"></div></div>
+				</td>
+			</tr>
+
+			<!-- field label -->
+			<tr class="<?=$this->cycle('odd', 'even')?>">
+				<td>
+					<label for="field_label"><?=lang('field_label')?></label>
+					<div class="subtext"><?=lang('field_label_desc')?></div>
+				</td>
+				<td>
+					<input id="field_label" type="text" name="field_label" value="<?=$field_label?>" maxlength="150" />
+				</td>
+				<td>
+					<div class="validation_error_holder"><div class="validation_error"></div></div>
+				</td>
+			</tr>
+
+			<!-- field name (short_name) -->
+			<tr class="<?=$this->cycle('odd', 'even')?>">
+				<td>
+					<label for="field_name"><?=lang('field_name')?></label>
+					<div class="subtext"><?=lang('field_name_desc')?></div>
+				</td>
+				<td>
+					<input type="text" id="field_name" name="field_name" value="<?=$field_name?>" maxlength="150" />
+				</td>
+				<td>
+					<div class="auto_generate_name_holder">
+						<input type="checkbox" id="auto_generate_name" value="y" <?php
+							if ($field_id == 0):?>checked="checked"<?php endif;?>/>
+						<label 	class="small_label checkbox_label"
+								for="auto_generate_name">
+							<?=lang('auto_generate_name')?>
+						</label>
+					</div>
+					<div class="validation_error_holder"><div class="validation_error"></div></div>
+				</td>
+			</tr>
+
+			<!-- field length -->
+			<tr class="<?=$this->cycle('odd', 'even')?>">
+				<td>
+					<label for="field_description"><?=lang('field_description')?></label>
+					<div class="subtext"><?=lang('field_description_desc')?></div>
+				</td>
+				<td>
+					<textarea rows="6" id="field_description" name="field_description"><?=$field_description?></textarea>
+				</td>
+				<td>
+					<!-- por ejemplo -->
+					<div id="desc_word_count" class="word_count">0</div>
+				</td>
+			</tr>
+<?php if ( ! isset($modal) OR $modal !== TRUE):?>
+<?php /*
+			<!-- field options -->
+			<tr id="field_options_row" class="<?=$this->cycle('odd', 'even')?>">
+				<td>
+					<label for="field_length"><?=lang('field_display_options')?></label>
+					<div class="subtext"><?=lang('field_display_options_desc')?></div>
+				</td>
+				<td>
+					<p>
+						<input type="checkbox" id="submissions_page" name="submissions_page" <?php
+								if ($submissions_page == 'y'):?>checked="checked" <?php endif;?> value="y"/>
+						<label class="checkbox_label" for="submissions_page"><?=lang('submissions_page')?></label>
+					</p>
+					<p>
+						<input type="checkbox" id="moderation_page" name="moderation_page" <?php
+								if ($moderation_page == 'y'):?>checked="checked" <?php endif;?> value="y"/>
+						<label class="checkbox_label" for="moderation_page"><?=lang('moderation_page')?></label>
+					</p>
+
+					<p class="last">
+						<input type="checkbox" id="composer_use" name="composer_use" <?php
+								if ($composer_use == 'y'):?>checked="checked" <?php endif;?> value="y"/>
+						<label class="checkbox_label" for="composer_use"><?=lang('composer_use')?></label>
+					</p>
+
+				</td>
+				<td>
+					<div class="validation_error_holder"><div class="validation_error"></div></div>
+				</td>
+			</tr>
+*/?>
+			<!-- forms -->
+			<tr id="form_ids_row" class="<?=$this->cycle('odd', 'even')?>">
+				<td>
+					<label><?=lang('add_to_forms')?></label>
+					<div class="subtext"><?=lang('add_to_freeform_desc')?></div>
+				<?php if ($field_id != 0):?>
+					<div class="subtext ss_notice"><?=lang('add_to_freeform_notice')?></div>
+				<?php endif;?>
+				</td>
+				<td>
+		<?php if (empty($available_forms)):?>
+					<?=lang('no_forms')?>
+		<?php else:?>
+					<div id="form_list" class="field_list">
+				<?php foreach($available_forms as $form_name => $form_data):?>
+						<div class="field_tag" data-form-id="<?=$form_data['form_id']?>">
+							<?=$form_data['form_label']?>
+						</div>
+				<?php endforeach;?>
+					</div>
+					<div id="chosen_form_list" class="chosen_field_list"></div>
+		<?php endif;?>
+				</td>
+				<td>
+					<div class="validation_error_holder"><div class="validation_error"></div></div>
+				</td>
+			</tr>
+<?php endif;?>
+
+		</tbody>
+	</table>
+
+	<div id="field_settings">
+		<h4><?=lang('field_options')?></h4>
+		<div class="validation_error_holder"><div class="validation_error"></div></div>
+		<div id="field_settings_inner"></div>
+	</div>
+
+	<p class="submit_block">
+		<input type="submit" name="submit" class="submit" value="<?=$lang_submit_word?>" />
+	</p>
+</form>
+
+<div id="settings_table_holder">
+	<?php foreach( $fieldtypes as $short_name => $data):?>
+		<?php if ($data['settings_output'] !== ''):?>
+		<div class="field_settings" data-field="<?=$short_name?>"><?=$data['settings_output']?></div>
+		<?php endif?>
+	<?php endforeach?>
+</div>
+
+<?php if ( ! isset($modal) OR $modal !== TRUE):?>
+
+<script type="text/javascript">
+	;(function($){
+		//for validation
+		var $fieldEditForm	= $('#field_edit_form');
+		var formUrl			= $fieldEditForm.attr('action');
+		var valid			= false;
+		//prevent on submit and do via ajax
+		$fieldEditForm.submit(function(e){
+			if (valid)
+			{
+				return true;
+			}
+
+			e.preventDefault();
+
+			var postData	= $fieldEditForm.serializeArray();
+
+			postData.push({
+				name	: 'validate_only',
+				//intentionally a string and not a bool
+				value	: 'true'
+			});
+
+			postData = $.param(postData);
+
+			//whirly window
+			$.fancybox.showActivity();
+
+			$.post(formUrl, postData, function(data) {
+
+				$('.validation_error_holder').hide();
+
+				//errors
+				if ( ! data.success)
+				{
+					$.fancybox.hideActivity();
+
+					Freeform.showValidationErrors(
+						data.errors,
+						$fieldEditForm,
+						true
+					);
+				}
+				//if this is an update we don't want to add
+				else
+				{
+					valid = true;
+					$fieldEditForm.find('[name="submit"]').click();
+				}
+			}, 'json');
+
+			return false;
+		});
+		//END $fieldEditForm.submit
+	}(jQuery));
+</script>
+
+<?php endif;?>

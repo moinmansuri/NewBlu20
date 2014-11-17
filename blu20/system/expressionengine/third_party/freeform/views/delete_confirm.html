@@ -1,0 +1,15 @@
+<form method="post" action="<?=$form_url?>">
+	<input type="hidden" name="XID" value="<?=$XID_SECURE_HASH?>" />
+<?php foreach ($hidden_values as $name => $value):?>
+	<?php if (is_array($value)):?>
+		<?php foreach ($value as $sub_value):?>
+			<input type="hidden" name="<?=$name?>[]" value="<?=$sub_value?>" />
+		<?php endforeach;?>
+	<?php else:?>
+		<input type="hidden" name="<?=$name?>" value="<?=$value?>" />
+	<?php endif;?>
+<?php endforeach;?>
+	<p class="ss_notice"><?=$lang_message?></p>
+	<p class="ss_notice"><strong><?=lang('action_cannot_be_undone')?></strong></p>
+	<p><input type="submit" class="submit" name="submit" value="<?=$lang_submit?>"/></p>
+</form>

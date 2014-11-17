@@ -1,0 +1,159 @@
+<form method="POST" action="<?=$form_uri?>" id="freeform_preferences">
+	<input type="hidden" name="XID" value="<?=$XID_SECURE_HASH?>" />
+
+<?php if ($show_global_prefs):?>
+	<h4><?=lang('global_prefs')?></h4>
+	<table id="global_preferences" class="mainTable padTable freeform_table headless">
+		<tbody>
+<?php foreach($global_pref_data as $pref):?>
+			<tr class="<?=$this->cycle('odd', 'even')?>">
+				<td style="width:50%; vertical-align:top;">
+					<label for="<?=$pref['name']?>">
+						<?=$pref['lang_label']?>
+					</label>
+				<?php if ($pref['lang_desc'] != ''):?>
+					<div class="subtext">
+						<?=$pref['lang_desc']?>
+					</div>
+				<?php endif;?>
+				</td>
+				<td>
+		<?php if ($pref['type'] == 'int'):?>
+
+					<input 	class="input" 				type="text" size="4"
+							style="width:25%;"
+							id="<?=$pref['name']?>" 	maxlength="10"
+							name="<?=$pref['name']?>" 	value="<?=$pref['value']?>" />
+
+		<?php elseif ($pref['type'] == 'textarea'):?>
+
+					<textarea id="<?=$pref['name']?>"
+							  name="<?=$pref['name']?>"
+							  rows="6"><?=$pref['value']?></textarea>
+
+		<?php elseif ($pref['type'] == 'list'):?>
+					<div class="list_holder_input">
+			<?php foreach ($pref['value'] as $item):?>
+						<div class="list_input">
+							<input 	class="input" type="text"
+									style="margin-bottom:5px; width:50%;"
+									name="<?=$pref['name']?>[]" value="<?=$item?>" />
+							<div class="freeform_delete_button">-</div>
+						</div>
+			<?php endforeach; ?>
+						<div class="list_input">
+							<input 	class="input" type="text"
+									style="margin-bottom:5px; width:50%;"
+									name="<?=$pref['name']?>[]" value="" />
+							<div class="freeform_delete_button">-</div>
+						</div>
+					</div>
+		<?php elseif ($pref['type'] == 'y_or_n'):?>
+					<!-- default value cheat -->
+					<input	type="hidden" name="<?=$pref['name']?>" 	value="n" />
+					<input 	class="input" 				type="checkbox"
+							id="<?=$pref['name']?>"
+							name="<?=$pref['name']?>" 	value="y"
+							<?php if ($pref['value'] == 'y'):?>checked="checked"<?php endif;?>/>
+					&nbsp;
+					<label for="<?=$pref['name']?>"><?=lang('enable')?></label>
+
+		<?php else: /* text */?>
+					<input 	class="input" 				type="text"
+							id="<?=$pref['name']?>"
+							name="<?=$pref['name']?>" 	value="<?=$pref['value']?>" />
+		<?php endif;?>
+				</td>
+			</tr>
+<?php endforeach; ?>
+		</tbody>
+	</table>
+<?php endif;?>
+
+	<?php if ($msm_enabled):?>
+		<h4><?=$lang_site_prefs_for_site?></h4>
+	<?php endif;?>
+
+	<table id="preferences" class="mainTable padTable freeform_table headless">
+		<tbody>
+<?php foreach($pref_data as $pref):?>
+			<tr class="<?=$this->cycle('odd', 'even')?>">
+				<td style="width:50%; vertical-align:top;">
+					<label for="<?=$pref['name']?>">
+						<?=$pref['lang_label']?>
+					</label>
+				<?php if ($pref['lang_desc'] != ''):?>
+					<div class="subtext">
+						<?=$pref['lang_desc']?>
+					</div>
+				<?php endif;?>
+				</td>
+				<td>
+		<?php if ($pref['type'] == 'int'):?>
+
+					<input 	class="input" 				type="text" size="4"
+							style="width:25%;"
+							id="<?=$pref['name']?>" 	maxlength="10"
+							name="<?=$pref['name']?>" 	value="<?=$pref['value']?>" />
+
+		<?php elseif ($pref['type'] == 'textarea'):?>
+
+					<textarea id="<?=$pref['name']?>"
+							  name="<?=$pref['name']?>"
+							  rows="6"><?=$pref['value']?></textarea>
+
+		<?php elseif ($pref['type'] == 'list'):?>
+					<div class="list_holder_input">
+			<?php foreach ($pref['value'] as $item):?>
+						<div class="list_input">
+							<input 	class="input" type="text"
+									style="margin-bottom:5px; width:50%;"
+									name="<?=$pref['name']?>[]" value="<?=$item?>" />
+							<div class="freeform_delete_button">-</div>
+						</div>
+			<?php endforeach; ?>
+						<div class="list_input">
+							<input 	class="input" type="text"
+									style="margin-bottom:5px; width:50%;"
+									name="<?=$pref['name']?>[]" value="" />
+							<div class="freeform_delete_button">-</div>
+						</div>
+					</div>
+		<?php elseif ($pref['type'] == 'y_or_n'):?>
+					<!-- default value cheat -->
+					<input	type="hidden" name="<?=$pref['name']?>" 	value="n" />
+					<input 	class="input" 				type="checkbox"
+							id="<?=$pref['name']?>"
+							name="<?=$pref['name']?>" 	value="y"
+							<?php if ($pref['value'] == 'y'):?>checked="checked"<?php endif;?>/>
+					&nbsp;
+					<label for="<?=$pref['name']?>"><?=lang('enable')?></label>
+
+		<?php else: /* text */?>
+					<input 	class="input" 				type="text"
+							id="<?=$pref['name']?>"
+							name="<?=$pref['name']?>" 	value="<?=$pref['value']?>" />
+		<?php endif;?>
+				</td>
+			</tr>
+<?php endforeach; ?>
+		</tbody>
+	</table>
+	<p style="margin-left:50%; padding-left:10px;">
+		<input type="submit" class="submit" name="submit" value="<?=lang('save_preferences')?>" />
+	</p>
+</form>
+
+<script type="text/javascript">
+	(function(global, $){
+		$(function(){
+			var $context = $('#freeform_preferences');
+
+			$('.list_holder_input').each(function(){
+				Freeform.autoDupeLastInput($(this), 'list_input');
+			}).delegate('.freeform_delete_button', 'click', function(){
+				$(this).parent().remove();
+			});
+		});
+	}(window, jQuery));
+</script>

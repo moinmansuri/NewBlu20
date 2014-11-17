@@ -1,0 +1,200 @@
+<style type="text/css">
+	.group_holder {
+		display:		inline-block;
+		margin-bottom:	10px;
+		width:			185px;
+	}
+
+	.type_holder {
+		margin-bottom:	10px;
+	}
+
+	#mainContent .pageContents .group_holder label {
+		font-weight: 	normal;
+	}
+
+	#mainContent .pageContents .group_box.sub_box {
+		/*border-top: 	1px solid #d0d7df;
+		padding:		10px 0 0 0;*/
+		background-color: 		#eee;
+	}
+	#mainContent .pageContents #permissions td {
+		padding-bottom: 0px;
+	}
+	.hidden_item {
+		display: 				none;
+	}
+
+	#freeform_preferences label {
+		position: 				relative;
+	}
+
+	#freeform_preferences label span {
+		position: 				relative;
+		top:				-1px;
+	}
+</style>
+
+<div class="sub_box"><p><?=lang('permissions_description')?></p></div>
+
+<form method="POST" action="<?=$form_uri?>" id="freeform_preferences">
+	<input type="hidden" name="XID" value="<?=$XID_SECURE_HASH?>" />
+
+	<table class="mainTable padTable freeform_table headless">
+		<tbody>
+			<tr class="<?=$this->cycle('odd', 'even')?>">
+				<td style="width:50%; vertical-align:top;">
+					<label><?=lang('use_global_permissions')?></label>
+					<div class="subtext"><?=lang('global_permissions_description')?></div>
+				</td>
+				<td>
+					<input 	type="hidden"	name="global_permissions" value="n" />
+					<label>
+						<input	type="checkbox"	name="global_permissions" value="y"
+							<?php if (isset($global_permissions) AND
+										$global_permissions == TRUE): ?>
+									checked="checked"
+							<?php endif;?>
+								/>
+						&nbsp;
+						<?=lang('enable')?>
+					</label>
+				</td>
+			</tr>
+			<tr class="<?=$this->cycle('odd', 'even')?>">
+				<td>
+					<label><?=lang('default_permissions_new_group')?></label>
+					<div class="subtext"><?=lang('default_permissions_new_group_desc')?></div>
+				</td>
+				<td>
+					<label>
+						<input	type="radio"	name="default_permission_new_group" value="allow"
+							<?php if ( ! isset($permissions['default_permission_new_group']) OR
+										$permissions['default_permission_new_group'] != 'deny'): ?>
+									checked="checked"
+							<?php endif;?>
+								/>
+						&nbsp;
+						<span><?=lang('allow')?></span>
+					</label>
+					&nbsp;
+					&nbsp;
+					<label>
+						<input	type="radio"	name="default_permission_new_group" value="deny"
+							<?php if (isset($permissions['default_permission_new_group']) AND
+										$permissions['default_permission_new_group'] == 'deny'): ?>
+									checked="checked"
+							<?php endif;?>
+								/>
+						&nbsp;
+						<span><?=lang('deny')?></span>
+					</label>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<h4><?=lang('mcp_tab_permissions')?></h4>
+
+	<table id="permissions" class="mainTable padTable freeform_table headless">
+		<tbody>
+<?php foreach($menu_items as $menu_item):?>
+			<tr class="<?=$this->cycle('odd', 'even')?>">
+				<td style="width:175px; vertical-align:top;">
+					<label>
+						<?=lang($menu_item)?>
+					</label>
+				</td>
+				<td>
+					<div class="ss_clearfix type_holder">
+						<input	type="hidden"
+								class="pill_data"
+								id="<?=$menu_item?>_allow_type"
+								name="<?=$menu_item?>_allow_type"
+								value="<?=(isset($permissions[$menu_item]['allow_type']) ?
+											$permissions[$menu_item]['allow_type'] :
+											(($menu_item == 'permissions') ? 'deny_all' : 'allow_all'))?>"/>
+
+						<button data-value="allow_all"
+								class="freeform_ui_element pill pill_first<?php
+									if ( ( ! isset($permissions[$menu_item]['allow_type']) AND
+										$menu_item != 'permissions' ) OR
+										(isset($permissions[$menu_item]['allow_type']) AND
+										$permissions[$menu_item]['allow_type'] == 'allow_all')): ?>
+										active
+									<?php endif;?>"><?=lang('allow_all')?></button>
+
+						<button data-value="deny_all"
+								class="freeform_ui_element pill<?php
+									if ( (isset($permissions[$menu_item]['allow_type']) AND
+										$permissions[$menu_item]['allow_type'] == 'deny_all') OR
+										( ! isset($permissions[$menu_item]['allow_type']) AND
+										$menu_item == 'permissions')): ?>
+										active
+									<?php endif;?>"><?=lang('deny_all')?></button>
+
+						<button data-value="by_group"
+								class="freeform_ui_element pill pill_last<?php
+									if ( isset($permissions[$menu_item]['allow_type']) AND
+										$permissions[$menu_item]['allow_type'] == 'by_group'): ?>
+										active
+									<?php endif;?>"><?=lang('by_group')?></button>
+					</div>
+					<div class="group_box sub_box<?php
+							if ( ! isset($permissions[$menu_item]['allow_type']) OR
+								$permissions[$menu_item]['allow_type'] != 'by_group'):
+							 ?> hidden_item<?php endif;?>">
+			<?php foreach ($member_groups as $group_id => $group_title):?>
+						<div class="group_holder">
+							<input 	type="hidden"	name="<?=$menu_item?>_<?=$group_id?>"
+									value="n" />
+							<label>
+								<input	type="checkbox"	name="<?=$menu_item?>_<?=$group_id?>"
+										value="y"
+									<?php if ( ! isset($permissions[$menu_item]['groups'][$group_id]) OR
+												$permissions[$menu_item]['groups'][$group_id] == 'y'): ?>
+											checked="checked"
+									<?php endif;?>
+										/>
+								&nbsp;
+								<?=$group_title?>
+							</label>
+						</div>
+			<?php endforeach;?>
+					</div>
+				</td>
+			</tr>
+<?php endforeach; ?>
+		</tbody>
+	</table>
+	<p style="margin-left:190px;">
+		<input type="submit" class="submit" name="submit" value="<?=lang('save_permissions')?>" />
+	</p>
+</form>
+
+<script type="text/javascript">
+	jQuery(function($){
+		$('.pill').click(function(e){
+			var $that = $(this);
+			var $container = $that.closest('td');
+			var val = $that.attr('data-value');
+			$container.find('.pill').removeClass('active');
+			$container.find('.pill_data:first').val(val)
+			$that.addClass('active');
+
+			//since IE does its event bubbling in a different order
+			//this can actually fire too early so we just want
+			//it to wait until all events are over
+			if (val == 'by_group')
+			{
+				$container.find('.group_box').slideDown('fast');
+			}
+			else
+			{
+				$container.find('.group_box').slideUp('fast');
+			}
+			e.preventDefault();
+			return false;
+		});
+	});
+</script>

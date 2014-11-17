@@ -1,0 +1,175 @@
+<form action="<?=$form_uri?>" method="POST" id="entry_edit_form" autocomplete="off" enctype="multipart/form-data">
+	<input type="hidden" name="XID" value="<?=$XID_SECURE_HASH?>" />
+	<input type="hidden" name="form_id" value="<?=$form_id?>" />
+	<input type="hidden" name="entry_id" value="<?=$entry_id?>" />
+	<table class="mainTable padTable freeform_table headless" style="width:100%;">
+		<tbody>
+<?php if ( ! empty( $entry_data['entry_id'] ) ) : ?>
+			<tr class="<?=$this->cycle('odd', 'even')?>">
+				<td style="width:30%;">
+					<label><?=lang('entry_id')?></label>
+				</td>
+				<td>
+					<?=$entry_data['entry_id']?>
+				</td>
+				<td style="width:30%;">
+					<div class="validation_error_holder"><div class="validation_error"></div></div>
+				</td>
+			</tr>
+			<tr class="<?=$this->cycle('odd', 'even')?>">
+				<td style="width:30%;">
+					<label><?=lang('group_title')?></label>
+				</td>
+				<td>
+					<?=$entry_data['group_title']?>
+				</td>
+				<td style="width:30%;">
+					<div class="validation_error_holder"><div class="validation_error"></div></div>
+				</td>
+			</tr>
+			<tr class="<?=$this->cycle('odd', 'even')?>">
+				<td style="width:30%;">
+					<label><?=lang('screen_name')?></label>
+				</td>
+				<td>
+					<?=$entry_data['screen_name']?>
+				</td>
+				<td style="width:30%;">
+					<div class="validation_error_holder"><div class="validation_error"></div></div>
+				</td>
+			</tr>
+			<tr class="<?=$this->cycle('odd', 'even')?>">
+				<td style="width:30%;">
+					<label><?=lang('ip_address')?></label>
+				</td>
+				<td>
+					<?=$entry_data['ip_address']?>
+				</td>
+				<td style="width:30%;">
+					<div class="validation_error_holder"><div class="validation_error"></div></div>
+				</td>
+			</tr>
+			<tr class="<?=$this->cycle('odd', 'even')?>">
+				<td style="width:30%;">
+					<label><?=lang('entry_date')?></label>
+				</td>
+				<td>
+					<?=$entry_data['entry_date']?>
+				</td>
+				<td style="width:30%;">
+					<div class="validation_error_holder"><div class="validation_error"></div></div>
+				</td>
+			</tr>
+			<tr class="<?=$this->cycle('odd', 'even')?>">
+				<td style="width:30%;">
+					<label><?=lang('edit_date')?></label>
+				</td>
+				<td>
+					<?=$entry_data['edit_date']?>
+				</td>
+				<td style="width:30%;">
+					<div class="validation_error_holder"><div class="validation_error"></div></div>
+				</td>
+			</tr>
+<?php endif //end entry_id test ?>
+			<tr class="<?=$this->cycle('odd', 'even')?>">
+				<td style="width:30%;">
+					<label><?=lang('status')?></label>
+				</td>
+				<td>
+					<select
+						name="status"
+						class="chzn_select_no_search">
+				<?php foreach( $statuses as $status => $lang_status): ?>
+						<option <?php if (!empty($entry_data['status']) AND $entry_data['status'] == $status):?>selected="selected" <?php endif;
+								?>value="<?=$status?>"><?=$lang_status?></option>
+				<?php endforeach;?>
+					</select>
+				</td>
+				<td style="width:30%;">
+					<div class="validation_error_holder"><div class="validation_error"></div></div>
+				</td>
+			</tr>
+	<?php foreach ($field_output_data as $field_id => $output_data):?>
+			<tr class="<?=$this->cycle('odd', 'even')?>">
+				<td style="width:30%;">
+					<label><?=$output_data['field_label']?></label>
+			<?php if (isset($output_data['field_description']) AND trim($output_data['field_description'])):?>
+					<div class="subtext">
+						<?=$output_data['field_description']?>
+					</div>
+			<?php endif;?>
+
+				</td>
+				<td>
+					<?=$output_data['field_display']?>
+				</td>
+				<td style="width:30%;">
+					<div class="validation_error_holder"><div class="validation_error"></div></div>
+				</td>
+			</tr>
+	<?php endforeach;?>
+		</tbody>
+	</table>
+	<p class="submit_block">
+		<input type="submit" name="submit" class="submit" value="<?=lang('submit')?>" />
+	</p>
+</form>
+
+<script type="text/javascript">
+	(function($, global){
+		$(function(){
+			var $context	= $('#entry_edit_form');
+			var validated	= false;
+			var formUrl		= $context.attr('action');
+
+			$context.submit(function(e){
+				if (validated)
+				{
+					return true;
+				}
+
+				e.preventDefault();
+
+				var postData 	= $(this).serializeArray();
+
+				//we only want to validate
+				postData.push({
+					name 	: 'validate_only',
+					value	: 'true'
+				});
+
+				postData = $.param(postData);
+
+				//whirly window
+				$.fancybox.showActivity();
+
+				$.post(formUrl, postData, function(data) {
+
+					$('.validation_error_holder').hide();
+
+					//errors
+					if (data.success == false)
+					{
+						$.fancybox.hideActivity();
+
+						Freeform.showValidationErrors(
+							data.errors,
+							$context,
+							true
+						);
+					}
+					else
+					{
+						validated = true;
+						//for some reason, .submit() was not working..
+						$context.find('[name=submit]').click();
+					}
+				}, 'json');
+
+				return false;
+			});
+			//END $fieldEditForm.submit
+		});
+	}(jQuery, window));
+</script>

@@ -1,0 +1,28 @@
+.analytics-panel th {
+	background: #324D59;
+}
+
+.analytics-panel td {
+	background: #C5D1DA;	
+	color: #324D59;
+	padding: 8px;
+	width: 50%;
+}
+
+.analytics-stat-col .analytics-stat {
+	color: #324D59;
+	text-shadow: 0 1px 1px #FFF;
+}
+
+.analytics-stat-row .analytics-stat {
+	color: #324D59;
+	text-shadow: 0 1px 1px #FFF;
+}
+
+.analytics-reports td {
+	width: auto;
+}
+
+#cp_analytics_acc p {
+	color: #4c646c;
+}

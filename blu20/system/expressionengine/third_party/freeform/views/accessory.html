@@ -1,0 +1,94 @@
+<style type="text/css">
+	#freeform_acc_table {
+		border-collapse:	separate !important;
+		border-spacing:		0 !important;
+		width:				100%;
+		margin-bottom:		10px;
+	}
+		#freeform_acc_table th, td {
+			padding:		5px 10px;
+		}
+
+		#freeform_acc_table th {
+			text-align:		left;
+			text-align:		left;
+			font-weight:	bold;
+			color:			#5e6e70;
+			padding:		0 10px 3px 10px;
+			border-bottom:	2px solid #404C53;
+		}
+
+		#freeform_acc_table td {
+			vertical-align:	top;
+			text-align:		left;
+			padding:		5px 10px 5px 10px;
+			background-color:#26333b;
+			border-bottom:	1px solid #404C53;
+		}
+
+			#freeform_acc_table td ul {
+				display:	none;
+				border-top:	1px solid #666;
+				margin-top:	5px;
+			}
+
+
+	#freeform_acc_table a {
+		text-decoration:none;
+		font-weight:bold;
+	}
+
+	.ff_acc_field_label {
+		font-weight: bold;
+		cursor: pointer;
+	}
+
+		.ff_acc_field_label .hide {
+			display		:none;
+		}
+</style>
+<table id="freeform_acc_table">
+	<thead>
+		<tr>
+			<th style="width:30%;"><?=lang('form')?></th>
+			<th style="width:18%;"><?=lang('submissions')?></th>
+			<th style="width:24%;"><?=lang('pending_submissions')?></th>
+			<th style="width:28%;"><?=lang('fields')?></th>
+		</tr>
+	</thead>
+	<tbody>
+	<?php foreach($form_info as $form):?>
+		<tr>
+			<td>
+				<a href="<?=$form['form_link']?>">
+					<?=$form['form_data']['form_label']?>
+				</a>
+			</td>
+			<td>
+				<strong><?=$form['submission_count']?></strong>
+				<span class="view">
+					(<a href="<?=$form['submission_link']?>"><?=lang('view_lower')?></a>)
+				</span>
+			</td>
+			<td>
+				<strong><?=$form['pending_count']?></strong>
+				<span class="view">
+					(<a href="<?=$form['pending_link']?>"><?=lang('view_lower')?></a>)
+				</span>
+			</td>
+			<td>
+				<label class="ff_acc_field_label">
+					<span class="show"><?=lang('show')?></span>
+					<span class="hide"><?=lang('hide')?></span>
+				</label>
+				<br/>
+				<ul>
+		<?php foreach($form['field_names'] as $fname):?>
+					<li>{<?=$fname?>}</li>
+		<?php endforeach;?>
+				</ul>
+			</td>
+		</tr>
+	<?php endforeach;?>
+	</tbody>
+</table>

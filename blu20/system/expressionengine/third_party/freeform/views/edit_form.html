@@ -1,0 +1,551 @@
+<div class="sub_box">
+	<p><?=lang('create_form_description')?></p>
+
+<?php if ($duplicated):?>
+	<p class="ss_notice"><?=lang('duplicated_from_')?>&nbsp;<?=$duplicated_from?></p>
+<?php endif;?>
+</div>
+
+<form action="<?=$form_uri?>" method="POST" id="form_edit_form" autocomplete="off">
+	<input type="hidden" name="XID"				value="<?=$XID_SECURE_HASH?>" />
+	<input type="hidden" name="ret"				value="forms" />
+	<input type="hidden" name="form_id"			value="<?=$form_id?>" />
+	<input type="hidden" name="duplicate_id"	value="<?=$duplicate_id?>" />
+	<input type="hidden" name="composer_id"		value="<?=$composer_id?>" />
+	<input type="hidden" name="field_ids"		value="<?=$field_ids?>" id="field_ids"/>
+	<input type="hidden" name="notify_user"		value="n" />
+	<input type="hidden" name="notify_admin"	value="n" />
+<?php if ( ! FREEFORM_PRO):?>
+	<input type="hidden" name="form_type" value="template" id="form_type_select"/>
+<?php endif;?>
+
+	<table class="mainTable padTable freeform_table headless" style="width:100%;">
+		<tbody>
+<?php if (FREEFORM_PRO):?>
+			<!-- form type -->
+			<tr class="<?=$this->cycle('odd', 'even')?>">
+				<td style="width:30%;">
+					<label for="form_label"><?=lang('form_type')?></label>
+					<!-- div class="subtext"></div -->
+				</td>
+				<td style="width:40%;">
+					<select id="form_type_select" name="form_type"
+							class="chzn_select_no_search" >
+						<option value="composer"><?=lang('composer')?></option>
+						<option value="template" <?php
+							if (($update OR $duplicated) AND $composer_id == 0):
+								?>selected="selected"<?php
+							endif;?>><?=lang('template')?></option>
+					</select>
+				</td>
+				<td style="width:30%;">
+					<div id="composer_instruction_text"
+						 class="instruction_text">
+						 <?=lang('composer_form_type_desc')?>
+					</div>
+					<div id="template_instruction_text"
+						 class="instruction_text"
+						 style="display:none;">
+						 <?=lang('template_form_type_desc')?>
+					</div>
+					<div class="validation_error_holder">
+						<div class="validation_error"></div>
+					</div>
+				</td>
+			</tr>
+<?php endif;?>
+			<!-- form label -->
+			<tr id="form_label_row" class="<?=$this->cycle('odd', 'even')?>">
+				<td style="width:30%;">
+					<label for="form_label"><?=lang('form_label')?></label>
+					<div class="subtext"><?=lang('form_label_desc')?></div>
+				</td>
+				<td style="width:40%;">
+					<input	type="text"
+							id="form_label"
+							name="form_label"
+							value="<?=$form_label?>"
+							maxlength="150" />
+				</td>
+				<td style="width:30%;">
+					<div class="validation_error_holder">
+						<div class="validation_error"></div>
+					</div>
+				</td>
+			</tr>
+
+			<!-- form name -->
+			<tr id="form_name_row" class="<?=$this->cycle('odd', 'even')?>">
+				<td>
+					<label for="form_name"><?=lang('form_name')?></label>
+					<div class="subtext"><?=lang('form_name_desc')?></div>
+
+				</td>
+				<td>
+					<input	type="text"
+							id="form_name"
+							name="form_name"
+							value="<?=$form_name?>"
+							maxlength="150" />
+				</td>
+				<td>
+					<!-- magic beans -->
+					<input type="checkbox" id="auto_generate_name" value="y" <?php
+						if ($form_id == 0):?>checked="checked"<?php endif;?>/>
+					<label	class="small_label checkbox_label"
+							for="auto_generate_name">
+							<?=lang('auto_generate_name')?>
+					</label>
+					<div class="validation_error_holder">
+						<div class="validation_error"></div>
+					</div>
+				</td>
+			</tr>
+
+			<!-- form description -->
+			<tr id="form_description_row" class="<?=$this->cycle('odd', 'even')?>">
+				<td>
+					<label for="form_description"><?=lang('description')?></label>
+					<div class="subtext"><?=lang('form_description_desc')?></div>
+				</td>
+				<td>
+					<textarea	rows="6"
+								id="form_description"
+								name="form_description"><?=$form_description?></textarea>
+				</td>
+				<td>
+					<div class="validation_error_holder">
+						<div class="validation_error"></div>
+					</div>
+					<div id="desc_word_count" class="word_count">0</div>
+				</td>
+			</tr>
+
+			<!-- default status -->
+			<tr  id="default_status_row" class="<?=$this->cycle('odd', 'even')?>">
+				<td>
+					<label for="default_status"><?=lang('default_status')?></label>
+					<div class="subtext"><?=lang('default_status_desc')?></div>
+
+				</td>
+				<td>
+					<select
+						id="default_status"
+						name="default_status"
+						class="chzn_select_no_search">
+				<?php foreach( $statuses as $status => $lang_status): ?>
+						<option <?php if ($default_status == $status):?>selected="selected" <?php endif;
+								?>value="<?=$status?>"><?=$lang_status?></option>
+				<?php endforeach;?>
+					</select>
+
+				</td>
+				<td>
+					<div class="validation_error_holder">
+						<div class="validation_error"></div>
+					</div>
+				</td>
+			</tr>
+
+			<!-- user notify -->
+			<tr  id="notify_user_row" class="<?=$this->cycle('odd', 'even')?>">
+				<td>
+					<label for="notify_user"><?=lang('notify_user')?></label>
+					<div class="subtext"><?=lang('notify_user_desc')?></div>
+				</td>
+				<td>
+					<p><input 	type="checkbox"
+							id="notify_user"
+							name="notify_user"
+							class="checkbox"
+						<?php if ($notify_user == 'y'):?>
+							checked="checked"
+						<?php endif;?>
+							value="y"/>
+						<label for="notify_user">&nbsp;	<?=lang('enable')?></label>
+					</p>
+					<select data-placeholder="<?=lang('choose_user_email_field')?>"
+							class="chzn_select_no_search"
+							name="user_email_field"
+							id="user_email_field">
+				<?php foreach ($user_email_fields as $field_id => $field_label):?>
+						<option value="<?=$field_id?>"<?php
+						if ($user_email_field == $field_id):?>
+							selected="selected"
+						<?php endif;?>>
+							<?=$field_label?>
+						</option>
+				<?php endforeach;?>
+					</select>
+				</td>
+				<td>
+					<div class="validation_error_holder">
+						<div class="validation_error"></div>
+					</div>
+				</td>
+			</tr>
+
+			<!-- user notifcation -->
+			<tr id="user_notification_row" class="<?=$this->cycle('odd', 'even')?>">
+				<td>
+					<label for="user_notification_id"><?=lang('user_notification')?></label>
+					<div class="subtext"><?=lang('user_notification_desc')?></div>
+				</td>
+				<td>
+					<select id="user_notification_id" name="user_notification_id"
+							class="chzn_select">
+				<?php foreach( $notifications as $n_id => $n_name): ?>
+						<option <?php if ($user_notification_id == $n_id):?>selected="selected" <?php endif;
+								?>value="<?=$n_id?>"><?=$n_name?></option>
+				<?php endforeach;?>
+					</select>
+				</td>
+				<td>
+					<div class="validation_error_holder">
+						<div class="validation_error"></div>
+					</div>
+				</td>
+			</tr>
+
+			<!-- admin notify -->
+			<tr  id="notify_admin_row" class="<?=$this->cycle('odd', 'even')?>">
+				<td>
+					<label for="notify_admin"><?=lang('notify_admin')?></label>
+					<div class="subtext"><?=lang('notify_admin_desc')?></div>
+				</td>
+				<td>
+					<input 	type="checkbox"
+							id="notify_admin"
+							name="notify_admin"
+							class="checkbox"
+						<?php if ($notify_admin == 'y'):?>
+							checked="checked"
+						<?php endif;?>
+							value="y"/>
+						<label for="notify_admin">&nbsp;<?=lang('enable')?></label>
+				</td>
+				<td>
+					<div class="validation_error_holder">
+						<div class="validation_error"></div>
+					</div>
+				</td>
+			</tr>
+
+			<!-- admin notifcation -->
+			<tr id="admin_notification_row" class="<?=$this->cycle('odd', 'even')?>">
+				<td>
+					<label for="admin_notification_id"><?=lang('admin_notification')?></label>
+					<div class="subtext"><?=lang('admin_notification_desc')?></div>
+				</td>
+				<td>
+					<select id="admin_notification_id" name="admin_notification_id"
+							class="chzn_select">
+				<?php foreach( $notifications as $a_id => $a_name): ?>
+						<option <?php if ($admin_notification_id == $a_id):?>selected="selected" <?php endif;
+								?>value="<?=$a_id?>"><?=$a_name?></option>
+				<?php endforeach;?>
+					</select>
+				</td>
+				<td>
+					<div class="validation_error_holder">
+						<div class="validation_error"></div>
+					</div>
+				</td>
+			</tr>
+
+			<!-- admin notification email -->
+			<tr id="admin_notification_email_row" class="<?=$this->cycle('odd', 'even')?>">
+				<td>
+					<label for="admin_notification_email"><?=lang('admin_notification_email')?></label>
+					<div class="subtext"><?=lang('admin_notification_email_desc')?></div>
+				</td>
+				<td>
+					<input type="text"
+						   id="admin_notification_email"
+						   name="admin_notification_email"
+						   value="<?=$admin_notification_email?>" />
+				</td>
+				<td>
+					<div class="validation_error_holder">
+						<div class="validation_error"></div>
+					</div>
+				</td>
+			</tr>
+
+			<!-- fields -->
+			<tr id="field_ids_row" class="<?=$this->cycle('odd', 'even')?>" style="display:none;">
+				<td>
+					<label><?=lang('form_fields')?></label>
+					<div class="subtext"><?=lang('form_fields_desc')?></div>
+					<div class="subtext"><?=lang('click_drag_add_remove_sort')?></div>
+				</td>
+				<td>
+					<div id="field_list" class="field_list">
+				<?php foreach($available_fields as $field_name => $field_data):?>
+						<div class="field_tag" data-field-id="<?=$field_data['field_id']?>">
+							<?=$field_data['field_label']?>
+						</div>
+				<?php endforeach;?>
+					</div>
+					<div id="chosen_field_list" class="chosen_field_list"></div>
+				</td>
+				<td>
+					<div class="validation_error_holder">
+						<div class="validation_error"></div>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+<?php if (FREEFORM_PRO):?>
+	<p id="composer_submit_block" class="submit_block">
+	<?php if ($update AND $composer_id > 0):?>
+		<input type="submit" class="submit" name="submit" id="composer_save_finish" value="<?=lang('save_and_finish')?>" />
+	<?php endif;?>
+		<input type="submit" class="submit" name="submit" id="continue" value="<?=lang('continue')?>" />
+		<span class="submit_info"><?=lang('continue_desc')?></span>
+	</p>
+<?php endif;?>
+	<p id="template_submit_block" class="submit_block" style="display:none;">
+		<input type="submit" class="submit" name="submit" id="save_button" value="<?=lang('save')?>" />
+<?php if (FREEFORM_PRO AND ! $update):?>
+		<span class="submit_info"><?=lang('save_desc')?></span>
+<?php endif;?>
+	</p>
+</form>
+
+<script type="text/javascript">
+	(function(global, $){
+		var fieldOrder = '<?=$field_order?>';
+		$(function(){
+			//why a context when we are using IDs?
+			//because some damn fool might reuse the ids
+			var $context 			= $('#form_edit_form');
+			var $wordCount 			= $('#desc_word_count', 	$context);
+			var $formName 			= $('#form_name', 			$context);
+			var $formLabel 			= $('#form_label', 			$context);
+			var $autoGenerateName 	= $('#auto_generate_name', 	$context);
+			var $formDesc 			= $('#form_description', 	$context);
+			var $fieldList 			= $('#field_list', 			$context);
+			var $chosenFieldList 	= $('#chosen_field_list', 	$context);
+			var $fieldIdsRow		= $('#field_ids_row',		$context);
+			var $fieldIds 			= $('#field_ids', 			$context);
+			var $adminNEmailRow		= $('#admin_notification_email_row', $context);
+			var $composerFields 	= $(
+					//'#default_status_row, ' +
+					'#design_template_row, ' +
+					'#user_notification_row, ' +
+					'#admin_notification_row, ' +
+					'#admin_notification_email_row', $context);
+			var validated	= false;
+			var formUrl		= $context.attr('action');
+
+			// -------------------------------------
+			//	auto generate name
+			// -------------------------------------
+
+			Freeform.autoGenerateShortname($formLabel, $formName, $autoGenerateName);
+
+			// -------------------------------------
+			//	select box dropdown
+			// -------------------------------------
+
+			$('#form_type_select', $context).change(function(){
+				var val = $(this).val();
+
+				$('.submit_block', $context).hide();
+				$('#' + val + '_submit_block', $context).show();
+
+				$('.instruction_text', $context).hide();
+				$('#' + val + '_instruction_text', $context).show();
+
+				if (val == 'composer')
+				{
+					//$composerFields.show();
+					$fieldIdsRow.hide();
+					$adminNEmailRow.addClass('last_child');
+				}
+				else
+				{
+					//$composerFields.hide();
+					$fieldIdsRow.show();
+					$adminNEmailRow.removeClass('last_child');
+				}
+			}).change();
+
+			//change return for different submit click
+			$('#continue', $context).click(function(){
+				$('[name="ret"]', $context).val('composer');
+			});
+
+			$('#composer_save_finish', $context).click(function(){
+				$('[name="ret"]', $context).val('composer_save_finish');
+			});
+
+			//generate name from label
+			$('#form_name_generate', $context).click(function(e){
+				$('[name="form_name"]:first', $context).
+					val(Freeform.shortName($('[name="form_label"]:first', $context).val()));
+				e.preventDefault();
+				return false;
+			});
+
+			//word count
+			$formDesc.keyup(function(){
+				$wordCount.html($formDesc.val().length);
+			}).keyup();
+
+			// -------------------------------------
+			//	resets the field IDs
+			// -------------------------------------
+
+			function setFieldIds ()
+			{
+				var fieldIds = [];
+
+				$('.field_tag', $chosenFieldList).each(function(){
+					fieldIds.push($(this).attr('data-field-id'));
+				});
+
+				$fieldIds.val(fieldIds.join('|'));
+			}
+
+			// -------------------------------------
+			//	field ids
+			// -------------------------------------
+
+			//move to the new table and sort elements on it
+			//no need to sort the table its removed from as
+			//it just pops this item out from its place
+			$fieldList.delegate('.field_tag', 'click', function(){
+				$chosenFieldList.append($(this).remove());
+				setFieldIds();
+			});
+
+			//same crap, different tag
+			$chosenFieldList.delegate('.field_tag', 'click', function(){
+				$fieldList.append($(this).remove());
+
+				setFieldIds();
+
+				$fieldList.children().sortElements(function(a, b){
+					return $(a).text().toLowerCase() > $(b).text().toLowerCase() ? 1 : -1;
+				});
+			});
+
+
+			$fieldList.sortable({
+				'connectWith'			: $chosenFieldList,
+				'items'					: '.field_tag',
+				'forcePlaceholderSize'	: true,
+				'receive'				: function (event, ui)
+				{
+					setFieldIds();
+					//sorts self when a new field is recived
+					$fieldList.children().sortElements(function(a, b){
+						return $(a).text().toLowerCase() > $(b).text().toLowerCase() ? 1 : -1;
+					});
+				},
+				'stop'				: function (event, ui)
+				{
+					setFieldIds();
+				}
+			});
+
+
+			$chosenFieldList.sortable({
+				'connectWith'			: $fieldList,
+				'items'					: '.field_tag',
+				'forcePlaceholderSize'	: true,
+				'receive'				: function (event, ui)
+				{
+					setFieldIds();
+				},
+				'stop'				: function (event, ui)
+				{
+					setFieldIds();
+				}
+			});
+
+			// -------------------------------------
+			//	setup fields on load to be in
+			// 	the correct field. Yes, this is ghetto
+			// -------------------------------------
+
+			var currentFields = ($.trim($fieldIds.val()) !== '') ? $fieldIds.val().split('|') : [];
+
+			if (currentFields.length > 0)
+			{
+				if (fieldOrder != '')
+				{
+					$.each(fieldOrder.split('|'), function(i, item){
+						$('.field_tag[data-field-id="' + item + '"]', $fieldList).click();
+					});
+				}
+				else
+				{
+					$.each(currentFields, function(i, item){
+						$('.field_tag[data-field-id="' + item + '"]', $fieldList).click();
+					});
+				}
+			}
+
+			// -------------------------------------
+			//	validate
+			// -------------------------------------
+
+			var fieldEditSubmit = function(e)
+			{
+				var $that = $(this);
+
+				if (validated)
+				{
+					return true;
+				}
+
+				e.preventDefault();
+
+				var postData 	= $("#form_edit_form").serializeArray();
+
+				//we only want to validate
+				postData.push({
+					name 	: 'validate_only',
+					value	: 'true'
+				});
+
+				postData = $.param(postData);
+
+				//whirly window
+				$.fancybox.showActivity();
+
+				$.post(formUrl, postData, function(data) {
+
+					$('.validation_error_holder').hide();
+
+					//errors
+					if (data.success == false)
+					{
+						$.fancybox.hideActivity();
+
+						Freeform.showValidationErrors(
+							data.errors,
+							$context,
+							true
+						);
+					}
+					else
+					{
+						validated = true;
+						$that.click();
+					}
+				}, 'json');
+
+				return false;
+			}
+			//END $fieldEditForm.submit
+
+			$('[name="submit"]', $context).click(fieldEditSubmit);
+		});
+	}(window, jQuery));
+</script>

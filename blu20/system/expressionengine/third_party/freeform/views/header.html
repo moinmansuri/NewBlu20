@@ -1,0 +1,135 @@
+<!--[if IE 7]><div class="solspace_ui_wrapper ie7 ss_clearfix"><![endif]-->
+<!--[if IE 8]><div class="solspace_ui_wrapper ie8 ss_clearfix"><![endif]-->
+<!--[if IE 9]><div class="solspace_ui_wrapper ie9 ss_clearfix"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<div class="solspace_ui_wrapper ss_clearfix">
+<!--<![endif]-->
+
+<!--[if !IE]><!--><script type="text/javascript">
+	//sigh, i hate you ie10
+	//this works because cc_on still works in ie10, but
+	//conditional comments are gone
+	if (/*@cc_on!@*/false && document.querySelectorAll)
+	{
+		var items = document.querySelectorAll('.solspace_ui_wrapper');
+		for (var i = 0, l = items.length; i < l; i++)
+		{
+			items[i].className += ' ie10';
+		}
+	}
+</script><!--<![endif]-->
+
+<script type="text/javascript">
+	jQuery(function($){
+		$('table.magic_checkbox_table, ' +
+		  'table.magicCheckboxTable, '  +
+		  'table.cb_toggle'
+		).each(function(){
+			var $table 		= $(this),
+				$magicCB	= $table.find(
+					'input[type=checkbox][name=toggle_all_checkboxes]'
+				);
+
+			$magicCB.each(function(){
+				var $that 		= $(this),
+					colNum 		= $that.parent().index();
+
+				$that.click(function(){
+					var checked = ($that.is(':checked')) ? 'checked' : false;
+
+					$table.find('tr').find(
+						'th:eq(' + colNum + ') input[type=checkbox], ' +
+						'td:eq(' + colNum + ') input[type=checkbox]'
+					).attr('checked', checked);
+				});
+			});
+		});
+	});
+</script>
+
+<?php if ($message != ''):?>
+	<script type="text/javascript">
+		jQuery(function($){
+			//$.ee_notice('<?php echo addslashes($message);?>',{open: true, type:"success"});
+			setTimeout(function(){$('#freeform_default_success_message').slideUp(); }, 5000);
+		});
+	</script>
+<?php endif;?>
+
+<style type="text/css">
+	/* quick overrides to prevent bounce
+		because the css takes time to load */
+	#mainContent .pageContents {
+		padding-top:	0;
+		border-top:		none;
+	}
+
+	#mainContent .tab_menu {
+		height:					24px;
+		margin-left:			-14px;
+		margin-right:			-14px;
+	}
+
+	#mainContent .pageContents #solspace_version_number {
+		color:			#fff;
+		left: 			100%;
+		margin: 		-38px 0 0 -330px;
+		position: 		absolute;
+		text-align: 	right;
+		text-shadow: 	0 1px 0 #666;
+		width: 			300px;
+		z-index: 		1;
+	}
+	#mainContent .tab_menu {
+		background:				#3A4850 url('<?=ee()->cp->cp_theme_url?>/images/backgrounds_sprite.png') repeat-x 0 -217px;
+	}
+</style>
+
+<span id="solspace_version_number">
+	<strong><?=lang('freeform_module_name')?> <?=$module_version?></strong>
+	<?php /*%non_pro% ?>
+	&nbsp;
+	<a id="go_pro_button" onclick="window.open(this.href); return false;" href="http://solspace.com/freeform/"><?=lang('go_pro')?></a>
+	<?php //%non_pro%*/ ?>
+</span>
+
+<ul class="tab_menu ss_clearfix_left" id="tab_menu_tabs">
+<?php foreach($module_menu AS $menu_name => $menu_item) : ?>
+	<li class="content_tab<?=($menu_name == $module_menu_highlight) ? ' current': ''?>">
+		<a  <?php if (isset($menu_item['new_window']) AND
+						$menu_item['new_window']): ?>onclick="window.open(this.href); return false;"<?php endif;?>
+			href="<?=$menu_item['link']?>"><?=$menu_item['title']?></a>
+	</li>
+<?php endforeach; ?>
+</ul>
+
+<?php if (isset($inner_nav_links) AND count($inner_nav_links) > 0):?>
+	<div id="solspace_right_nav" class="rightNav ss_clearfix_left">
+		<div>
+	<?php foreach ($inner_nav_links as $title => $link):?>
+			<span class="button">
+				<a title="<?=$title?>" class="submit" href="<?=$link?>"><?=$title?></a>
+			</span>
+	<?php endforeach;?>
+		</div>
+	</div>
+<?php endif;?>
+
+<?php if ($message != ''):?>
+	<div id="freeform_default_success_message" class="freeform_notice">
+		<div class="notice_heading success_message">
+			<!-- yes this is a crime but
+				vertical-align:middle + display:table-cell
+				was simply failing-->
+			<table class="plain_table">
+				<tr>
+					<td class="inner_warning">
+						<?=lang('success')?>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class="notice_content"><?=$message?></div>
+		<button class="notice_close freeform_close_button">x</button>
+	</div>
+<?php endif;?>

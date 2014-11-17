@@ -1,0 +1,52 @@
+<?php if (empty($fieldtypes)):?>
+
+<p>
+	<strong>
+		<?=lang('no_fieldtypes')?>
+	</strong>
+</p>
+
+<?php else:?>
+
+<div class="sub_box">
+	<h4><?=lang('freeform_field_description')?></h4>
+	<p><?=lang('freeform_fieldtype_docs')?>
+	<a onclick="window.open(this.href); return false;" href="<?=$freeform_ft_docs_url?>"><?=lang('freeform_fieldtype_url_desc')?></a></p>
+</div>
+<table id="fieldtype_list_table" class="freeform_table mainTable padTable" style="width:100%;"
+		cellspacing='0' cellpadding='0' border='0' autocomplete="off">
+	<thead>
+		<tr>
+			<th style="width:20%;"><?=lang('freeform_fieldtype_name')?></th>
+			<th><?=lang('description')?></th>
+			<th style="width:15%;"><?=lang('version')?></th>
+			<th style="width:15%;"><?=lang('status')?></th>
+			<th class="icon_holder"><?=lang('action')?></th>
+		</tr>
+	</thead>
+	<tbody>
+<?php foreach ($fieldtypes as $name => $data) :?>
+		<tr class="<?=$this->cycle('odd', 'even')?>">
+			<td><?=strip_tags($data['name'])?></td>
+			<td><?=strip_tags($data['description'])?></td>
+			<td><?=$data['version']?></td>
+			<td class="<?php echo ($data['installed']) ? 'go_notice' : 'ss_notice';?>">
+				<?=$data['installed_lang']?>
+			</td>
+			<td class="freeform_text_center">
+		<?php if ($name == 'text'):?>
+				<div class="freeform_locked_button"></div>
+		<?php else:?>
+				<a href="<?=$data['action_url']?>" class="freeform_ui_element freeform_ui_button">
+					<?=$data['action_lang']?>
+				</a>
+		<?php endif;?>
+			</td>
+		</tr>
+<?php endforeach;?>
+	</tbody>
+</table>
+
+<?php endif;?>
+
+<?php  ?>

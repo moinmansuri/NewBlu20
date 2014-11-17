@@ -1,0 +1,406 @@
+<form action="<?=$form_uri?>" method="POST" id="notification_edit_form">
+	<input type="hidden" name="XID" 			value="<?=$XID_SECURE_HASH?>" />
+	<input type="hidden" name="notification_id"	value="<?=$notification_id?>" />
+	<!-- defaults for checkboxes when unchecked -->
+	<input type="hidden" value="n" name="wordwrap" 		/>
+	<input type="hidden" value="n" name="allow_html" 	/>
+	<input type="hidden" value='n' name="include_attachments" />
+
+<?php if ($edit_warning):?>
+		<div class="freeform_notice">
+			<div class="notice_heading warning">
+			<!-- yes this is a crime but
+				vertical-align:middle + display:table-cell
+				was simply failing-->
+			<table class="plain_table">
+				<tr>
+					<td class="inner_warning">
+						<?=lang('notice')?>
+					</td>
+				</tr>
+			</table>
+			</div>
+			<div class="notice_content">
+				<?=$lang_notification_edit_warning?>
+			</div>
+			<button class="notice_close freeform_close_button">x</button>
+		</div>
+<?php endif;?>
+
+	<div class="sub_box">
+		<p><?=lang('notification_edit_instructions')?></p>
+	<?php if ($duplicated):?>
+		<p class="ss_notice"><?=lang('duplicated_from_')?>&nbsp;<?=$duplicated_from?></p>
+	<?php endif;?>
+	</div>
+
+	<table class="mainTable padTable freeform_table headless" style="width:100%;">
+		<colgroup>
+			<col span="1" style="width: 30%;">
+			<col span="1" style="width: 40%;">
+			<col span="1" style="width: 30%;">
+		</colgroup>
+		<tbody>
+			<!-- notification label -->
+			<tr class="<?=$this->cycle('odd', 'even')?>">
+				<td>
+					<label for="notification_label"><?=lang('notification_label')?></label>
+					<div class="subtext"><?=lang('notification_label_desc')?></div>
+				</td>
+				<td>
+					<input id="notification_label" type="text" name="notification_label" value="<?=$notification_label?>"  maxlength="150"/>
+				</td>
+				<td>
+					<div class="validation_error_holder">
+						<div class="validation_error"></div>
+					</div>
+				</td>
+			</tr>
+
+			<!-- notification name (short_name) -->
+			<tr class="<?=$this->cycle('odd', 'even')?>">
+				<td>
+					<label for="notification_name"><?=lang('notification_name')?></label>
+					<div class="subtext"><?=lang('notification_name_desc')?></div>
+				</td>
+				<td>
+					<input type="text" id="notification_name" name="notification_name" value="<?=$notification_name?>"  maxlength="150"/>
+				</td>
+				<td>
+					<input type="checkbox" id="auto_generate_name" value="y" <?php
+						if ($notification_id == 0):?>checked="checked"<?php endif;?>/>
+					<label class="small_label checkbox_label" for="auto_generate_name"><?=lang('auto_generate_name')?></label>
+					<div class="validation_error_holder">
+						<div class="validation_error"></div>
+					</div>
+				</td>
+			</tr>
+
+			<!-- notification desc -->
+			<tr class="<?=$this->cycle('odd', 'even')?>">
+				<td>
+					<label for="notification_description"><?=lang('notification_description')?></label>
+					<div class="subtext"><?=lang('notification_description_desc')?></div>
+				</td>
+				<td>
+					<textarea rows="6" id="notification_description" name="notification_description"><?=$notification_description?></textarea>
+				</td>
+				<td>
+					<div id="desc_word_count" class="word_count">0</div>
+					<div class="validation_error_holder">
+						<div class="validation_error"></div>
+					</div>
+				</td>
+			</tr>
+
+			<!-- notification from name -->
+			<tr class="<?=$this->cycle('odd', 'even')?>">
+				<td>
+					<label for="from_name"><?=lang('from_name')?></label>
+					<div class="subtext"><?=lang('from_name_desc')?></div>
+				</td>
+				<td>
+					<input id="from_name" type="text" name="from_name" value="<?=$from_name?>"  maxlength="150"/>
+				</td>
+				<td>
+					<div class="validation_error_holder">
+						<div class="validation_error"></div>
+					</div>
+				</td>
+			</tr>
+
+			<!-- notification from email -->
+			<tr class="<?=$this->cycle('odd', 'even')?>">
+				<td>
+					<label for="from_email"><?=lang('from_email')?></label>
+					<div class="subtext"><?=lang('from_email_desc')?></div>
+				</td>
+				<td>
+					<input id="from_email" type="text" name="from_email" value="<?=$from_email?>"  maxlength="250"/>
+				</td>
+				<td>
+					<div class="validation_error_holder">
+						<div class="validation_error"></div>
+					</div>
+				</td>
+			</tr>
+
+			<!-- notification reply to email -->
+			<tr class="<?=$this->cycle('odd', 'even')?>">
+				<td>
+					<label for="reply_to_email"><?=lang('reply_to_email')?></label>
+					<div class="subtext"><?=lang('reply_to_email_desc')?></div>
+				</td>
+				<td>
+					<input id="reply_to_email" type="text" name="reply_to_email" value="<?=$reply_to_email?>" maxlength="250" />
+				</td>
+				<td>
+					<div class="validation_error_holder">
+						<div class="validation_error"></div>
+					</div>
+				</td>
+			</tr>
+
+			<!-- notification email subject -->
+			<tr class="<?=$this->cycle('odd', 'even')?>">
+				<td>
+					<label for="email_subject"><?=lang('email_subject')?></label>
+					<div class="subtext"><?=lang('email_subject_desc')?></div>
+				</td>
+				<td>
+					<input id="email_subject" type="text" name="email_subject" value="<?=$email_subject?>" maxlength="128" />
+				</td>
+				<td>
+					<div class="validation_error_holder">
+						<div class="validation_error"></div>
+					</div>
+				</td>
+			</tr>
+
+			<!-- notification include attachments -->
+			<tr class="<?=$this->cycle('odd', 'even')?>">
+				<td>
+					<label for="email_subject"><?=lang('include_attachments')?></label>
+					<div class="subtext"><?=lang('include_attachments_desc')?></div>
+				</td>
+				<td>
+					<input
+						id="include_attachments"
+						type="checkbox"
+						name="include_attachments"
+						<?php if ($include_attachments == 'y'):?>checked="checked"<?php endif;?>
+						value="y"  />
+						&nbsp;
+						<label for="include_attachments">
+							<?=lang('enable')?>
+						</label>
+				</td>
+				<td>
+					<div class="validation_error_holder">
+						<div class="validation_error"></div>
+					</div>
+				</td>
+			</tr>
+
+			<!-- notification format options -->
+			<tr class="<?=$this->cycle('odd', 'even')?>">
+				<td>
+					<label><?=lang('formatting_options')?></label>
+				</td>
+				<td style="padding-bottom:0px;">
+					<p>
+						<input type="checkbox" id="wordwrap" name="wordwrap" <?php
+								if ($wordwrap == 'y'):?>checked="checked" <?php endif;?> value="y"/>
+						<label class="checkbox_label" for="wordwrap"><?=lang('wordwrap')?></label>
+					</p>
+					<p>
+						<input type="checkbox" id="allow_html" name="allow_html" <?php
+								if ($allow_html == 'y'):?>checked="checked" <?php endif;?> value="y"/>
+						<label class="checkbox_label" for="allow_html"><?=lang('allow_html')?></label>
+					</p>
+				</td>
+				<td>
+					<div class="validation_error_holder">
+						<div class="validation_error"></div>
+					</div>
+				</td>
+			</tr>
+
+			<!-- notification template -->
+			<tr class="<?=$this->cycle('odd', 'even')?>">
+				<td>
+					<label for="n_template_data"><?=lang('email_message')?></label>
+					<h4 class="tag_heading"><?=lang('click_insert_standard_tags')?></h4>
+					<div id="standard_tags">
+				<?php foreach($standard_tags as $field_name => $output_tag):?>
+						<div class="standard_tag" data-field-name="<?=$output_tag?>">{<?=$field_name?>}</div>
+				<?php endforeach;?>
+					</div>
+					<h4 class="tag_heading"><?=lang('click_insert_custom_fields')?></h4>
+					<div id="field_list_header" class="field_list_header search">
+						<div><input type="text" name="search_fields" id="search_fields" placeholder="Search Fields" /></div>
+						<div class="search_clear_button"></div>
+					</div>
+					<div id="field_list" class="field_list field_list_full uses_header">
+				<?php foreach($available_fields as $field_name => $field_data):?>
+						<div class="field_tag" data-field-name="<?=$field_data['field_name']?>">
+							<div class="field_label"><?=$field_data['field_label']?></div>
+							<div class="subtext">{<?=$field_data['field_name']?>}</div>
+						</div>
+				<?php endforeach;?>
+					</div>
+				</td>
+				<td colspan="2">
+					<textarea class="input" rows="25"  style="height:100%;" id="n_template_data" name="template_data"><?=$template_data?></textarea>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<div class="submit_block">
+		<input type="submit" name="submit" class="submit" value="<?=$lang_submit_word?>" />
+	</div>
+</form>
+
+<script type="text/javascript">
+	(function(global, $){
+
+		$(function(){
+			var $context 			= $('#notification_edit_form');
+			var $notificationName 	= $('#notification_name', 			$context);
+			var $notificationLabel 	= $('#notification_label', 			$context);
+			var $notificationDesc 	= $('#notification_description', 	$context);
+			var $autoGenerateName 	= $('#auto_generate_name', 			$context);
+			var $wordCount 			= $('#desc_word_count', 			$context);
+			var $templateData		= $('#n_template_data', 			$context);
+			var $searchClear 		= $('#field_list_header .search_clear_button', $context);
+			var formUrl				= $context.attr('action');
+			var taTemplateData 		= $('#n_template_data').get(0);
+			var validated 			= false;
+
+			// -------------------------------------
+			//	validation
+			// -------------------------------------
+
+			$context.submit(function(e){
+				if (validated)
+				{
+					return true;
+				}
+
+				e.preventDefault();
+
+				var postData 	= $(this).serializeArray();
+
+				//we only want to validate
+				postData.push({
+					name 	: 'validate_only',
+					value	: 'true'
+				});
+
+				postData = $.param(postData);
+
+				//whirly window
+				$.fancybox.showActivity();
+
+				$.post(formUrl, postData, function(data) {
+
+					$('.validation_error_holder').hide();
+
+					//errors
+					if (data.success == false)
+					{
+						$.fancybox.hideActivity();
+
+						Freeform.showValidationErrors(
+							data.errors,
+							$context,
+							true
+						);
+					}
+					else
+					{
+						validated = true;
+						//for some reason, .submit() was not working..
+						$context.find('[name=submit]').click();
+					}
+				}, 'json');
+
+				return false;
+			});
+			//END $fieldEditForm.submit
+
+			// -------------------------------------
+			//	auto generate name
+			// -------------------------------------
+
+			Freeform.autoGenerateShortname(
+				$notificationLabel,
+				$notificationName,
+				$autoGenerateName
+			);
+
+			//lets add tabbing because, man, not being able to tab a textarea sucks
+			$templateData.bind('keydown', function(e){
+				Freeform.tabTextarea(e, this);
+			});
+
+			var ie9 = $('.solspace_ui_wrapper').hasClass('ie9');
+			var ie8 = $('.solspace_ui_wrapper').hasClass('ie8');
+
+			//add tags in where user is currenly focused
+			$('.field_tag', $context).click(function(e){
+				Freeform.insertToTextarea(taTemplateData, '{' + $(this).attr('data-field-name') + '}', (ie9 || ie8));
+
+				e.preventDefault();
+				return false;
+			}).css('cursor', 'pointer');
+
+			//add tags in where user is currenly focused
+			$('.standard_tag', $context).click(function(e){
+				Freeform.insertToTextarea(taTemplateData,  $(this).attr('data-field-name'), (ie9 || ie8));
+
+				e.preventDefault();
+				return false;
+			}).css('cursor', 'pointer');
+
+
+			//we have to set up the selections to the end in case they
+			//click something before selecting the text area
+			if (typeof taTemplateData.selectionEnd !== 'undefined' &&
+			! isNaN(taTemplateData.selectionEnd))
+			{
+				taTemplateData.setSelectionRange(taTemplateData.value.length,taTemplateData.value.length);
+				taTemplateData.blur();
+			}
+
+			// -------------------------------------
+			//	word count
+			// -------------------------------------
+
+			$notificationDesc.keyup(function(){
+				$wordCount.html($notificationDesc.val().length);
+			}).keyup();
+
+			// -------------------------------------
+			//	element search box
+			// -------------------------------------
+
+			Freeform.elementSearch(
+				'#search_fields',
+				'#field_list .field_tag',
+				'.field_label',
+				'html'
+			);
+
+			$searchClear.click(function(){
+				$('#search_fields').val('').keyup(); //have to fire keyp here to reset
+				$searchClear.hide();
+			}).hide();
+
+			var searchClearInt = 0;
+
+			$('body').delegate('#search_fields', 'keyup', function(e){
+				var $that = $(this);
+
+				clearTimeout(searchClearInt);
+
+				searchClearInt = setTimeout(function(){
+					//hide all unless its empty or a placeholder
+					//replacement helper
+					if ($that.val() == '' ||
+						($that.attr('placeholder') &&
+						 $that.val() == $that.attr('placeholder'))
+					)
+					{
+						$searchClear.hide();
+					}
+					else
+					{
+						$searchClear.show();
+					}
+				}, 100);
+			});
+		});
+	}(window, jQuery));
+</script>
