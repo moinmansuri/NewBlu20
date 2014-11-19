@@ -29,8 +29,8 @@ $config['sc_public_certificate'] = "";
 $config['sc_private_key'] = "";
 $config['sc_paypal_certificate'] = "";
 $config['sc_temp_path'] = "/tmp";
-$config['ip2nation'] = "y";
-$config['ip2nation_db_date'] = "1335677198";
+
+
 $config['comment_word_censoring'] = "n";
 $config['comment_moderation_override'] = "n";
 $config['comment_edit_time_limit'] = "";
