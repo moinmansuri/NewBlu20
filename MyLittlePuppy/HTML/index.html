@@ -10,8 +10,7 @@
 <link href="css/media.css" type="text/css" rel="stylesheet" />
 <link type="text/css" rel="stylesheet" href="css/ss-geomicons-squared.css" />
 <link type="text/css" rel="stylesheet" href="css/ss-social-regular.css" />
-<link type="text/css" rel="stylesheet" href="css/ss-glyphish-outlined.css" />
-<script type='text/javascript' src='http://code.jquery.com/jquery-1.11.1.min.js'></script>
+<script type='text/javascript' src='http://code.jquery.com/jquery-1.8.3.js'></script>
 <script src="js/main.js"></script>
 <script src="js/jquery.bxslider.js"></script>
 <script type="text/javascript">
@@ -19,6 +18,14 @@ $(document).ready(function(){
 	$('.bxslider').bxSlider();
 	$('.bxslider1').bxSlider({
 		pager:true,
+		controls:true
+	});	
+	$('.bxslider_video').bxSlider({
+		pager:false,
+		controls:true
+	});
+	$('.bxslider_image').bxSlider({
+		pager:false,
 		controls:true
 	});
 });
@@ -78,7 +85,7 @@ $("#draggable-slider-4").slider({ max: 7, min: 1, value: 1 }).slider('pips');
         <div id="search" class="ss-geomicons-squared ss-icon">&#x1F50E;</div>
         <nav>
         	<ul>
-            	<li><a href="breeds_list.html">Breeds List</a>
+            	<li><a href="breed-list.html">BREED LIST</a>
                 	<ul class="firstmenu">
                     	<div class="wrapper">
                             <li><a href="#">A</a>
@@ -146,9 +153,9 @@ $("#draggable-slider-4").slider({ max: 7, min: 1, value: 1 }).slider('pips');
                     </ul>
                 </li>
                 <li><a href="testimonials.html">TESTIMONIALS</a></li>
-                <li><a href="overview.html">Overview</a></li>
-                <li><a href="why_us.html">Why US?</a></li>
-                <li><a href="puppy_ed.html">PUPPY ED</a></li>
+                <li><a href="how-it-works.html">How It Works</a></li>
+                <li><a href="financing.html">Financing</a></li>
+                <li><a href="puppy-ed.html">PUPPY ED</a></li>
                 <li><a href="gallery.html">GALLERY</a></li>
             </ul>
         </nav>
@@ -443,22 +450,62 @@ $("#draggable-slider-4").slider({ max: 7, min: 1, value: 1 }).slider('pips');
 	<div class="wrapper">
     	<div class="left">
         	<div id="videoplayer">
-				<figure id="videoContainer" data-fullscreen="false">
-                    <video id="video" controls preload="metadata" poster="images/poster_video.jpg">
-                        <source src="images/treadwars.mp4" type="video/mp4">
-                        <!--<source src="video/tears-of-steel-battle-clip-medium.webm" type="video/webm">-->
-                        <source src="images/treadwars.ogv" type="video/ogg">
-                        <!-- Flash fallback -->
-                        <!--<object type="application/x-shockwave-flash" data="flash-player.swf?videoUrl=video/tears-of-steel-battle-clip-medium.mp4" width="1024" height="576">
-                            <param name="movie" value="flash-player.swf?videoUrl=video/tears-of-steel-battle-clip-medium.mp4" />
-                            <param name="allowfullscreen" value="true" />
-                            <param name="wmode" value="transparent" />
-                            <param name="flashvars" value="controlbar=over&amp;image=img/poster.jpg&amp;file=flash-player.swf?videoUrl=video/tears-of-steel-battle-clip-medium.mp4" />
-                            <img alt="Tears of Steel poster image" src="img/poster.jpg" width="1024" height="428" title="No video playback possible, please download the video from the link below" />
-                        </object>-->
-                    </video>
+                <figure id="videoContainer" data-fullscreen="false">
+                    <div id="videoset">
+                        <video id="video" controls	 poster="images/poster_video.jpg">
+                            <source src="images/treadwars.mp4" type="video/mp4" id="mp4">
+                            <!--<source src="video/tears-of-steel-battle-clip-medium.webm" type="video/webm">-->
+                            <!--<source src="images/treadwars.ogv" type="video/ogg" id="ogv">-->
+                            <!-- Flash fallback -->
+                            <!--<object type="application/x-shockwave-flash" data="flash-player.swf?videoUrl=video/tears-of-steel-battle-clip-medium.mp4" width="1024" height="576">
+                                <param name="movie" value="flash-player.swf?videoUrl=video/tears-of-steel-battle-clip-medium.mp4" />
+                                <param name="allowfullscreen" value="true" />
+                                <param name="wmode" value="transparent" />
+                                <param name="flashvars" value="controlbar=over&amp;image=img/poster.jpg&amp;file=flash-player.swf?videoUrl=video/tears-of-steel-battle-clip-medium.mp4" />
+                                <img alt="Tears of Steel poster image" src="img/poster.jpg" width="1024" height="428" title="No video playback possible, please download the video from the link below" />
+                            </object>-->
+                        </video>
+                        <div class="video-gallery">
+                            <div class="video-gall">
+                                <ul id="videogallery" class="bxslider_video">
+                                    <li>
+                                        <img src="images/poster_video.jpg" data-type="images/new.mp4" data-rel="images/new.ogv" />
+                                    </li>
+                                    <li>                                    	
+                                        <img src="images/poster_video.jpg" data-type="images/treadwars.mp4" data-rel="images/treadwars.ogv" />
+                                    </li>
+                                    <li>
+                                        <img src="images/poster_video.jpg" data-type="images/new.mp4" data-rel="images/new.ogv" />
+                                    </li>
+                                    <li>                                    	
+                                        <img src="images/poster_video.jpg" data-type="images/treadwars.mp4" data-rel="images/treadwars.ogv" />
+                                    </li>
+                                    <li>
+                                        <img src="images/poster_video.jpg" data-type="images/new.mp4" data-rel="images/new.ogv" />
+                                    </li>
+                                    <li>                                    	
+                                        <img src="images/poster_video.jpg" data-type="images/treadwars.mp4" data-rel="images/treadwars.ogv" />
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="image-gallery">
+                        <img src="images/puppy_felix.jpg" class="main-image" />
+                        <div class="clearfix"></div>
+                        <div class="img-gall">
+                            <ul id="imggallery" class="bxslider_image">
+                                <li><img src="images/poster_video.jpg" /></li>
+                                <li><img src="images/puppy_felix.jpg" /></li>
+                                <li><img src="images/puppy_olive.jpg" /></li>
+                                <li><img src="images/poster_video.jpg" /></li>
+                                <li><img src="images/puppy_olive.jpg" /></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
                     <div id="video-controls" class="controls">
-                    	<div class="progress">
+                        <div class="progress">
                             <progress id="progress" value="0" min="0">
                                 <span id="progress-bar"></span>
                             </progress>
@@ -467,14 +514,14 @@ $("#draggable-slider-4").slider({ max: 7, min: 1, value: 1 }).slider('pips');
                         <div class="fullcontrol">
                             <div id="playpause" style="display:none;">Play/Pause</div>
                             <div id="stop" style="display:none;">Stop</div>
-                            <div id="grid"><img src="images/btn_videogrid.png" align="absmiddle" /></div>
+                            <div id="grid" class="video"><a data-type="grid"><span class="ss-geomicons-squared ss-icon">&#xE9A0;</span></a></div>
                             <div class="detailsofvideo">
-                            	<h6>My Puppy Chewing On His Shoe</h6>
+                                <h6>My Puppy Chewing On His Shoe</h6>
                                 <div class="clearfix"></div>
                                 <div id="current">0:00</div>/<div id="duration">0:00</div>
                             </div>
-                            <div id="mute"><img src="images/btn_mute.png" alt="Mute/UnMute" title="Mute/UnMute" align="absmiddle" /></div>
-                            <div id="videobtn"><img src="images/btn_video.png" alt="" align="absmiddle" /></div>
+                            <div id="mute"><span class="ss-geomicons-squared ss-icon">&#x1F508;</span></div>
+                            <div id="videobtn"><span class="ss-geomicons-squared ss-video">&nbsp;</span></div>
                             <div id="volinc" style="display:none;">Vol+</div>
                             <div id="voldec" style="display:none;">Vol-</div>
                             <div id="fs" style="display:none;">Fullscreen</div>
