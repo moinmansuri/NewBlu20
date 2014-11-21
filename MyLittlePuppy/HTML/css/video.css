@@ -25,13 +25,83 @@ figcaption {
 	font-size:1rem;
 }
 
-video {
+#videoset {
+	float:left;
+	position:relative;
+}
+
+video, .image-gallery, #videoset {
 	width:100%;
 	height:365px;
 }
 
-video img {
+.video-gallery {
+	position:absolute;
+	bottom:0px;
+	left:0px;
+	float:left;
 	width:100%;
+	height:105px;
+	display:none;	
+}
+
+.image-gallery {
+	display:none;
+	position:relative;
+	overflow:hidden;
+}
+
+.video-gall {
+	position:relative;
+}
+
+video img, .image-gallery img, .video-gallery img {
+	width:100%;
+}
+
+.image-gallery img, .video-gallery img {
+	margin-top:17px;
+}
+
+.image-gallery .img-gall, .video-gallery .video-gall {
+	position:absolute;
+	bottom:20px;
+	background:#fff;
+	width:100%;
+	float:left;
+	z-index:99999;
+	padding:2% 0%;
+}
+
+.image-gallery #imggallery, .video-gallery #videogallery {
+	height:auto;
+}
+
+.image-gallery .img-gall ul li, .video-gallery .video-gall ul li {
+	width:18%;
+	float:left;
+	margin:0px 1%;
+}
+
+.image-gallery .img-gall ul li img, .video-gallery .video-gall ul li img {
+	margin-top:0px;
+	max-height:60px;
+	min-height:60px;
+	max-width:100%;
+}
+
+.image-gallery .img-gall:after, .video-gallery .video-gall:after {
+    content:'';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin: 0px 0px 0px 23px;
+    width: 0;
+    height: 0;
+    border-top: solid 10px #fff;
+    border-left: solid 10px transparent;
+    border-right: solid 10px transparent;
 }
 
 /* controls */
@@ -44,13 +114,9 @@ video img {
 	appearance:none;
 	-webkit-appearance:none;
 	-moz-appearance:none;
-	margin-top:-12px;
+	margin-top:-30px;
 	position:relative;
 	z-index:999;
-}
-
-#container.gallery #content .left .controls {
-	margin-top:-31px;
 }
 
 .controls progress {
@@ -89,6 +155,12 @@ progress::-webkit-progress-value {
 	float:left;
 	width:100%;	
 	background:#b69cca;
+}
+
+.controls .fullcontrol .ss-icon, .controls .fullcontrol .ss-video, .controls .fullcontrol .ss-picture {
+	color:#fff;
+	font-size:18px;
+	line-height:18px;
 }
 
 .controls #mute {

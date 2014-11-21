@@ -3215,6 +3215,345 @@ nav ul.overlay li img {
 	font-weight:bold;
 	color:#b1b1b2;
 }
+
+
+
+/* CHECKOUT */
+.checkout .loginbox, .checkout .billingbox, .checkout .shippingbox {
+	float:left;
+	width:100%;
+	border-bottom:1px solid #ececec;
+	padding-bottom:35px;
+	margin-bottom:35px;
+}
+
+.checkout input[type="text"] {
+	width:44%;
+	margin:2% 4% 2% 0px;
+	float:left;
+	border:none;
+	background:#ececec;
+	color:#bcbcbc;
+	font-size:16px;
+	font-family:ProximaNova-Regular;
+	appearance:none;
+	-webkit-appearance:none;
+	padding:18px 2%;
+}
+
+.checkout input[type="text"].last {
+	margin-right:0px;
+}
+
+.checkout .select-style {
+    border:none;
+    width:96%;
+	margin:2% 0px 2% 0px;
+	padding:0px 2%;
+    overflow: hidden;
+	background:#ececec;
+}
+
+.checkout .select-style.half {
+	width:44%;
+}
+
+.checkout .select-style select {
+    background:#ececec url("../images/icon-select.png") no-repeat 100% 50%;
+    width: 100%;
+	padding:18px 0px;
+    border: none;
+    box-shadow: none;
+	appearance:none;
+	-moz-appearance:none;
+    -webkit-appearance: none;
+	font-size:16px;
+	font-family:ProximaNova-Regular;
+	color:#bcbcbc;
+}
+
+h4 {
+	font-family:ProximaNova-Regular;
+	font-size:18px;
+	font-weight:500;
+	line-height:30px;
+}
+
+.checkout input[type="checkbox"] {
+	float:left;
+	appearance:none;
+	-webkit-appearance:none;
+	border:1px solid #c7c7c7;
+	width:16px;
+	height:16px;
+	margin-right:16px;
+}
+
+.checkout input[type="checkbox"]:focus {
+	outline:none;
+}
+
+.checkout input[type="checkbox"]:checked {
+	border:1px solid #b59bca;
+}
+
+.checkout input[type="checkbox"]:not(:checked):after,
+.checkout input[type="checkbox"]:checked:after {
+  content: '✔';
+  position: relative;
+  top: 0; 
+  left: 2px;
+  font-size: 11px;
+  color: #b59bca;
+  transition: all .2s;
+}
+
+.checkout input[type="checkbox"]:not(:checked):after {
+  opacity: 0;
+  transform: scale(0);
+}
+
+.checkout input[type="checkbox"]:checked:after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.checkout input[type="submit"] {
+	float:right;
+	width:26%;
+	line-height:65px;
+	border:none;
+	appearance:none;
+	-webkit-appearance:none;
+	background:#5e9cd5;
+	font-family:ProximaNova-Regular;
+	font-size:19px;
+	font-weight:500;
+	color:#fff;
+	text-align:center;
+	cursor:pointer;
+}
+
+/* SHOPPING CART */
+.cart .highlights {
+	float:left;
+	width:98%;
+	border-bottom:2px solid #efefef;
+	padding-bottom:0px;
+	padding-left:2%;
+	margin-bottom:30px;
+	display:table;
+	vertical-align:middle;
+	position:relative;
+}
+
+.cart .highlights.last {
+	border-bottom:none;
+}
+
+.cart .row.border {
+	float:left;
+	width:100%;
+	padding-bottom:20px;
+	margin-bottom:20px;
+	border-bottom:2px solid #efefef;
+}
+
+.cart-table th, .cart-table  td {
+	padding:20px 10px;
+}
+
+.cart-table th {
+	border-bottom:2px solid #efefef;
+}
+
+.cart p {
+	font-size:15px;
+	line-height:20px;
+	font-family:ProximaNova-Light;
+}
+
+.cart .ss-delete {
+	color:#f15757;
+	margin:10px 0px;
+	float:left;
+	cursor:pointer;
+}
+
+.cart .addons-table {
+	margin-top:25px;
+}
+
+.cart .addons-table td {
+	padding:30px 20px;
+}
+
+.cart td.price {
+	padding:0px 0px 0px 0px;
+	position:relative;
+}
+
+.cart .price td {
+	padding:10px 20px;
+}
+
+.cart .price .amount {
+	margin-top:-30px;
+}
+
+.cart .price .half .amount {
+	margin-top:30px;
+}
+
+.cart .addons-table .title span {
+	font-size:30px;
+}
+
+.cart .addons-table .title h3 {
+	width:100% !important;
+	font-size:18px !important;
+}
+
+.cart .addons-table .price .half {
+	width:50%;
+	position:absolute;
+	text-align:center;
+	height:100%;
+	top:0px;
+	left:0px;
+	right:auto;
+}
+
+.cart .addons-table .purple .title, .cart .addons-table .add-puppy {
+	background:rgba(158,117,179,1);
+}
+
+.cart .addons-table .purple .details {
+	background:rgba(158,117,179,0.66);
+}
+
+.cart .addons-table .purple .price {
+	background:rgba(158,117,179,0.33);
+}
+
+.cart .addons-table .blue .title, .cart .addons-table .blue .add-puppy {
+	background:rgba(92,157,213,1);
+}
+
+.cart .addons-table .blue .details {
+	background:rgba(92,157,213,0.66);
+}
+
+.cart .addons-table .blue .price {
+	background:rgba(92,157,213,0.33);
+}
+
+.cart .addons-table .grey .title, .cart .addons-table .grey .add-puppy {
+	background:rgba(150,149,149,1);
+}
+
+.cart .addons-table .grey .details {
+	background:rgba(150,149,149,0.66);
+}
+
+.cart .addons-table .grey .price {
+	background:rgba(150,149,149,0.33);
+}
+
+.cart .addons-table .price .half.last {
+	background:rgba(150,149,149,0.33);
+	right:0px;
+	left:auto;
+}
+
+.cart .addons-table .title, .cart .addons-table h3, .cart .addons-table p {
+	color:#fff !important;
+}
+
+.cart .addons-table .price .amount {
+	color:#fff !important;
+	font-size:28px;
+}
+
+.cart .addons-table .add-puppy a {
+	width:100%;
+	float:left;
+	cursor:pointer;
+	font-weight:300;
+	font-family:"ProximaNova-Light";
+}
+
+.cart .addons-table .add-puppy {
+	color:#fff;
+	font-size:15px;
+	position:absolute;
+	bottom:0px;
+	line-height:40px;
+	width:100%;
+	text-align:center;
+}
+
+.cart .addons-table .add-puppy span {
+	font-size:15px;
+}
+
+.cart .addons-table .price .half .add-puppy {
+	font-size:10px;
+	width:100%;
+	margin-left:0px;
+	background:rgba(150,149,149,1);
+}
+
+.cart .addons-table .price .half.last .add-puppy {
+	background:rgba(99,99,99,1);
+}
+
+.cart .addons-table .price .half .add-puppy span {
+	font-size:8px;
+}
+
+.cart .addons-table .amount span {
+	font-size:12px;
+	font-family:"ProximaNova-Light";
+	font-weight:300;
+}
+
+.cart .total-table {
+	margin:20px 0px;
+}
+
+.total-table .label, .total-table .amount {
+	color:#b6b6b7;
+	font-size:24px;
+	line-height:36px;
+	font-weight:300;
+	font-family:"ProximaNova-Light";
+}
+
+.final-table .heading {
+	font-size:36px;
+	font-weight:500;
+	font-family:"ProximaNova-Regular";
+}
+
+.final-table .amount {
+	font-size:36px;
+	font-weight:500;
+	font-family:"ProximaNova-Regular";
+}
+
+.final-table .btn-breed-info {
+	background:#9975b3;
+	color:#fff;
+	width:23%;
+	text-align:center;
+	margin:45px 0px 0px 0px;
+	float:right;
+	line-height:64px;
+	font-size:20px;
+	font-family:ProximaNova-Regular;
+}
+
 /*ENEWSLETTER */
 #enewsletter {
 	float:left;

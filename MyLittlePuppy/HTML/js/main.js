@@ -389,4 +389,79 @@ $(document).ready(function(e) {
 	$('#container .breed-listing .trophy').mouseleave(function(e) {
 		$('#container .breed-listing .trophy-details').hide("normal");
 	});
+	
+	/*MY ACCOUNT OPTIONS*/
+	$('.tabbed .tabber-tab .change-password').click(function(e) {
+		$(this).addClass('active');
+		$('.tabbed .tabber-tab .change-email').removeClass('active');
+        $('.tabbed .tabber-tab #change-email').hide('fast');
+		$('.tabbed .tabber-tab #change-password').show('fast');
+    });
+	
+	$('.tabbed .tabber-tab .change-email').click(function(e) {
+        $('.tabbed .tabber-tab #change-password').hide('fast');
+		$('.tabbed .tabber-tab #change-email').show('fast');
+    });
+	
+	
+	/* MEDIA GALLERY */
+	$('#videoplayer #grid').click(function(e) {
+		//alert("Hi");
+    });
+	
+	$('#videoplayer #videobtn').click(function(e) {
+		if($('#videoplayer #videobtn span').hasClass('ss-video')) {
+			$('#videoplayer #videobtn span').removeClass('ss-video');
+			$('#videoplayer #videobtn span').addClass('ss-picture');
+			$('#videoplayer #videoset').hide("fast");
+			$('#videoplayer .image-gallery').show("fast");
+			document.getElementById("video").pause();
+			$('#videoplayer #grid').toggleClass("image");
+			$('#video-controls #grid').removeClass('video');
+			$('#video-controls #grid').addClass('image');
+		}
+		else {
+			$('#videoplayer #videobtn span').addClass('ss-video');
+			$('#videoplayer #videobtn span').removeClass('ss-picture');
+			$('#videoplayer #videoset').show("fast");
+			$('#videoplayer .video-gall').show("fast");
+			$('#videoplayer .image-gallery').hide("fast");
+			$('#videoplayer .video-gallery').show("fast");
+			$('#videoplayer #grid').toggleClass("video");
+			$('#video-controls #grid').removeClass('image');
+			$('#video-controls #grid').addClass('video');
+		}
+		
+		$('#video-controls #grid.image').click(function(e) {
+			$('#videoplayer .img-gall').toggle("fast");
+		});	
+    });		
+		
+	$('#videoplayer .img-gall img').click(function(e) {
+		var mainSrc = $('#videoplayer .image-galler img.main-image').attr('src');
+		var src = $(this).attr('src');
+		//alert(src);
+		$('#videoplayer .image-gallery img.main-image').attr('src',src);
+	});
+	
+	$('#video').click(function(e) {
+		$('#videoplayer .video-gallery').hide('fast');
+	});	
+	
+	$('#video-controls #grid.image').click(function(e) {
+		$('#videoplayer .img-gall').toggle("fast");
+	});
+		
+	$('#videoplayer .video-gallery img').click(function(e) {
+		var mainSrc = $('#videoplayer #mp4').attr('src');
+		var src = $(this).attr('data-type');
+		//alert(src);
+		$('#videoplayer #mp4').attr('src',src);
+		var video_block = $('#video');
+		video_block.load();
+	}); 
+	
+	$('#video-controls #grid.video').click(function(e) {
+		$('#videoplayer .video-gallery').toggle("fast");
+	});
 });
