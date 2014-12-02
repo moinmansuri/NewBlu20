@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<title>Project Request | Blu20</title>
+<link href="css/style.css" type="text/css" rel="stylesheet" />
+<link href="css/jquery.bxslider.css" rel="stylesheet" />
+<link href="css/media.css" type="text/css" rel="stylesheet" />
+<link type="text/css" rel="stylesheet" href="css/ss-glyphish-outlined.css">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script src="js/main.js"></script>
+<script type="text/javascript">
+$(document).ready(function(e) {
+    $('#image_file').change(function() {
+		var file = $('#image_file')[0].files[0]
+		if(file){
+		  $('#filebrowse').append(file.name);
+		}
+    });
+});
+</script>
+</head>
+<body class="project-request">
+<div id="content" class="project-request">
+	<div class="wrapper">
+    	<h1>Let's Swim together</h1>
+        <div class="clearfix"></div>
+        <div class="headborder"></div>
+        <h3>Thank you for your interest in working with blu20. Getting started is easy - just fill in the blanks below and we'll get back to you withing one working day.</h3>
+        <div class="clearfix"></div>
+        <p><i>All fields are required unless indicated.</i></p>
+      	<div class="clearfix"></div>
+        <div id="dropzone">
+        <form action="#" method="post">
+        	<input type="text" value="First & Last Name" />
+            <input type="text" value="E-Mail Address" />
+            <input type="text" value="Phone" />
+            <input type="text" value="Company/Organization" />
+	        <div class="clearfix"></div>
+            <h4>Type of Project</h4>
+            <div class="clearfix"></div>
+            <p><i>Select All that apply.</i></p>
+          	<div class="clearfix"></div>
+		   	<div class="radiobuttons">
+            	<input type="radio" value="Research & Strategy"><label>Research & Strategy</label>
+                <input type="radio" value="Marketing"><label>Marketing</label>
+                <input type="radio" value="Branding"><label>Branding</label>
+                <input type="radio" value="Website"><label>Website</label>
+                <input type="radio" value="Mobile"><label>Mobile</label>                
+            </div>
+            <div class="clearfix"></div>
+          	<h4>Timeframe</h4>
+          	<div class="clearfix"></div>
+            <p><i>Is there a specific timeframe or deadline for the Project?</i></p>
+            <div class="clearfix"></div>
+            <textarea></textarea>
+            <div class="clearfix"></div>
+            <h4>About the Project</h4>
+            <div class="clearfix"></div>
+            <p><i>Is there a specific timeframe or deadline for the Project?</i></p>
+          	<textarea></textarea>
+       	    <div class="clearfix"></div>
+	        <h4>Files &amp; Attachments</h4>
+            <div class="clearfix"></div>
+            <p><i>Upload any relevant files or documents, if required (optional).</i></p>
+          	<div class="clearfix"></div>
+            <div class="filebrowse">
+            	<div class="left">Drop files here to upload</div>
+                <div class="ss-glyphish-outined ss-icon">+</div>
+                <div class="right">Max file size 10 mb</div>
+            	<input type="file" name="image_file" id="image_file" value="" />
+            </div>
+       	  	<div class="clearfix"></div>
+            <div id="filebrowse"></div>
+          	<input type="submit" value="Submit" />
+        </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

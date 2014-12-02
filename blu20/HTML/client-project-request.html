@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<title>Project Request | Blu20</title>
+<link href="css/style.css" type="text/css" rel="stylesheet" />
+<link href="css/jquery.bxslider.css" rel="stylesheet" />
+<link href="css/media.css" type="text/css" rel="stylesheet" />
+<link type="text/css" rel="stylesheet" href="css/ss-glyphish-outlined.css">
+<link type="text/css" rel="stylesheet" href="css/ss-geomicons-squared.css">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script src="js/main.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+<script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+<script src="js/jquery-ui-slider-pips.js"></script>
+<link type="text/css" rel="stylesheet" href="css/jquery-ui-slider-pips.css" />
+<script>
+$(function() {
+	var priceRange = ["$1000-$2500", "$2500-$5000", "$5000-$15000", "$15000 & Up"];
+
+	$("#draggable-slider").slider({ min: 1, max: 4, value: 1 });
+	$("#draggable-slider").slider("pips" , { labels: priceRange, rest: "label" });
+});
+</script>
+<link rel="stylesheet" type="text/css" href="css/jquery.datepick.css"> 
+<script type="text/javascript" src="js/jquery.plugin.js"></script> 
+<script type="text/javascript" src="js/jquery.datepick.js"></script>
+<script>
+$(function() {
+	$('#deliverable-1').datepick();
+	$('#deliverable-2').datepick();
+	$('#deliverable-3').datepick();
+	$('#deliverable-4').datepick();
+});
+
+function showDate(date) {
+	//alert('The date chosen is ' + date);
+}
+</script>
+</head>
+<body class="project-request client">
+<div id="content" class="project-request">
+	<div class="wrapper">
+    	<img src="images/login_logo.png" />
+        <div class="clearfix"></div>
+    	<h1>Project Request Form</h1>
+        <div class="clearfix"></div>
+        <div class="headborder"></div>
+        <h3>Please fill out the fields below so we can add your project to the que and get back to you with a solid price and timeline.</h3>
+        <div class="clearfix"></div>
+        <h4>Type of Project</h4>
+        <div class="clearfix"></div>
+        <p><i>Select All that apply.</i></p>
+        <div class="clearfix"></div>
+        <div class="radiobuttons">
+        	<checkboxgroup><input type="radio" value="Research & Strategy"><label>Research & Strategy</label></checkboxgroup>
+            <checkboxgroup><input type="radio" value="Marketing"><label>Marketing</label></checkboxgroup>
+            <checkboxgroup><input type="radio" value="Branding"><label>Branding</label></checkboxgroup>
+            <checkboxgroup><input type="radio" value="Website"><label>Website</label></checkboxgroup>
+            <checkboxgroup><input type="radio" value="Mobile"><label>Mobile</label></checkboxgroup>                
+        </div>
+        <div class="clearfix"></div>
+        <div id="dropzone">
+        <form action="#" method="post">
+        	<input type="text" value="Project Approval Contact Email" onfocus="myFocus(this);" onblur="myBlur(this);" />
+            <input type="text" value="Project Name" onfocus="myFocus(this);" onblur="myBlur(this);" />
+            <input name='date_allow_empty' type='text' id="deliverable-1" value='Deliverable 1' class='deliverable ss-icon date demo_allow_empty' />
+            <input name='date_allow_empty' type='text' id="deliverable-2" value='Deliverable 2' class='deliverable ss-icon date demo_allow_empty' />
+            <input name='date_allow_empty' type='text' id="deliverable-3" value='Deliverable 3' class='deliverable ss-icon date demo_allow_empty' />
+            <div class="extradeliverables"></div>
+            <div class="clearfix"></div>
+            <a data-type="addDeliverables" class="addDeliverables submit"><span class="ss-geomicons-squared ss-icon">+</span> Add Deliverables</a>
+            <div class="clearfix"></div>
+            <input type="text" value="Requested Due Date" onfocus="myFocus(this);" onblur="myBlur(this);" />
+	        <div class="clearfix"></div> 
+            <h4>Budget for Project</h4>
+            <div class="clearfix"></div>
+            <div id="draggable-slider"></div>
+            <div class="clearfix"></div>
+            <textarea onfocus="myFocus(this);" onblur="myBlur(this);">Other Notes/Expectations</textarea>
+            <div class="clearfix"></div>
+          	<input type="submit" value="Submit" />
+        </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

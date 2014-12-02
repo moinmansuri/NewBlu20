@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<title>Agency Fit Survey | Blu20</title>
+<link href="css/style.css" type="text/css" rel="stylesheet" />
+<link href="css/jquery.bxslider.css" rel="stylesheet" />
+<link href="css/media.css" type="text/css" rel="stylesheet" />
+<link type="text/css" rel="stylesheet" href="css/ss-glyphish-outlined.css">
+<link type="text/css" rel="stylesheet" href="css/ss-geomicons-squared.css">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script src="js/main.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+<script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+<script src="js/jquery-ui-slider-pips.js"></script>
+<link type="text/css" rel="stylesheet" href="css/jquery-ui-slider-pips.css" />
+<script>
+$(function() {
+	$("#draggable-slider").slider({ max: 10, min: 1, value: 1 }).slider('pips');
+	$("#draggable-slider-1").slider({ max: 10, min: 1, value: 1 }).slider('pips');
+	$("#draggable-slider-2").slider({ max: 10, min: 1, value: 1 }).slider('pips');
+	$("#draggable-slider-3").slider({ max: 10, min: 1, value: 1 }).slider('pips');
+	$("#draggable-slider-4").slider({ max: 10, min: 1, value: 1 }).slider('pips');
+});
+</script>
+</head>
+<body class="project-request client">
+<div id="content" class="agencyfit">
+	<div class="wrapper">
+        <form action="#" method="post">
+            <img src="images/login_logo.png" />
+            <div class="clearfix"></div>
+            <h1>Agency Fit Survey</h1>
+            <div class="clearfix"></div>
+            <div class="headborder"></div>
+            <h3>Please fill out the fields below so that we can get more aquainted with you, your company, your marketing background, and how to better serve you if we set sail.</h3>
+            <div class="clearfix"></div>
+            <p>Have you worked with an agency before?</p>
+            <div class="clearfix"></div>
+            <div class="radiobuttons">
+	            <checkboxgroup><input type="radio" value="Yes"><label>Yes</label></checkboxgroup>
+                <checkboxgroup><input type="radio" value="No"><label>No</label></checkboxgroup>
+            </div>
+            <div class="clearfix"></div>
+            <p>How much branding knowledge would you say  have?</p>
+            <div class="clearfix"></div>
+            <div class="radiobuttons">                
+	            <checkboxgroup><input type="radio" value="Little"><label>Little</label></checkboxgroup>
+	            <checkboxgroup><input type="radio" value="A Bit"><label>A Bit</label></checkboxgroup>
+	            <checkboxgroup><input type="radio" value="Lots"><label>Lots</label></checkboxgroup>
+            </div>
+            <div class="clearfix"></div>
+            <p>How much marketing experience would you say  have?</p>
+            <div class="clearfix"></div>
+            <div class="radiobuttons">                
+	            <checkboxgroup><input type="radio" value="Little"><label>Little</label></checkboxgroup>
+	            <checkboxgroup><input type="radio" value="A Bit"><label>A Bit</label></checkboxgroup>
+	            <checkboxgroup><input type="radio" value="Lots"><label>Lots</label></checkboxgroup>
+            </div>
+            <div class="clearfix"></div>
+            <p>If you were a whale what kind would you be ?</p>
+            <div class="clearfix"></div>
+            <div class="radiobuttons">
+	            <checkboxgroup><input type="radio" value="Pigmy Sperm"><label>Pigmy Sperm</label></checkboxgroup>
+	            <checkboxgroup><input type="radio" value="Orca"><label>Orca</label></checkboxgroup>
+	            <checkboxgroup><input type="radio" value="Blue"><label>Blue</label></checkboxgroup>
+	            <checkboxgroup><input type="radio" value="Humpback"><label>Humpback</label></checkboxgroup>
+            </div>
+            <h5>Our Definitions</h5>
+            <div class="clearfix"></div>
+            <p>Pigmy Sperm - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed</p>
+            <p>Ocra - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed</p>
+            <p>Blue - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed </p>
+            <p>Humpback - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed</p>
+            <div class="clearfix"></div>
+            <p>&nbsp;</p>
+            <p>How would you rate the need for new branding?</p>           
+            <div id="draggable-slider"></div>
+            <div class="clearfix"></div>
+            <p>How would you rate the need for new brand or market strategy?</p>
+            <div class="clearfix"></div>
+            <div id="draggable-slider-1"></div>
+            <div class="clearfix"></div>
+            <p>How would you rate your current website?</p>
+            <div class="clearfix"></div>
+            <div id="draggable-slider-2"></div>
+            <div class="clearfix"></div>
+            <p>How would you rate your social media experience level?</p>
+            <div class="clearfix"></div>
+            <div id="draggable-slider-3"></div>
+            <div class="clearfix"></div>
+            <p>So far, how interested are you in working with blu20?</p>
+            <div class="clearfix"></div>
+            <div id="draggable-slider-4"></div>
+            <div class="clearfix"></div>
+            <p>We would appreciate any additional feedback you have to offer:</p>
+            <div class="clearfix"></div>
+            <textarea onfocus="myFocus(this);" onblur="myBlur(this);"></textarea>
+            <div class="clearfix"></div>
+            <input type="submit" value="Submit" />
+        </form>
+    </div>
+</div>
+</body>
+</html>

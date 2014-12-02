@@ -1,0 +1,181 @@
+#mask {
+	position:fixed;
+	left:0;
+	top:auto;
+	z-index:90000;
+	background-color:#00aef0;
+	display:none;
+	margin:0px; 
+	padding:0px;
+	width:100%;
+	top:0;
+	opacity:0.9;
+}
+
+#boxes2 .window {
+	position:absolute;
+	left:0;
+	top:0;
+	width:100%;
+	height:100%;
+	display:none;
+	z-index:99999;
+}
+
+#boxes2 #dialog1, #boxes2 #dialog2, #boxes2 #dialog3 {
+	width:100%; 
+	height:100%;
+	padding:0px;
+	position:fixed;
+	top:0px;
+	left:0px;
+}
+
+#boxes2 #dialog2 .big_popup {
+	width:100%;
+	height:100%;
+	display:table;
+}
+
+.big_popup { 
+	width:904px;
+	height:100%;
+	position:fixed;
+	z-index:100;
+	padding:0px;
+	margin:0px;
+	overflow-y:auto;
+	overflow-x:hidden;
+	text-align:center;
+	color:#aeadae;
+	font-size:14px;
+	font-family:'Nevis Bold';
+	line-height:40px;
+}
+
+.patternover {
+	position:absolute;
+	top:0%;
+	left:0%;
+	background:url('http://www.gooichimotorsports.com/images/popup_over.png') no-repeat;
+	width:795px;
+	height:527px;
+	text-align:center;
+	padding-top:50px;
+}
+
+.patternover img {
+}
+
+.big_popupclose .close {
+	position:fixed;
+	right:0px; 
+	top:42px; 
+	margin-right:17px; 
+	background:url('../images/icon_close_popup.png') no-repeat;
+	height:20px; 
+	width:19px; 
+	padding:7px;
+	z-index:9999;
+}
+
+#boxes2 #dialog2 .popupdetails {
+	width:100%;
+	height:100%;
+	display:table-cell;
+	vertical-align:middle;
+}
+
+#boxes2 h3 {
+	font-family:'MuseoSans 100';
+	font-weight:100;
+	font-size:18px;
+	color:#fff;
+	margin:0px 0px 30px 0px;
+	padding:0px;
+}
+
+#boxes2 h2 {
+	font-family:'MuseoSans 100';
+	font-weight:100;
+	font-size:63px;
+	color:#fff;
+	margin:0px 0px 50px 0px;
+	padding:0px;
+}
+
+#boxes2 .leftcol p, #boxes2 .rightcol p {
+	padding-left:0px;
+	margin-left:0px;
+}
+
+#boxes2 .sharethis span {
+	width:80px;
+	height:80px;
+	display:inline-block;
+	text-align:center;
+	line-height:80px;
+	font-size:24px;
+	color:#fff;
+	margin:0px 30px 35px 30px;
+	border:1px solid #fff;
+}
+
+#boxes2 .copylink {
+	width:664px;
+	border:1px solid #fff;
+	height:65px;
+	position:relative;
+	left:50%;
+	margin-left:-332px;
+}
+
+#boxes2 .copylink .link {
+	color:#fff;
+	font-family:'MuseoSans 300';
+	font-weight:300;
+	font-size:14px;
+	line-height:65px;
+	padding-left:4%;
+	text-align:left;
+	width:71%;
+	border-right:1px solid #fff;
+	float:left;
+}
+
+#boxes2 .copylink .copybutton {
+	color:#fff;
+	font-family:'MuseoSans 300';
+	font-weight:300;
+	font-size:14px;
+	line-height:65px;
+	text-align:center;
+	width:24%;
+	float:left;
+	cursor:pointer;
+}
+
+#boxes2 #dialog1 {
+	position:absolute;
+	top:0px;
+	width:100%;
+	height:auto;
+	color:#cfcfcf;
+}
+
+#mask.white {
+	background-color:#fff !important;
+	opacity:1 !important;
+}
+
+#boxes2 #dialog1 .big_popupclose .close {
+	position:fixed;
+	right:0px; 
+	top:42px; 
+	margin-right:17px;  
+	background:url('../images/icon_close.png') no-repeat;
+	height:20px; 
+	width:19px; 
+	padding:7px;
+	z-index:9999;
+}

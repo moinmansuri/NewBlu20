@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<title>Blu20</title>
+<link href="css/style.css" type="text/css" rel="stylesheet" />
+<link href="css/jquery.bxslider.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="css/jquery.fullPage.css" />
+<link href="css/media.css" type="text/css" rel="stylesheet" />
+<link type="text/css" rel="stylesheet" href="css/ss-glyphish-outlined.css">
+<script type="text/javascript" src="js/jquery.js"></script>
+<!--<script type="text/javascript" src="//use.typekit.net/jta5faj.js"></script>
+<script type="text/javascript">try{Typekit.load();}catch(e){}</script></script>-->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="js/jquery.slimscroll.js"></script>
+<script type="text/javascript" src="js/jquery.fullPage.js"></script>
+<script src="js/jquery.bxslider.js"></script>
+<script src="js/main.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$('#fullpage').fullpage({		
+		
+		verticalCentered: false,
+        resize : true,
+        scrollingSpeed: 700,
+        easing: 'easeInQuart',
+        menu: false,
+        navigationPosition: 'right',
+        navigationTooltips: [],
+        slidesNavigation: true,
+        slidesNavPosition: 'bottom',
+        loopBottom: false,
+        loopTop: false,
+        loopHorizontal: true,
+        autoScrolling: true,
+        css3: false,
+        normalScrollElements: '#element1, .element2',
+        normalScrollElementTouchThreshold: 5,
+        keyboardScrolling: true,
+        touchSensitivity: 10,
+        continuousVertical: false,
+        animateAnchor: true,
+        sectionSelector: '.section',
+        slideSelector: '.slide',
+		navigation :true,
+		scrollOverflow : true,
+		onLeave: function(index, nextIndex, direction){
+            //after leaving section 2
+            if(index == '3' && direction =='down'){
+				document.getElementById("header").setAttribute("class", "fixed");
+				//$.fn.fullpage.setAutoScrolling(false);
+            }		
+			else {
+				document.getElementById("header").removeAttribute("class", "fixed");
+				//$.fn.fullpage.setAutoScrolling(true);
+			}
+		},
+		
+		afterLoad: function(anchorLink, index){
+            //using index
+            if(index == '4'){
+               document.getElementById("header").setAttribute("class", "fixed");
+			   //$.fn.fullpage.setAutoScrolling(false);
+            }
+			else {
+				//$.fn.fullpage.setAutoScrolling(true);
+			}
+        }
+	});
+	
+	$('.bxslider').bxSlider();
+});
+
+</script>
+</head>
+<body id="homepage" class="scrollingdisabled">
+<div id="header">
+	<div id="logo"><a href="index.html"><img src="images/logo.svg" alt="" /></a></div>
+    <div id="menu">
+    	<div class="icon-menu"><img src="images/icon_menu.png" alt="" /></div>
+    </div>
+</div>
+<div class="menu">
+    <div class="icon-close"><img src="images/icon_close.png" alt="" /></div>
+    <div class="clearfix"></div>
+    <ul>
+        <li class="head">Pages</li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="work.html">Work</a></li>
+        <li><a href="think-tank.html">Think Tank</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li class="head">Posts</li>
+        <li class="category"><a href="stratedgy-research.html">Strategy &amp; Research</a></li>
+        <li class="category"><a href="marketing.html">Marketing</a></li>
+        <li class="category"><a href="branding.html">Branding</a></li>
+        <li class="category"><a href="blog.html">Web/Apps</a></li>
+        <li class="button"><a href="#" class="button slideinleft">Send Us a Project</a></li>
+    </ul>
+</div>
+<div id="fullpage">
+	<div class="section" id="section0">
+		<div class="lightbluglare">
+            <div class="center">
+                <div class="wrapper">
+                    <h2>WE SWIM<br />IN CREATIVITY.</h2>
+                    <div class="clearfix"></div>
+                    <div class="headborder"></div>
+                    <div class="clearfix"></div>
+                    <p>Although not the big fish yet,being smaller has it’s advantages. We are like fish out of water when not creating mind blowing stuff.</p>
+                </div>
+            </div>
+        </div>
+	</div>
+	<div class="section" id="section1">
+	    <div class="bluglare">
+            <div class="center">
+                <div class="wrapper">
+                    <h2>STRATEGIC &amp;<br />USER FOCUSED.</h2>
+                    <div class="clearfix"></div>
+                    <div class="headborder"></div>
+                    <div class="clearfix"></div>
+                    <p>Although not the big fish yet,being small has it’s advantages. We believe that you cannot plan or research your strategy enough.</p>
+                </div>
+            </div>
+        </div>
+	</div>
+	<div class="section" id="section2">
+		<div class="darkerbluglare">
+            <div class="center">
+                <div class="wrapper">
+                    <h2>WE SWIM<br />IN CREATIVITY.</h2>
+                    <div class="clearfix"></div>
+                    <div class="headborder"></div>
+                    <div class="clearfix"></div>
+                    <p>Although not the big fish yet,being smaller has it’s advantages. We are like fish out of water when not creating mind blowing stuff.</p>
+                </div>
+            </div>
+        </div>
+	</div>
+    <div class="section" id="section3">
+        <div id="work">
+            <div class="wrapper">
+                <ul>
+                    <li class="two-column blue">
+                        <div class="dummy"></div>
+                        <div class="overlay">
+                        	<a href="project-specific.html">
+                                <div class="category">
+                                    <div class="type">Work </div><div class="posttype"> / Track</div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <h3>A New way to track Company Vehicles.</h3>
+                                <div class="clearfix"></div>
+                                <div class="ss-icon">&#x002B;</div>
+							</a>
+                        </div>
+                    </li>
+                    <li class="one-column white">
+                        <div class="dummy"></div>
+                        <div class="overlay">                        
+                        	<a href="project-specific.html">
+                                <div class="category">
+                                    <div class="type">Think Tank </div><div class="posttype"> / Branding</div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <h3>LOVE WHAT THEY DO, LOVE YOURSELF.</h3>
+                                <div class="clearfix"></div>
+                            	<div class="ss-icon">&#x002B;</div>
+							</a>                                
+                        </div>
+                    </li>
+                    <li class="one-column white">
+                        <div class="dummy"></div>
+                        <div class="overlay">                        	
+                        	<a href="project-specific.html">
+                                <div class="category">
+                                    <div class="type">Think Tank </div><div class="posttype"> / Post Category</div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <h3>LOVE WHAT THEY DO, LOVE YOURSELF.</h3>
+                                <div class="clearfix"></div>
+                                <div class="ss-icon">&#x002B;</div>
+							</a>
+                        </div>
+                    </li>
+                    <li class="two-column image">
+                        <div class="imgsrc" style="background-image:url(images/bg_clientpostimage.jpg)">
+                            <div class="dummy"></div>
+                        </div>
+                        <div class="overlay">
+                        	<a href="project-specific.html">
+                                <div class="category">
+                                    <div class="type">Client </div><div class="posttype"> / Tastebuds</div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <h3>CREATIVE IDEAS ARE OUR MUCHISMO.</h3>
+                                <div class="clearfix"></div>
+                                <div class="ss-icon">&#x002B;</div>
+							</a>
+                        </div>
+                    </li>
+                    <li class="one-column darkblue">
+                        <div class="dummy"></div>
+                        <div class="overlay">
+                        	<a href="project-specific.html">
+                                <div class="category">
+                                    <div class="type">Work </div><div class="posttype"> / Pure Love</div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <h3>LOVE WHAT THEY DO, LOVE YOURSELF.</h3>
+                                <div class="clearfix"></div>
+                                <div class="ss-icon">&#x002B;</div>
+							</a>
+                        </div>
+                    </li>
+                    <li class="one-column white">
+                        <div class="dummy"></div>
+                        <div class="overlay">
+                        	<a href="project-specific.html">
+                                <div class="category">
+                                    <div class="type">Think Tank </div><div class="posttype"> / Web UI/UX</div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <h3>LOVE WHAT THEY DO, LOVE YOURSELF.</h3>
+                                <div class="clearfix"></div>
+                                <div class="ss-icon">&#x002B;</div>
+							</a>
+                        </div>
+                    </li>
+                    <li class="one-column image">
+                        <div class="imgsrc" style="background-image:url(images/bg_mobilepostimage.jpg)">
+                            <div class="dummy"></div>
+                        </div>
+                        <div class="overlay">
+                        	<a href="project-specific.html">
+                                <div class="category">
+                                    <div class="type">Think Tank </div><div class="posttype"> / Brand Strategy</div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <h3>LOVE WHAT THEY DO, LOVE YOURSELF.</h3>
+                                <div class="clearfix"></div>
+                                <div class="ss-icon">&#x002B;</div>
+							</a>
+                        </div>
+                    </li>
+                    <li class="two-column image">
+                        <div class="imgsrc" style="background-image:url(images/bg_macbookairimage.jpg)">
+                            <div class="dummy"></div>
+                        </div>
+                        <div class="overlay">
+                        	<a href="project-specific.html">
+                                <div class="category">
+                                    <div class="type">Client </div><div class="posttype"> / Tastebuds</div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <h3>CREATIVE IDEAS ARE OUR MUCHISMO.</h3>
+                                <div class="clearfix"></div>
+                                <div class="ss-icon">&#x002B;</div>
+							</a>
+                        </div>
+                    </li>
+                    <li class="one-column white">
+                        <div class="dummy"></div>
+                        <div class="overlay">
+                        	<a href="project-specific.html">
+                                <div class="category">
+                                    <div class="type">Think Tank </div><div class="posttype"> / Web UI/UX</div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <h3>LOVE WHAT THEY DO, LOVE YOURSELF.</h3>
+                                <div class="clearfix"></div>
+                                <div class="ss-icon">&#x002B;</div>
+							</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div id="testimonials">
+            <div class="wrapper">
+                <ul class="bxslider">
+                    <li>
+                        <h3>"This is the coolest testimonial we could ever wish for from a client."</h3>
+                        <div class="clearfix"></div>
+                        <div class="headborder"></div>
+                        <div class="clearfix"></div>
+                        <p>Sharon Ramone - <i>USA Today</i></p>
+                    </li>
+                    <li>
+                        <h3>"This is the coolest testimonial from a client."</h3>
+                        <div class="clearfix"></div>
+                        <div class="headborder"></div>
+                        <div class="clearfix"></div>
+                        <p>John Ramone - <i>USA Today</i></p>
+                    </li>
+                    <li>
+                        <h3>"This is the another coolest testimonial we could ever wish for from a client."</h3>
+                        <div class="clearfix"></div>
+                        <div class="headborder"></div>
+                        <div class="clearfix"></div>
+                        <p>John Doe - <i>USA Today</i></p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div id="about">
+            <div class="left">
+                <div class="wrapper">
+                    <h3>Plenty more where that came from.</h3>
+                    <div class="clearfix"></div>
+                    <div class="contact">
+                        <p><i class="ss-icon">&#x1F4DE;</i> 417.654.9087</p>
+                    </div>
+                    <div class="email">
+                        <p><i class="ss-icon">&#x2709;</i> <a href="mailto:info@blu20.com">info@blu20.com</a></p>
+                    </div>
+                    <div class="clearfix"></div>
+                    <a href="contact.html" class="button slideinleft">Full Contact Details</a>
+                </div>
+            </div>
+            <div class="right">
+                <div class="wrapper">
+                    <h3>We love god,family, aged coffee,kung fu, ancient relics and baby unicorns.</h3>
+                    <div class="clearfix"></div>
+                    <p>(In that order)</p>
+                    <div class="clearfix"></div>
+                    <a href="about.html" class="button slideinleft">More About Us</a>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div id="facts">
+            <div class="wrapper">
+                <div class="stafffacts">
+                    <div class="pic"><img src="images/pic_scott.jpg" alt="" /></div>
+                    <div class="details">
+                        <h3>Staff Facts</h3>
+                        <div class="clearfix"></div>
+                        <div class="headborder"></div>
+                        <div class="clearfix"></div>
+                        <p>Did you know that Scott collects vintage argyle socks and has a mint condition collection of Crystal Gale albums and eight tracks. No joke. </p>
+                    </div>
+                </div>
+                <div class="sitemap">
+                    <h3>Sitemap</h3>
+                    <div class="clearfix"></div>
+                    <div class="headborder"></div>
+                    <div class="clearfix"></div>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="think-tank.html">Think Tank</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="filteredpost">
+                    <h3>Filtered Posts</h3>
+                    <div class="clearfix"></div>
+                    <div class="headborder"></div>
+                    <div class="clearfix"></div>
+                    <ul>
+                        <li><a href="branding.html">Branding</a></li>
+                        <li><a href="print-collateral.html">Print Collateral</a></li>
+                        <li><a href="digital-goods.html">Digital Goods</a></li>
+                        <li><a href="media-services.html">Media Services</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div id="followus">
+            <div class="wrapper">
+                <div class="followus">
+                    <h3>Follow Us </h3>
+                    <div class="clearfix"></div>
+                    <p>(Unless you stole our milk money in grade school, in that case...beat feet. ) </p>
+                    <div class="clearfix"></div>
+                    <a href="http://www.facebook.com/blu20agency" target="_blank">fb.com/blu20agency</a>
+                    <a href="http://www.twitter.com/blu20" target="_blank" style="color:#00aff0">@blu20</a>
+                    <a href="http://www.dribble.com/blu20agency" target="_blank">dribble.com/blu20</a>
+                    <div class="clearfix"></div>
+                    <form action="#" method="post">
+                        <input type="text" value="Signup for our newsletter" onfocus="myFocus(this);" onblur="myBlur(this);"  />
+                        <input type="submit" class="ss-icon" value="&#x002B;" />
+                    </form>
+                </div>
+                <div class="stats">
+                    <h3>This Months Stats</h3>
+                    <div class="clearfix"></div>
+                    <div class="headborder"></div>
+                    <div class="clearfix"></div>
+                    <div class="figures">
+                        <h3>143</h3>
+                        <div class="clearfix"></div>
+                        <p>Cups of coffee consumed</p>
+                    </div>
+                    <div class="figures">
+                        <h3>9,345</h3>
+                        <div class="clearfix"></div>
+                        <p>Corn hole bean bags tossed</p>
+                    </div>
+                    <div class="figures">
+                        <h3>81</h3>
+                        <div class="clearfix"></div>
+                        <p>Rounds of pinball played</p>
+                    </div>
+                    <div class="clearfix"></div>
+                    <form action="#" method="post">
+                        <input type="text" value="Signup for our nun-chuck seminar" onfocus="myFocus(this);" onblur="myBlur(this);"  />
+                        <input type="submit" class="ss-icon" value="&#x002B;" />
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div id="footer">
+            <div class="wrapper">
+                <div class="ss-icon">&#x1F585;</div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div id="footerform">
+            <div class="wrapper">
+                <div class="ss-icon">&#x1F585;</div>
+                <div class="clearfix"></div>
+                <div class="form">
+                    <h3>Feel free to verbally vomit or just say hi.</h3>
+                    <div class="clearfix"></div>
+                    <form action="#" method="post">
+                        <div class="leftcol">
+                            <input type="text" value="First & Last Name" onfocus="myFocus(this);" onblur="myBlur(this);" />
+                            <input type="text" value="Email Address" onfocus="myFocus(this);" onblur="myBlur(this);" />
+                            <input type="text" value="Company Name"  onfocus="myFocus(this);" onblur="myBlur(this);"/>
+                        </div>
+                        <div class="rightcol">
+                            <textarea onfocus="myFocus(this);" onblur="myBlur(this);">Message</textarea>
+                            <div class="clearfix"></div>
+                            <input type="submit" value="Submit" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>    
+<script src="js/video.js"></script>
+<script src="js/bigvideo.js"></script>
+<script>
+$(function() {
+    var BV = new $.BigVideo({useFlashForFirefox:false});
+    BV.init();
+    BV.show('images/new.mp4');
+});
+$(document).ready(function(){
+		var videoHeight = $('#video').height();
+		var videoName =document.getElementById("big-video-vid_html5_api");
+		videoName.play();	
+});
+</script>
+</body>
+</html>
